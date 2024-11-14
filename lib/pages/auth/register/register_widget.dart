@@ -1,3 +1,5 @@
+import '/auth/supabase_auth/auth_util.dart';
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -539,14 +541,23 @@ class _RegisterWidgetState extends State<RegisterWidget> {
 
                           final user = await authManager.createAccountWithEmail(
                             context,
-                            _model.firstNameTextController.text,
+                            _model.emailAddressTextController.text,
                             _model.passwordTextController.text,
                           );
                           if (user == null) {
                             return;
                           }
 
-                          context.goNamedAuth('null', context.mounted);
+                          await UsersTable().insert({
+                            'id': currentUserUid,
+                            'created_at':
+                                supaSerialize<DateTime>(getCurrentTimestamp),
+                            'first_name': _model.firstNameTextController.text,
+                            'last_name': _model.lastNameTextController.text,
+                            'email': _model.emailAddressTextController.text,
+                          });
+
+                          context.pushNamedAuth('Register1', context.mounted);
                         },
                         text: 'Register',
                         options: FFButtonOptions(

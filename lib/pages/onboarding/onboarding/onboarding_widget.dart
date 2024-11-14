@@ -125,8 +125,8 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                         padding: const EdgeInsetsDirectional.fromSTEB(
                             0.0, 16.0, 0.0, 16.0),
                         child: FFButtonWidget(
-                          onPressed: () {
-                            print('Button pressed ...');
+                          onPressed: () async {
+                            context.pushNamed('Register');
                           },
                           text: 'Get Started',
                           options: FFButtonOptions(

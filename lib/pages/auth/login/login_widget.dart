@@ -1,3 +1,4 @@
+import '/auth/supabase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -298,9 +299,10 @@ class _LoginWidgetState extends State<LoginWidget> {
                       children: [
                         Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 16.0),
+                              0.0, 0.0, 0.0, 8.0),
                           child: FFButtonWidget(
                             onPressed: () async {
+                              // Log In
                               GoRouter.of(context).prepareAuthEvent();
 
                               final user = await authManager.signInWithEmail(
@@ -312,34 +314,30 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 return;
                               }
 
-                              context.goNamedAuth('null', context.mounted);
+                              context.goNamedAuth('Home', context.mounted);
                             },
                             text: 'Login',
                             options: FFButtonOptions(
                               width: double.infinity,
-                              height: 44.0,
+                              height: 48.0,
                               padding: const EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              color: FlutterFlowTheme.of(context).primary,
+                                  16.0, 0.0, 16.0, 0.0),
+                              iconPadding: const EdgeInsets.all(8.0),
+                              color: FlutterFlowTheme.of(context).secondary,
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
                                     fontFamily: FlutterFlowTheme.of(context)
                                         .titleSmallFamily,
-                                    color: Colors.white,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryBackground,
                                     letterSpacing: 0.0,
                                     useGoogleFonts: GoogleFonts.asMap()
                                         .containsKey(
                                             FlutterFlowTheme.of(context)
                                                 .titleSmallFamily),
                                   ),
-                              elevation: 3.0,
-                              borderSide: const BorderSide(
-                                color: Colors.transparent,
-                                width: 1.0,
-                              ),
+                              elevation: 0.0,
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                           ),

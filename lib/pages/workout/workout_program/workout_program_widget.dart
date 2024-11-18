@@ -38,68 +38,78 @@ class _WorkoutProgramWidgetState extends State<WorkoutProgramWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-          automaticallyImplyLeading: false,
-          title: Card(
-            clipBehavior: Clip.antiAliasWithSaveLayer,
-            color: FlutterFlowTheme.of(context).secondaryBackground,
-            elevation: 0.0,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8.0),
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                FlutterFlowIconButton(
-                  borderRadius: 30.0,
-                  borderWidth: 1.0,
-                  buttonSize: 60.0,
-                  fillColor: FlutterFlowTheme.of(context).primaryBackground,
-                  icon: Icon(
-                    Icons.chevron_left_rounded,
-                    color: FlutterFlowTheme.of(context).primary,
-                    size: 30.0,
+        appBar: responsiveVisibility(
+          context: context,
+          desktop: false,
+        )
+            ? AppBar(
+                backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+                automaticallyImplyLeading: false,
+                title: Card(
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                  color: FlutterFlowTheme.of(context).secondaryBackground,
+                  elevation: 0.0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
                   ),
-                  onPressed: () {
-                    print('IconButton pressed ...');
-                  },
-                ),
-                Text(
-                  'Workout Programs',
-                  style: FlutterFlowTheme.of(context).headlineMedium.override(
-                        fontFamily:
-                            FlutterFlowTheme.of(context).headlineMediumFamily,
-                        color: FlutterFlowTheme.of(context).primary,
-                        fontSize: 22.0,
-                        letterSpacing: 0.0,
-                        useGoogleFonts: GoogleFonts.asMap().containsKey(
-                            FlutterFlowTheme.of(context).headlineMediumFamily),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      FlutterFlowIconButton(
+                        borderRadius: 30.0,
+                        borderWidth: 1.0,
+                        buttonSize: 60.0,
+                        fillColor:
+                            FlutterFlowTheme.of(context).primaryBackground,
+                        icon: Icon(
+                          Icons.chevron_left_rounded,
+                          color: FlutterFlowTheme.of(context).primary,
+                          size: 30.0,
+                        ),
+                        onPressed: () {
+                          print('IconButton pressed ...');
+                        },
                       ),
-                ),
-                FlutterFlowIconButton(
-                  borderRadius: 30.0,
-                  borderWidth: 1.0,
-                  buttonSize: 60.0,
-                  fillColor: FlutterFlowTheme.of(context).primaryBackground,
-                  icon: Icon(
-                    Icons.filter_list,
-                    color: FlutterFlowTheme.of(context).primary,
-                    size: 30.0,
+                      Text(
+                        'Workout Programs',
+                        style: FlutterFlowTheme.of(context)
+                            .headlineMedium
+                            .override(
+                              fontFamily: FlutterFlowTheme.of(context)
+                                  .headlineMediumFamily,
+                              color: FlutterFlowTheme.of(context).primary,
+                              fontSize: 22.0,
+                              letterSpacing: 0.0,
+                              useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                  FlutterFlowTheme.of(context)
+                                      .headlineMediumFamily),
+                            ),
+                      ),
+                      FlutterFlowIconButton(
+                        borderRadius: 30.0,
+                        borderWidth: 1.0,
+                        buttonSize: 60.0,
+                        fillColor:
+                            FlutterFlowTheme.of(context).primaryBackground,
+                        icon: Icon(
+                          Icons.filter_list,
+                          color: FlutterFlowTheme.of(context).primary,
+                          size: 30.0,
+                        ),
+                        onPressed: () {
+                          print('IconButton pressed ...');
+                        },
+                      ),
+                    ].divide(const SizedBox(width: 10.0)),
                   ),
-                  onPressed: () {
-                    print('IconButton pressed ...');
-                  },
                 ),
-              ].divide(const SizedBox(width: 10.0)),
-            ),
-          ),
-          actions: const [],
-          centerTitle: true,
-          elevation: 0.0,
-        ),
+                actions: const [],
+                centerTitle: true,
+                elevation: 0.0,
+              )
+            : null,
         body: SafeArea(
           top: true,
           child: SingleChildScrollView(

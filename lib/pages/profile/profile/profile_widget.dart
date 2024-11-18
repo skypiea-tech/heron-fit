@@ -41,36 +41,43 @@ class _ProfileWidgetState extends State<ProfileWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-          automaticallyImplyLeading: false,
-          leading: FlutterFlowIconButton(
-            borderColor: Colors.transparent,
-            borderRadius: 30.0,
-            borderWidth: 1.0,
-            buttonSize: 60.0,
-            icon: Icon(
-              Icons.arrow_back_rounded,
-              color: FlutterFlowTheme.of(context).primaryText,
-              size: 30.0,
-            ),
-            onPressed: () {
-              print('IconButton pressed ...');
-            },
-          ),
-          title: Text(
-            'Profile',
-            style: FlutterFlowTheme.of(context).bodyLarge.override(
-                  fontFamily: FlutterFlowTheme.of(context).bodyLargeFamily,
-                  letterSpacing: 0.0,
-                  useGoogleFonts: GoogleFonts.asMap().containsKey(
-                      FlutterFlowTheme.of(context).bodyLargeFamily),
+        appBar: responsiveVisibility(
+          context: context,
+          desktop: false,
+        )
+            ? AppBar(
+                backgroundColor:
+                    FlutterFlowTheme.of(context).secondaryBackground,
+                automaticallyImplyLeading: false,
+                leading: FlutterFlowIconButton(
+                  borderColor: Colors.transparent,
+                  borderRadius: 30.0,
+                  borderWidth: 1.0,
+                  buttonSize: 60.0,
+                  icon: Icon(
+                    Icons.arrow_back_rounded,
+                    color: FlutterFlowTheme.of(context).primaryText,
+                    size: 30.0,
+                  ),
+                  onPressed: () {
+                    print('IconButton pressed ...');
+                  },
                 ),
-          ),
-          actions: const [],
-          centerTitle: false,
-          elevation: 0.0,
-        ),
+                title: Text(
+                  'Profile',
+                  style: FlutterFlowTheme.of(context).bodyLarge.override(
+                        fontFamily:
+                            FlutterFlowTheme.of(context).bodyLargeFamily,
+                        letterSpacing: 0.0,
+                        useGoogleFonts: GoogleFonts.asMap().containsKey(
+                            FlutterFlowTheme.of(context).bodyLargeFamily),
+                      ),
+                ),
+                actions: const [],
+                centerTitle: false,
+                elevation: 0.0,
+              )
+            : null,
         body: SafeArea(
           top: true,
           child: Column(

@@ -78,69 +78,76 @@ class _StartWorkoutWidgetState extends State<StartWorkoutWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-          automaticallyImplyLeading: false,
-          title: Card(
-            clipBehavior: Clip.antiAliasWithSaveLayer,
-            color: FlutterFlowTheme.of(context).primaryBackground,
-            elevation: 2.0,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8.0),
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Icon(
-                  Icons.keyboard_arrow_down,
-                  color: FlutterFlowTheme.of(context).primary,
-                  size: 40.0,
-                ),
-                FlutterFlowIconButton(
-                  borderRadius: 8.0,
-                  buttonSize: 40.0,
-                  fillColor: FlutterFlowTheme.of(context).primaryBackground,
-                  icon: Icon(
-                    Icons.access_alarm_rounded,
-                    color: FlutterFlowTheme.of(context).primary,
-                    size: 24.0,
+        appBar: responsiveVisibility(
+          context: context,
+          desktop: false,
+        )
+            ? AppBar(
+                backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+                automaticallyImplyLeading: false,
+                title: Card(
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                  color: FlutterFlowTheme.of(context).primaryBackground,
+                  elevation: 2.0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
                   ),
-                  onPressed: () {
-                    print('IconButton pressed ...');
-                  },
-                ),
-                Expanded(
-                  child: Align(
-                    alignment: const AlignmentDirectional(1.0, 0.0),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        'FINISH',
-                        textAlign: TextAlign.end,
-                        style: FlutterFlowTheme.of(context)
-                            .headlineMedium
-                            .override(
-                              fontFamily: FlutterFlowTheme.of(context)
-                                  .headlineMediumFamily,
-                              color: FlutterFlowTheme.of(context).primary,
-                              fontSize: 16.0,
-                              letterSpacing: 0.0,
-                              fontWeight: FontWeight.w600,
-                              useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                  FlutterFlowTheme.of(context)
-                                      .headlineMediumFamily),
-                            ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Icon(
+                        Icons.keyboard_arrow_down,
+                        color: FlutterFlowTheme.of(context).primary,
+                        size: 40.0,
                       ),
-                    ),
+                      FlutterFlowIconButton(
+                        borderRadius: 8.0,
+                        buttonSize: 40.0,
+                        fillColor:
+                            FlutterFlowTheme.of(context).primaryBackground,
+                        icon: Icon(
+                          Icons.access_alarm_rounded,
+                          color: FlutterFlowTheme.of(context).primary,
+                          size: 24.0,
+                        ),
+                        onPressed: () {
+                          print('IconButton pressed ...');
+                        },
+                      ),
+                      Expanded(
+                        child: Align(
+                          alignment: const AlignmentDirectional(1.0, 0.0),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              'FINISH',
+                              textAlign: TextAlign.end,
+                              style: FlutterFlowTheme.of(context)
+                                  .headlineMedium
+                                  .override(
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .headlineMediumFamily,
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    fontSize: 16.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.w600,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .headlineMediumFamily),
+                                  ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ].divide(const SizedBox(width: 2.0)).around(const SizedBox(width: 2.0)),
                   ),
                 ),
-              ].divide(const SizedBox(width: 2.0)).around(const SizedBox(width: 2.0)),
-            ),
-          ),
-          actions: const [],
-          centerTitle: true,
-          elevation: 0.0,
-        ),
+                actions: const [],
+                centerTitle: true,
+                elevation: 0.0,
+              )
+            : null,
         body: SafeArea(
           top: true,
           child: SingleChildScrollView(

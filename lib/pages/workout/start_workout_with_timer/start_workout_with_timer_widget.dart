@@ -84,87 +84,99 @@ class _StartWorkoutWithTimerWidgetState
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-          automaticallyImplyLeading: false,
-          title: Card(
-            clipBehavior: Clip.antiAliasWithSaveLayer,
-            color: FlutterFlowTheme.of(context).secondaryBackground,
-            elevation: 2.0,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8.0),
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Icon(
-                  Icons.keyboard_arrow_down,
-                  color: FlutterFlowTheme.of(context).primary,
-                  size: 30.0,
-                ),
-                FlutterFlowIconButton(
-                  borderRadius: 8.0,
-                  buttonSize: 40.0,
-                  fillColor: FlutterFlowTheme.of(context).primaryBackground,
-                  icon: Icon(
-                    Icons.access_alarm,
-                    color: FlutterFlowTheme.of(context).primary,
-                    size: 24.0,
+        appBar: responsiveVisibility(
+          context: context,
+          desktop: false,
+        )
+            ? AppBar(
+                backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+                automaticallyImplyLeading: false,
+                title: Card(
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                  color: FlutterFlowTheme.of(context).secondaryBackground,
+                  elevation: 2.0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
                   ),
-                  onPressed: () {
-                    print('IconButton pressed ...');
-                  },
-                ),
-                FlutterFlowTimer(
-                  initialTime: _model.timerInitialTimeMs,
-                  getDisplayTime: (value) => StopWatchTimer.getDisplayTime(
-                    value,
-                    hours: false,
-                    milliSecond: false,
-                  ),
-                  controller: _model.timerController,
-                  updateStateInterval: const Duration(milliseconds: 1000),
-                  onChanged: (value, displayTime, shouldUpdate) {
-                    _model.timerMilliseconds = value;
-                    _model.timerValue = displayTime;
-                    if (shouldUpdate) safeSetState(() {});
-                  },
-                  textAlign: TextAlign.start,
-                  style: FlutterFlowTheme.of(context).headlineSmall.override(
-                        fontFamily:
-                            FlutterFlowTheme.of(context).headlineSmallFamily,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Icon(
+                        Icons.keyboard_arrow_down,
                         color: FlutterFlowTheme.of(context).primary,
-                        fontSize: 20.0,
-                        letterSpacing: 0.0,
-                        useGoogleFonts: GoogleFonts.asMap().containsKey(
-                            FlutterFlowTheme.of(context).headlineSmallFamily),
+                        size: 30.0,
                       ),
-                ),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      'FINISH',
-                      textAlign: TextAlign.end,
-                      style: FlutterFlowTheme.of(context).titleMedium.override(
-                            fontFamily:
-                                FlutterFlowTheme.of(context).titleMediumFamily,
-                            color: FlutterFlowTheme.of(context).primary,
-                            fontSize: 18.0,
-                            letterSpacing: 0.0,
-                            useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).titleMediumFamily),
+                      FlutterFlowIconButton(
+                        borderRadius: 8.0,
+                        buttonSize: 40.0,
+                        fillColor:
+                            FlutterFlowTheme.of(context).primaryBackground,
+                        icon: Icon(
+                          Icons.access_alarm,
+                          color: FlutterFlowTheme.of(context).primary,
+                          size: 24.0,
+                        ),
+                        onPressed: () {
+                          print('IconButton pressed ...');
+                        },
+                      ),
+                      FlutterFlowTimer(
+                        initialTime: _model.timerInitialTimeMs,
+                        getDisplayTime: (value) =>
+                            StopWatchTimer.getDisplayTime(
+                          value,
+                          hours: false,
+                          milliSecond: false,
+                        ),
+                        controller: _model.timerController,
+                        updateStateInterval: const Duration(milliseconds: 1000),
+                        onChanged: (value, displayTime, shouldUpdate) {
+                          _model.timerMilliseconds = value;
+                          _model.timerValue = displayTime;
+                          if (shouldUpdate) safeSetState(() {});
+                        },
+                        textAlign: TextAlign.start,
+                        style:
+                            FlutterFlowTheme.of(context).headlineSmall.override(
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .headlineSmallFamily,
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  fontSize: 20.0,
+                                  letterSpacing: 0.0,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .headlineSmallFamily),
+                                ),
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            'FINISH',
+                            textAlign: TextAlign.end,
+                            style: FlutterFlowTheme.of(context)
+                                .titleMedium
+                                .override(
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .titleMediumFamily,
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  fontSize: 18.0,
+                                  letterSpacing: 0.0,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .titleMediumFamily),
+                                ),
                           ),
-                    ),
+                        ),
+                      ),
+                    ].divide(const SizedBox(width: 2.0)).around(const SizedBox(width: 2.0)),
                   ),
                 ),
-              ].divide(const SizedBox(width: 2.0)).around(const SizedBox(width: 2.0)),
-            ),
-          ),
-          actions: const [],
-          centerTitle: true,
-          elevation: 0.0,
-        ),
+                actions: const [],
+                centerTitle: true,
+                elevation: 0.0,
+              )
+            : null,
         body: SafeArea(
           top: true,
           child: SingleChildScrollView(

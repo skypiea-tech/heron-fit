@@ -340,6 +340,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'Start_Timer',
           path: '/startTimer',
           builder: (context, params) => const StartTimerWidget(),
+        ),
+        FFRoute(
+          name: 'EditProfile',
+          path: '/editProfile',
+          builder: (context, params) => const EditProfileWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

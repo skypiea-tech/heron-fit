@@ -87,3 +87,5 @@ export '/pages/workout/workout_complete/workout_complete_widget.dart'
     show WorkoutCompleteWidget;
 export '/pages/workout/start_timer/start_timer_widget.dart'
     show StartTimerWidget;
+export '/pages/profile/edit_profile/edit_profile_widget.dart'
+    show EditProfileWidget;

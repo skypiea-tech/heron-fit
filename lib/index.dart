@@ -89,3 +89,5 @@ export '/pages/workout/start_timer/start_timer_widget.dart'
     show StartTimerWidget;
 export '/pages/profile/edit_profile/edit_profile_widget.dart'
     show EditProfileWidget;
+export '/pages/profile/terms_of_use/terms_of_use_widget.dart'
+    show TermsOfUseWidget;

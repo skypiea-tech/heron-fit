@@ -106,52 +106,57 @@ class _ForgotPasswordVerificationWidgetState
                 Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    PinCodeTextField(
-                      autoDisposeControllers: false,
-                      appContext: context,
-                      length: 6,
-                      textStyle: FlutterFlowTheme.of(context)
-                          .bodyLarge
-                          .override(
-                            fontFamily:
-                                FlutterFlowTheme.of(context).bodyLargeFamily,
-                            letterSpacing: 0.0,
-                            useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).bodyLargeFamily),
+                    Expanded(
+                      child: PinCodeTextField(
+                        autoDisposeControllers: false,
+                        appContext: context,
+                        length: 6,
+                        textStyle: FlutterFlowTheme.of(context)
+                            .bodyLarge
+                            .override(
+                              fontFamily:
+                                  FlutterFlowTheme.of(context).bodyLargeFamily,
+                              letterSpacing: 0.0,
+                              useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                  FlutterFlowTheme.of(context).bodyLargeFamily),
+                            ),
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        enableActiveFill: true,
+                        autoFocus: true,
+                        enablePinAutofill: false,
+                        errorTextSpace: 16.0,
+                        showCursor: true,
+                        cursorColor: FlutterFlowTheme.of(context).primary,
+                        obscureText: false,
+                        hintCharacter: '*',
+                        keyboardType: TextInputType.number,
+                        pinTheme: PinTheme(
+                          fieldHeight: 48.0,
+                          fieldWidth: 48.0,
+                          borderWidth: 2.0,
+                          borderRadius: const BorderRadius.only(
+                            bottomLeft: Radius.circular(8.0),
+                            bottomRight: Radius.circular(8.0),
+                            topLeft: Radius.circular(8.0),
+                            topRight: Radius.circular(8.0),
                           ),
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      enableActiveFill: true,
-                      autoFocus: true,
-                      enablePinAutofill: false,
-                      errorTextSpace: 16.0,
-                      showCursor: true,
-                      cursorColor: FlutterFlowTheme.of(context).primary,
-                      obscureText: false,
-                      hintCharacter: '●',
-                      keyboardType: TextInputType.number,
-                      pinTheme: PinTheme(
-                        fieldHeight: 48.0,
-                        fieldWidth: 48.0,
-                        borderWidth: 2.0,
-                        borderRadius: const BorderRadius.only(
-                          bottomLeft: Radius.circular(8.0),
-                          bottomRight: Radius.circular(8.0),
-                          topLeft: Radius.circular(8.0),
-                          topRight: Radius.circular(8.0),
+                          shape: PinCodeFieldShape.box,
+                          activeColor:
+                              FlutterFlowTheme.of(context).secondaryText,
+                          inactiveColor: FlutterFlowTheme.of(context).tertiary,
+                          activeFillColor:
+                              FlutterFlowTheme.of(context).tertiary,
+                          inactiveFillColor:
+                              FlutterFlowTheme.of(context).tertiary,
+                          selectedFillColor:
+                              FlutterFlowTheme.of(context).primary,
                         ),
-                        shape: PinCodeFieldShape.box,
-                        activeColor: FlutterFlowTheme.of(context).secondaryText,
-                        inactiveColor: FlutterFlowTheme.of(context).tertiary,
-                        selectedColor: FlutterFlowTheme.of(context).primary,
-                        activeFillColor: FlutterFlowTheme.of(context).tertiary,
-                        inactiveFillColor:
-                            FlutterFlowTheme.of(context).tertiary,
+                        controller: _model.pinCodeController,
+                        onChanged: (_) {},
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
+                        validator: _model.pinCodeControllerValidator
+                            .asValidator(context),
                       ),
-                      controller: _model.pinCodeController,
-                      onChanged: (_) {},
-                      autovalidateMode: AutovalidateMode.onUserInteraction,
-                      validator: _model.pinCodeControllerValidator
-                          .asValidator(context),
                     ),
                   ],
                 ),

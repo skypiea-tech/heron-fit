@@ -345,6 +345,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'EditProfile',
           path: '/editProfile',
           builder: (context, params) => const EditProfileWidget(),
+        ),
+        FFRoute(
+          name: 'TermsOfUse',
+          path: '/termsOfUse',
+          builder: (context, params) => const TermsOfUseWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

@@ -65,7 +65,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Column(
                     mainAxisSize: MainAxisSize.max,
@@ -110,7 +110,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                           width: double.infinity,
                           child: Form(
                             key: _model.formKey,
-                            autovalidateMode: AutovalidateMode.always,
+                            autovalidateMode: AutovalidateMode.disabled,
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -126,6 +126,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                       focusNode: _model.firstNameFocusNode,
                                       autofocus: true,
                                       autofillHints: const [AutofillHints.name],
+                                      textInputAction: TextInputAction.next,
                                       obscureText: false,
                                       decoration: InputDecoration(
                                         labelText: 'First Name',
@@ -143,6 +144,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                                               context)
                                                           .labelMediumFamily),
                                             ),
+                                        alignLabelWithHint: true,
                                         enabledBorder: OutlineInputBorder(
                                           borderSide: const BorderSide(
                                             color: Color(0x00000000),
@@ -217,6 +219,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                       focusNode: _model.lastNameFocusNode,
                                       autofocus: true,
                                       autofillHints: const [AutofillHints.name],
+                                      textInputAction: TextInputAction.next,
                                       obscureText: false,
                                       decoration: InputDecoration(
                                         labelText: 'Last Name',
@@ -309,6 +312,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                       focusNode: _model.emailAddressFocusNode,
                                       autofocus: true,
                                       autofillHints: const [AutofillHints.email],
+                                      textInputAction: TextInputAction.next,
                                       obscureText: false,
                                       decoration: InputDecoration(
                                         labelText: 'Email',
@@ -401,6 +405,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                       focusNode: _model.passwordFocusNode,
                                       autofocus: true,
                                       autofillHints: const [AutofillHints.password],
+                                      textInputAction: TextInputAction.next,
                                       obscureText: !_model.passwordVisibility,
                                       decoration: InputDecoration(
                                         labelText: 'Password',
@@ -510,6 +515,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                           _model.passwordConfirmFocusNode,
                                       autofocus: true,
                                       autofillHints: const [AutofillHints.password],
+                                      textInputAction: TextInputAction.send,
                                       obscureText:
                                           !_model.passwordConfirmVisibility,
                                       decoration: InputDecoration(
@@ -770,10 +776,11 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                 supaSerialize<DateTime>(getCurrentTimestamp),
                             'first_name': _model.firstNameTextController.text,
                             'last_name': _model.lastNameTextController.text,
-                            'email': _model.emailAddressTextController.text,
+                            'email_address':
+                                _model.emailAddressTextController.text,
                           });
 
-                          context.pushNamedAuth('Register1', context.mounted);
+                          context.pushNamedAuth('Register01', context.mounted);
                         },
                         text: 'Register',
                         options: FFButtonOptions(
@@ -858,6 +865,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                   .override(
                                     fontFamily: FlutterFlowTheme.of(context)
                                         .labelMediumFamily,
+                                    color: FlutterFlowTheme.of(context).primary,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
                                     useGoogleFonts: GoogleFonts.asMap()

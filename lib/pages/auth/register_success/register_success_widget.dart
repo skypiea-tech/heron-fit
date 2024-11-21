@@ -76,6 +76,7 @@ class _RegisterSuccessWidgetState extends State<RegisterSuccessWidget> {
                                       .headlineSmallFamily,
                                   color: FlutterFlowTheme.of(context).primary,
                                   letterSpacing: 0.0,
+                                  fontWeight: FontWeight.bold,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
                                           .headlineSmallFamily),
@@ -92,6 +93,7 @@ class _RegisterSuccessWidgetState extends State<RegisterSuccessWidget> {
                                     .labelMediumFamily,
                                 color: FlutterFlowTheme.of(context).primary,
                                 letterSpacing: 0.0,
+                                fontWeight: FontWeight.w500,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)
                                         .labelMediumFamily),
@@ -108,8 +110,8 @@ class _RegisterSuccessWidgetState extends State<RegisterSuccessWidget> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     FFButtonWidget(
-                      onPressed: () {
-                        print('Button pressed ...');
+                      onPressed: () async {
+                        context.pushNamed('Home');
                       },
                       text: 'Let\'s Go!',
                       options: FFButtonOptions(

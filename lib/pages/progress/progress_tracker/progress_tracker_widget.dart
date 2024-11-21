@@ -262,7 +262,7 @@ class _ProgressTrackerWidgetState extends State<ProgressTrackerWidget> {
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    context.pushNamed('progress_photos_list');
+                                    context.pushNamed('ProgressPhotosList');
                                   },
                                   child: RichText(
                                     textScaler:

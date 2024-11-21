@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'edit_profile_model.dart';
@@ -42,9 +43,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
 
     _model.textController6 ??= TextEditingController();
     _model.textFieldFocusNode6 ??= FocusNode();
-
-    _model.textController7 ??= TextEditingController();
-    _model.textFieldFocusNode7 ??= FocusNode();
   }
 
   @override
@@ -113,62 +111,64 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Align(
-                          alignment: const AlignmentDirectional(0.0, 1.0),
-                          child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 8.0),
-                            child: ClipOval(
-                              child: Container(
-                                width: 100.0,
-                                height: 100.0,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  border: Border.all(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    width: 8.0,
-                                  ),
-                                ),
-                                child: Align(
-                                  alignment: const AlignmentDirectional(0.0, -1.0),
-                                  child: InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      await Navigator.push(
-                                        context,
-                                        PageTransition(
-                                          type: PageTransitionType.fade,
-                                          child: FlutterFlowExpandedImageView(
-                                            image: Image.network(
-                                              'https://picsum.photos/seed/737/600',
-                                              fit: BoxFit.contain,
-                                              alignment: const Alignment(0.0, -1.0),
-                                            ),
-                                            allowRotation: false,
-                                            tag: 'imageTag',
-                                            useHeroAnimation: true,
-                                          ),
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 16.0),
+                          child: Container(
+                            width: 100.0,
+                            height: 100.0,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context).alternate,
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                color: FlutterFlowTheme.of(context).secondary,
+                                width: 4.0,
+                              ),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(2.0),
+                              child: InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  await Navigator.push(
+                                    context,
+                                    PageTransition(
+                                      type: PageTransitionType.fade,
+                                      child: FlutterFlowExpandedImageView(
+                                        image: CachedNetworkImage(
+                                          fadeInDuration:
+                                              const Duration(milliseconds: 500),
+                                          fadeOutDuration:
+                                              const Duration(milliseconds: 500),
+                                          imageUrl:
+                                              'https://images.unsplash.com/photo-1531123414780-f74242c2b052?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDV8fHByb2ZpbGV8ZW58MHx8MHx8&auto=format&fit=crop&w=900&q=60',
+                                          fit: BoxFit.contain,
                                         ),
-                                      );
-                                    },
-                                    child: Hero(
-                                      tag: 'imageTag',
-                                      transitionOnUserGestures: true,
-                                      child: ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(100.0),
-                                        child: Image.network(
-                                          'https://picsum.photos/seed/737/600',
-                                          width: 100.0,
-                                          height: 100.0,
-                                          fit: BoxFit.cover,
-                                          alignment: const Alignment(0.0, -1.0),
-                                        ),
+                                        allowRotation: false,
+                                        tag: 'userProfileTag',
+                                        useHeroAnimation: true,
                                       ),
+                                    ),
+                                  );
+                                },
+                                child: Hero(
+                                  tag: 'userProfileTag',
+                                  transitionOnUserGestures: true,
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(50.0),
+                                    child: CachedNetworkImage(
+                                      fadeInDuration:
+                                          const Duration(milliseconds: 500),
+                                      fadeOutDuration:
+                                          const Duration(milliseconds: 500),
+                                      imageUrl:
+                                          'https://images.unsplash.com/photo-1531123414780-f74242c2b052?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDV8fHByb2ZpbGV8ZW58MHx8MHx8&auto=format&fit=crop&w=900&q=60',
+                                      width: 60.0,
+                                      height: 60.0,
+                                      fit: BoxFit.cover,
                                     ),
                                   ),
                                 ),
@@ -238,7 +238,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                     0.0,
                                                                     16.0),
                                                         child: Text(
-                                                          'HEIGHT',
+                                                          'FIRST NAME',
                                                           textAlign:
                                                               TextAlign.start,
                                                           style: FlutterFlowTheme
@@ -268,192 +268,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                               .textController1,
                                                           focusNode: _model
                                                               .textFieldFocusNode1,
-                                                          autofocus: true,
-                                                          autofillHints: const [
-                                                            AutofillHints.name
-                                                          ],
-                                                          obscureText: false,
-                                                          decoration:
-                                                              InputDecoration(
-                                                            isDense: true,
-                                                            labelStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily,
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondaryText,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                    ),
-                                                            alignLabelWithHint:
-                                                                true,
-                                                            hintText:
-                                                                'Your Height',
-                                                            hintStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                    ),
-                                                            enabledBorder:
-                                                                UnderlineInputBorder(
-                                                              borderSide:
-                                                                  BorderSide(
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primary,
-                                                                width: 2.0,
-                                                              ),
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          0.0),
-                                                            ),
-                                                            focusedBorder:
-                                                                UnderlineInputBorder(
-                                                              borderSide:
-                                                                  BorderSide(
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondary,
-                                                                width: 2.0,
-                                                              ),
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          0.0),
-                                                            ),
-                                                            errorBorder:
-                                                                UnderlineInputBorder(
-                                                              borderSide:
-                                                                  BorderSide(
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .error,
-                                                                width: 2.0,
-                                                              ),
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          0.0),
-                                                            ),
-                                                            focusedErrorBorder:
-                                                                UnderlineInputBorder(
-                                                              borderSide:
-                                                                  BorderSide(
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .error,
-                                                                width: 2.0,
-                                                              ),
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          0.0),
-                                                            ),
-                                                            contentPadding:
-                                                                const EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0.0,
-                                                                        0.0,
-                                                                        0.0,
-                                                                        16.0),
-                                                          ),
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodySmall
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodySmallFamily,
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryText,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodySmallFamily),
-                                                              ),
-                                                          validator: _model
-                                                              .textController1Validator
-                                                              .asValidator(
-                                                                  context),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 0.0, 0.0, 16.0),
-                                                  child: Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    16.0),
-                                                        child: Text(
-                                                          'FIRST NAME',
-                                                          textAlign:
-                                                              TextAlign.start,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMediumFamily,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodyMediumFamily),
-                                                              ),
-                                                        ),
-                                                      ),
-                                                      SizedBox(
-                                                        width: double.infinity,
-                                                        child: TextFormField(
-                                                          controller: _model
-                                                              .textController2,
-                                                          focusNode: _model
-                                                              .textFieldFocusNode2,
                                                           autofocus: true,
                                                           autofillHints: const [
                                                             AutofillHints.name
@@ -582,7 +396,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                             .bodySmallFamily),
                                                               ),
                                                           validator: _model
-                                                              .textController2Validator
+                                                              .textController1Validator
                                                               .asValidator(
                                                                   context),
                                                         ),
@@ -637,9 +451,9 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                         width: double.infinity,
                                                         child: TextFormField(
                                                           controller: _model
-                                                              .textController3,
+                                                              .textController2,
                                                           focusNode: _model
-                                                              .textFieldFocusNode3,
+                                                              .textFieldFocusNode2,
                                                           autofocus: true,
                                                           autofillHints: const [
                                                             AutofillHints.name
@@ -768,7 +582,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                             .bodySmallFamily),
                                                               ),
                                                           validator: _model
-                                                              .textController3Validator
+                                                              .textController2Validator
                                                               .asValidator(
                                                                   context),
                                                         ),
@@ -823,9 +637,9 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                         width: double.infinity,
                                                         child: TextFormField(
                                                           controller: _model
-                                                              .textController4,
+                                                              .textController3,
                                                           focusNode: _model
-                                                              .textFieldFocusNode4,
+                                                              .textFieldFocusNode3,
                                                           autofocus: true,
                                                           autofillHints: const [
                                                             AutofillHints.name
@@ -954,7 +768,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                             .bodySmallFamily),
                                                               ),
                                                           validator: _model
-                                                              .textController4Validator
+                                                              .textController3Validator
                                                               .asValidator(
                                                                   context),
                                                         ),
@@ -1009,9 +823,9 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                         width: double.infinity,
                                                         child: TextFormField(
                                                           controller: _model
-                                                              .textController5,
+                                                              .textController4,
                                                           focusNode: _model
-                                                              .textFieldFocusNode5,
+                                                              .textFieldFocusNode4,
                                                           autofocus: true,
                                                           autofillHints: const [
                                                             AutofillHints.name
@@ -1140,7 +954,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                             .bodySmallFamily),
                                                               ),
                                                           validator: _model
-                                                              .textController5Validator
+                                                              .textController4Validator
                                                               .asValidator(
                                                                   context),
                                                         ),
@@ -1195,9 +1009,9 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                         width: double.infinity,
                                                         child: TextFormField(
                                                           controller: _model
-                                                              .textController6,
+                                                              .textController5,
                                                           focusNode: _model
-                                                              .textFieldFocusNode6,
+                                                              .textFieldFocusNode5,
                                                           autofocus: true,
                                                           autofillHints: const [
                                                             AutofillHints.name
@@ -1326,7 +1140,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                             .bodySmallFamily),
                                                               ),
                                                           validator: _model
-                                                              .textController6Validator
+                                                              .textController5Validator
                                                               .asValidator(
                                                                   context),
                                                         ),
@@ -1381,9 +1195,9 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                         width: double.infinity,
                                                         child: TextFormField(
                                                           controller: _model
-                                                              .textController7,
+                                                              .textController6,
                                                           focusNode: _model
-                                                              .textFieldFocusNode7,
+                                                              .textFieldFocusNode6,
                                                           autofocus: true,
                                                           autofillHints: const [
                                                             AutofillHints.name
@@ -1512,7 +1326,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                             .bodySmallFamily),
                                                               ),
                                                           validator: _model
-                                                              .textController7Validator
+                                                              .textController6Validator
                                                               .asValidator(
                                                                   context),
                                                         ),
@@ -1534,7 +1348,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                         ),
                         FFButtonWidget(
                           onPressed: () {
-                            print('Button pressed ...');
+                            print('saveButton pressed ...');
                           },
                           text: 'Save Changes',
                           options: FFButtonOptions(

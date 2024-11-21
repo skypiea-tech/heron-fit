@@ -20,24 +20,27 @@ class UsersRow extends SupabaseDataRow {
   DateTime get createdAt => getField<DateTime>('created_at')!;
   set createdAt(DateTime value) => setField<DateTime>('created_at', value);
 
+  String? get displayName => getField<String>('display_name');
+  set displayName(String? value) => setField<String>('display_name', value);
+
   String? get firstName => getField<String>('first_name');
   set firstName(String? value) => setField<String>('first_name', value);
 
   String? get lastName => getField<String>('last_name');
   set lastName(String? value) => setField<String>('last_name', value);
 
-  String? get email => getField<String>('email');
-  set email(String? value) => setField<String>('email', value);
+  String? get emailAddress => getField<String>('email_address');
+  set emailAddress(String? value) => setField<String>('email_address', value);
 
-  String? get birthday => getField<String>('birthday');
-  set birthday(String? value) => setField<String>('birthday', value);
+  DateTime? get birthday => getField<DateTime>('birthday');
+  set birthday(DateTime? value) => setField<DateTime>('birthday', value);
 
-  double? get gender => getField<double>('gender');
-  set gender(double? value) => setField<double>('gender', value);
+  String? get gender => getField<String>('gender');
+  set gender(String? value) => setField<String>('gender', value);
 
-  double? get weight => getField<double>('weight');
-  set weight(double? value) => setField<double>('weight', value);
+  String? get weight => getField<String>('weight');
+  set weight(String? value) => setField<String>('weight', value);
 
-  double? get height => getField<double>('height');
-  set height(double? value) => setField<double>('height', value);
+  String? get height => getField<String>('height');
+  set height(String? value) => setField<String>('height', value);
 }

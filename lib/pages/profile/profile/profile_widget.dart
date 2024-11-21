@@ -444,12 +444,12 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                         .secondaryBackground,
                                     boxShadow: [
                                       BoxShadow(
-                                        blurRadius: 50.0,
+                                        blurRadius: 4.0,
                                         color: FlutterFlowTheme.of(context)
                                             .dropShadow,
                                         offset: const Offset(
                                           0.0,
-                                          10.0,
+                                          2.0,
                                         ),
                                       )
                                     ],

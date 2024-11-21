@@ -8,7 +8,14 @@ import 'confirm_booking_model.dart';
 export 'confirm_booking_model.dart';
 
 class ConfirmBookingWidget extends StatefulWidget {
-  const ConfirmBookingWidget({super.key});
+  const ConfirmBookingWidget({
+    super.key,
+    required this.date,
+    required this.time,
+  });
+
+  final DateTime? date;
+  final String? time;
 
   @override
   State<ConfirmBookingWidget> createState() => _ConfirmBookingWidgetState();
@@ -154,23 +161,75 @@ class _ConfirmBookingWidgetState extends State<ConfirmBookingWidget> {
                                                 .primaryText,
                                             size: 24.0,
                                           ),
-                                          Text(
-                                            'Date: Tuesday - October 8, 2024',
-                                            style: FlutterFlowTheme.of(context)
-                                                .labelMedium
-                                                .override(
-                                                  fontFamily:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelMediumFamily,
-                                                  letterSpacing: 0.0,
-                                                  useGoogleFonts: GoogleFonts
-                                                          .asMap()
-                                                      .containsKey(
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMediumFamily),
+                                          RichText(
+                                            textScaler: MediaQuery.of(context)
+                                                .textScaler,
+                                            text: TextSpan(
+                                              children: [
+                                                TextSpan(
+                                                  text: 'Date: ',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
+                                                        letterSpacing: 0.0,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily),
+                                                      ),
                                                 ),
+                                                TextSpan(
+                                                  text: dateTimeFormat(
+                                                    "MMMMEEEEd",
+                                                    widget.date,
+                                                    locale: FFLocalizations.of(
+                                                            context)
+                                                        .languageCode,
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily),
+                                                      ),
+                                                )
+                                              ],
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
+                                                        letterSpacing: 0.0,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily),
+                                                      ),
+                                            ),
                                           ),
                                         ].divide(const SizedBox(width: 5.0)),
                                       ),
@@ -185,23 +244,69 @@ class _ConfirmBookingWidgetState extends State<ConfirmBookingWidget> {
                                                 .primaryText,
                                             size: 24.0,
                                           ),
-                                          Text(
-                                            'Time: 8:00 AM - 10:00 AM',
-                                            style: FlutterFlowTheme.of(context)
-                                                .labelMedium
-                                                .override(
-                                                  fontFamily:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelMediumFamily,
-                                                  letterSpacing: 0.0,
-                                                  useGoogleFonts: GoogleFonts
-                                                          .asMap()
-                                                      .containsKey(
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMediumFamily),
+                                          RichText(
+                                            textScaler: MediaQuery.of(context)
+                                                .textScaler,
+                                            text: TextSpan(
+                                              children: [
+                                                TextSpan(
+                                                  text: 'Time: ',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
+                                                        letterSpacing: 0.0,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily),
+                                                      ),
                                                 ),
+                                                TextSpan(
+                                                  text: widget.time!,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily),
+                                                      ),
+                                                )
+                                              ],
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
+                                                        letterSpacing: 0.0,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily),
+                                                      ),
+                                            ),
                                           ),
                                         ].divide(const SizedBox(width: 5.0)),
                                       ),
@@ -246,7 +351,7 @@ class _ConfirmBookingWidgetState extends State<ConfirmBookingWidget> {
                       ),
                       Container(
                         width: 100.0,
-                        height: 190.0,
+                        height: 275.0,
                         decoration: const BoxDecoration(),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
@@ -483,14 +588,6 @@ class _ConfirmBookingWidgetState extends State<ConfirmBookingWidget> {
                                 ],
                               ),
                             ),
-                          ].divide(const SizedBox(height: 7.0)),
-                        ),
-                      ),
-                      Flexible(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
                             FFButtonWidget(
                               onPressed: () {
                                 print('Button pressed ...');
@@ -520,11 +617,37 @@ class _ConfirmBookingWidgetState extends State<ConfirmBookingWidget> {
                                 borderRadius: BorderRadius.circular(8.0),
                               ),
                             ),
+                          ].divide(const SizedBox(height: 10.0)),
+                        ),
+                      ),
+                      Flexible(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
                             FFButtonWidget(
-                              onPressed: () {
-                                print('Button pressed ...');
+                              onPressed: () async {
+                                context.pushNamed(
+                                  'ReviewBookingDetails',
+                                  queryParameters: {
+                                    'ticketId': serializeParam(
+                                      _model
+                                          .textfieldEnterTicketIDTextController
+                                          .text,
+                                      ParamType.String,
+                                    ),
+                                    'date': serializeParam(
+                                      widget.date,
+                                      ParamType.DateTime,
+                                    ),
+                                    'time': serializeParam(
+                                      widget.time,
+                                      ParamType.String,
+                                    ),
+                                  }.withoutNulls,
+                                );
                               },
-                              text: 'Cancel',
+                              text: 'No Ticket Yet',
                               options: FFButtonOptions(
                                 width: double.infinity,
                                 height: 48.0,
@@ -552,7 +675,7 @@ class _ConfirmBookingWidgetState extends State<ConfirmBookingWidget> {
                           ].divide(const SizedBox(height: 10.0)),
                         ),
                       ),
-                    ].divide(const SizedBox(height: 30.0)),
+                    ].divide(const SizedBox(height: 40.0)),
                   ),
                 ),
               );

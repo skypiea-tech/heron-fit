@@ -5,13 +5,13 @@ export '/pages/onboarding/onboarding/onboarding_widget.dart'
     show OnboardingWidget;
 export '/pages/auth/login/login_widget.dart' show LoginWidget;
 export '/pages/auth/register/register_widget.dart' show RegisterWidget;
-export '/pages/auth/register1/register1_widget.dart' show Register1Widget;
-export '/pages/auth/register2/register2_widget.dart' show Register2Widget;
+export '/pages/auth/register01/register01_widget.dart' show Register01Widget;
+export '/pages/auth/register02/register02_widget.dart' show Register02Widget;
 export '/pages/auth/register_verification/register_verification_widget.dart'
     show RegisterVerificationWidget;
 export '/pages/auth/register_success/register_success_widget.dart'
     show RegisterSuccessWidget;
-export '/pages/auth/forgot_password/forgot_password_widget.dart'
+export '/pages/forgot_password/forgot_password_widget.dart'
     show ForgotPasswordWidget;
 export '/pages/auth/forgot_password_verification/forgot_password_verification_widget.dart'
     show ForgotPasswordVerificationWidget;
@@ -19,8 +19,8 @@ export '/pages/auth/create_new_password/create_new_password_widget.dart'
     show CreateNewPasswordWidget;
 export '/home/home_widget.dart' show HomeWidget;
 export '/pages/profile/profile/profile_widget.dart' show ProfileWidget;
-export '/pages/workout/workout_tracking_dashboard/workout_tracking_dashboard_widget.dart'
-    show WorkoutTrackingDashboardWidget;
+export '/pages/workout/workout_dashboard/workout_dashboard_widget.dart'
+    show WorkoutDashboardWidget;
 export '/pages/profile/my_bookings/my_bookings_widget.dart'
     show MyBookingsWidget;
 export '/pages/profile/booking_details_completed/booking_details_completed_widget.dart'
@@ -31,8 +31,8 @@ export '/pages/profile/booking_details_cancelled/booking_details_cancelled_widge
     show BookingDetailsCancelledWidget;
 export '/pages/profile/workout_history/workout_history_widget.dart'
     show WorkoutHistoryWidget;
-export '/pages/progress/progress_tracking_dashboard/progress_tracking_dashboard_widget.dart'
-    show ProgressTrackingDashboardWidget;
+export '/pages/progress/progress_dashboard/progress_dashboard_widget.dart'
+    show ProgressDashboardWidget;
 export '/pages/profile/workout_details/workout_details_widget.dart'
     show WorkoutDetailsWidget;
 export '/pages/profile/settings/settings_widget.dart' show SettingsWidget;
@@ -41,10 +41,10 @@ export '/pages/profile/privacy_policy/privacy_policy_widget.dart'
     show PrivacyPolicyWidget;
 export '/pages/booking/book_a_session/book_a_session_widget.dart'
     show BookASessionWidget;
-export '/pages/workout/workout_tracking_dashboard_with_custom_workout/workout_tracking_dashboard_with_custom_workout_widget.dart'
-    show WorkoutTrackingDashboardWithCustomWorkoutWidget;
-export '/pages/workout/workout_program/workout_program_widget.dart'
-    show WorkoutProgramWidget;
+export '/pages/workout/workout_dashboard_with_template/workout_dashboard_with_template_widget.dart'
+    show WorkoutDashboardWithTemplateWidget;
+export '/pages/workout/workout_programs/workout_programs_widget.dart'
+    show WorkoutProgramsWidget;
 export '/pages/workout/add_exercise/add_exercise_widget.dart'
     show AddExerciseWidget;
 export '/pages/workout/start_new_empty_workout/start_new_empty_workout_widget.dart'
@@ -91,3 +91,5 @@ export '/pages/profile/edit_profile/edit_profile_widget.dart'
     show EditProfileWidget;
 export '/pages/profile/terms_of_use/terms_of_use_widget.dart'
     show TermsOfUseWidget;
+export '/pages/onboarding/onboarding01/onboarding01_widget.dart'
+    show Onboarding01Widget;

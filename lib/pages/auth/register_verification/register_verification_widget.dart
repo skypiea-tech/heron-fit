@@ -55,15 +55,19 @@ class _RegisterVerificationWidgetState
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
-                        width: double.infinity,
-                        height: 300.0,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            fit: BoxFit.contain,
-                            image: Image.asset(
-                              'assets/images/RegisterVerification.png',
-                            ).image,
+                      Padding(
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+                        child: Container(
+                          width: double.infinity,
+                          height: 300.0,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              fit: BoxFit.contain,
+                              image: Image.asset(
+                                'assets/images/RegisterVerification.png',
+                              ).image,
+                            ),
                           ),
                         ),
                       ),
@@ -82,7 +86,7 @@ class _RegisterVerificationWidgetState
                                       .headlineSmallFamily,
                                   color: FlutterFlowTheme.of(context).primary,
                                   letterSpacing: 0.0,
-                                  fontWeight: FontWeight.w600,
+                                  fontWeight: FontWeight.bold,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
                                           .headlineSmallFamily),
@@ -90,21 +94,23 @@ class _RegisterVerificationWidgetState
                           ),
                         ),
                       ),
-                      Align(
-                        alignment: const AlignmentDirectional(0.0, 0.0),
-                        child: Text(
-                          'Please enter the 6 digit code sent to youremail@example.com to verify your account and start your fitness journey.',
-                          style: FlutterFlowTheme.of(context)
-                              .labelMedium
-                              .override(
-                                fontFamily: FlutterFlowTheme.of(context)
-                                    .labelMediumFamily,
-                                color: FlutterFlowTheme.of(context).primary,
-                                letterSpacing: 0.0,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .labelMediumFamily),
-                              ),
+                      Expanded(
+                        child: Align(
+                          alignment: const AlignmentDirectional(-1.0, 0.0),
+                          child: Text(
+                            'Please enter the 6 digit code sent to youremail@example.com to verify your account and start your fitness journey.',
+                            style: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .labelMediumFamily,
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  letterSpacing: 0.0,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .labelMediumFamily),
+                                ),
+                          ),
                         ),
                       ),
                     ],
@@ -138,7 +144,7 @@ class _RegisterVerificationWidgetState
                         showCursor: false,
                         cursorColor: FlutterFlowTheme.of(context).primary,
                         obscureText: false,
-                        hintCharacter: '-',
+                        hintCharacter: '*',
                         keyboardType: TextInputType.number,
                         pinTheme: PinTheme(
                           fieldHeight: 48.0,
@@ -153,9 +159,12 @@ class _RegisterVerificationWidgetState
                           shape: PinCodeFieldShape.box,
                           activeColor: FlutterFlowTheme.of(context).secondary,
                           inactiveColor: FlutterFlowTheme.of(context).tertiary,
+                          selectedColor: FlutterFlowTheme.of(context).tertiary,
                           activeFillColor:
                               FlutterFlowTheme.of(context).tertiary,
                           inactiveFillColor:
+                              FlutterFlowTheme.of(context).tertiary,
+                          selectedFillColor:
                               FlutterFlowTheme.of(context).tertiary,
                         ),
                         controller: _model.pinCodeController,
@@ -186,8 +195,8 @@ class _RegisterVerificationWidgetState
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
                       child: FFButtonWidget(
-                        onPressed: () {
-                          print('Button pressed ...');
+                        onPressed: () async {
+                          context.pushNamed('RegisterSuccess');
                         },
                         text: 'Confirm',
                         options: FFButtonOptions(
@@ -214,17 +223,28 @@ class _RegisterVerificationWidgetState
                         ),
                       ),
                     ),
-                    Text(
-                      'Change Email',
-                      style: FlutterFlowTheme.of(context).labelMedium.override(
-                            fontFamily:
-                                FlutterFlowTheme.of(context).labelMediumFamily,
-                            color: FlutterFlowTheme.of(context).primary,
-                            letterSpacing: 0.0,
-                            fontWeight: FontWeight.w600,
-                            useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).labelMediumFamily),
-                          ),
+                    InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        context.pushNamed('Register');
+                      },
+                      child: Text(
+                        'Change Email',
+                        style:
+                            FlutterFlowTheme.of(context).labelMedium.override(
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .labelMediumFamily,
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.w600,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .labelMediumFamily),
+                                ),
+                      ),
                     ),
                   ],
                 ),

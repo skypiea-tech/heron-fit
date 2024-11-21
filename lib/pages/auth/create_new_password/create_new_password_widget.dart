@@ -1,3 +1,4 @@
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -45,6 +46,44 @@ class _CreateNewPasswordWidgetState extends State<CreateNewPasswordWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        appBar: responsiveVisibility(
+          context: context,
+          desktop: false,
+        )
+            ? AppBar(
+                backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+                automaticallyImplyLeading: false,
+                leading: FlutterFlowIconButton(
+                  borderColor: Colors.transparent,
+                  borderRadius: 30.0,
+                  borderWidth: 1.0,
+                  buttonSize: 60.0,
+                  icon: Icon(
+                    Icons.chevron_left_rounded,
+                    color: FlutterFlowTheme.of(context).primary,
+                    size: 30.0,
+                  ),
+                  onPressed: () async {
+                    context.pop();
+                  },
+                ),
+                title: Text(
+                  'Create New Password',
+                  style: FlutterFlowTheme.of(context).headlineMedium.override(
+                        fontFamily:
+                            FlutterFlowTheme.of(context).headlineMediumFamily,
+                        color: FlutterFlowTheme.of(context).primary,
+                        fontSize: 22.0,
+                        letterSpacing: 0.0,
+                        useGoogleFonts: GoogleFonts.asMap().containsKey(
+                            FlutterFlowTheme.of(context).headlineMediumFamily),
+                      ),
+                ),
+                actions: const [],
+                centerTitle: true,
+                elevation: 0.0,
+              )
+            : null,
         body: SafeArea(
           top: true,
           child: Padding(
@@ -77,6 +116,7 @@ class _CreateNewPasswordWidgetState extends State<CreateNewPasswordWidget> {
                       style: FlutterFlowTheme.of(context).labelSmall.override(
                             fontFamily:
                                 FlutterFlowTheme.of(context).labelSmallFamily,
+                            color: FlutterFlowTheme.of(context).primary,
                             letterSpacing: 0.0,
                             useGoogleFonts: GoogleFonts.asMap().containsKey(
                                 FlutterFlowTheme.of(context).labelSmallFamily),
@@ -177,95 +217,86 @@ class _CreateNewPasswordWidgetState extends State<CreateNewPasswordWidget> {
                         ),
                       ),
                     ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
-                      child: SizedBox(
-                        width: double.infinity,
-                        child: TextFormField(
-                          controller: _model.confirmPasswordTextController,
-                          focusNode: _model.confirmPasswordFocusNode,
-                          autofocus: true,
-                          autofillHints: const [AutofillHints.password],
-                          obscureText: !_model.confirmPasswordVisibility,
-                          decoration: InputDecoration(
-                            labelText: 'Confirm Password',
-                            labelStyle: FlutterFlowTheme.of(context)
-                                .labelMedium
-                                .override(
-                                  fontFamily: FlutterFlowTheme.of(context)
-                                      .labelMediumFamily,
-                                  letterSpacing: 0.0,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .labelMediumFamily),
-                                ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                color: Color(0x00000000),
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).secondary,
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            errorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).error,
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            focusedErrorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).error,
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            filled: true,
-                            fillColor: FlutterFlowTheme.of(context).tertiary,
-                            prefixIcon: Icon(
-                              Icons.lock_outline_rounded,
-                              color: FlutterFlowTheme.of(context).secondaryText,
-                            ),
-                            suffixIcon: InkWell(
-                              onTap: () => safeSetState(
-                                () => _model.confirmPasswordVisibility =
-                                    !_model.confirmPasswordVisibility,
-                              ),
-                              focusNode: FocusNode(skipTraversal: true),
-                              child: Icon(
-                                _model.confirmPasswordVisibility
-                                    ? Icons.visibility_outlined
-                                    : Icons.visibility_off_outlined,
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                size: 22.0,
-                              ),
-                            ),
-                          ),
-                          style: FlutterFlowTheme.of(context)
-                              .bodyMedium
+                    SizedBox(
+                      width: double.infinity,
+                      child: TextFormField(
+                        controller: _model.confirmPasswordTextController,
+                        focusNode: _model.confirmPasswordFocusNode,
+                        autofocus: true,
+                        autofillHints: const [AutofillHints.password],
+                        obscureText: !_model.confirmPasswordVisibility,
+                        decoration: InputDecoration(
+                          labelText: 'Confirm Password',
+                          labelStyle: FlutterFlowTheme.of(context)
+                              .labelMedium
                               .override(
                                 fontFamily: FlutterFlowTheme.of(context)
-                                    .bodyMediumFamily,
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
+                                    .labelMediumFamily,
                                 letterSpacing: 0.0,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)
-                                        .bodyMediumFamily),
+                                        .labelMediumFamily),
                               ),
-                          validator: _model
-                              .confirmPasswordTextControllerValidator
-                              .asValidator(context),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(
+                              color: Color(0x00000000),
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: FlutterFlowTheme.of(context).secondary,
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: FlutterFlowTheme.of(context).error,
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: FlutterFlowTheme.of(context).error,
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          filled: true,
+                          fillColor: FlutterFlowTheme.of(context).tertiary,
+                          prefixIcon: Icon(
+                            Icons.lock_outline_rounded,
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                          ),
+                          suffixIcon: InkWell(
+                            onTap: () => safeSetState(
+                              () => _model.confirmPasswordVisibility =
+                                  !_model.confirmPasswordVisibility,
+                            ),
+                            focusNode: FocusNode(skipTraversal: true),
+                            child: Icon(
+                              _model.confirmPasswordVisibility
+                                  ? Icons.visibility_outlined
+                                  : Icons.visibility_off_outlined,
+                              color: FlutterFlowTheme.of(context).secondaryText,
+                              size: 22.0,
+                            ),
+                          ),
                         ),
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily:
+                                  FlutterFlowTheme.of(context).bodyMediumFamily,
+                              color: FlutterFlowTheme.of(context).secondaryText,
+                              letterSpacing: 0.0,
+                              useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                  FlutterFlowTheme.of(context)
+                                      .bodyMediumFamily),
+                            ),
+                        validator: _model.confirmPasswordTextControllerValidator
+                            .asValidator(context),
                       ),
                     ),
                   ],

@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
 
 
@@ -104,14 +103,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const RegisterWidget(),
         ),
         FFRoute(
-          name: 'Register1',
-          path: '/register1',
-          builder: (context, params) => const Register1Widget(),
+          name: 'Register01',
+          path: '/register01',
+          builder: (context, params) => const Register01Widget(),
         ),
         FFRoute(
-          name: 'Register2',
-          path: '/register2',
-          builder: (context, params) => const Register2Widget(),
+          name: 'Register02',
+          path: '/register02',
+          builder: (context, params) => const Register02Widget(),
         ),
         FFRoute(
           name: 'RegisterVerification',
@@ -159,9 +158,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 ),
         ),
         FFRoute(
-          name: 'Workout_Tracking_Dashboard',
-          path: '/workoutTrackingDashboard',
-          builder: (context, params) => const WorkoutTrackingDashboardWidget(),
+          name: 'WorkoutDashboard',
+          path: '/workoutDashboard',
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'WorkoutDashboard')
+              : const WorkoutDashboardWidget(),
         ),
         FFRoute(
           name: 'MyBookings',
@@ -189,9 +190,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const WorkoutHistoryWidget(),
         ),
         FFRoute(
-          name: 'progress_tracking_dashboard',
-          path: '/progressTrackingDashboard',
-          builder: (context, params) => const ProgressTrackingDashboardWidget(),
+          name: 'ProgressDashboard',
+          path: '/progressDashboard',
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'ProgressDashboard')
+              : const NavBarPage(
+                  initialPage: 'ProgressDashboard',
+                  page: ProgressDashboardWidget(),
+                ),
         ),
         FFRoute(
           name: 'WorkoutDetails',
@@ -221,45 +227,66 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               : const BookASessionWidget(),
         ),
         FFRoute(
-          name: 'Workout_Tracking_Dashboard_with_custom_workout',
-          path: '/workoutTrackingDashboardWithCustomWorkout',
-          builder: (context, params) =>
-              const WorkoutTrackingDashboardWithCustomWorkoutWidget(),
+          name: 'WorkoutDashboardWithTemplate',
+          path: '/workoutDashboardWithTemplate',
+          builder: (context, params) => const WorkoutDashboardWithTemplateWidget(),
         ),
         FFRoute(
-          name: 'Workout_Program',
-          path: '/workoutProgram',
-          builder: (context, params) => const WorkoutProgramWidget(),
+          name: 'WorkoutPrograms',
+          path: '/workoutPrograms',
+          builder: (context, params) => const WorkoutProgramsWidget(),
         ),
         FFRoute(
-          name: 'Add_Exercise',
+          name: 'AddExercise',
           path: '/addExercise',
           builder: (context, params) => const AddExerciseWidget(),
         ),
         FFRoute(
-          name: 'Start_New_Empty_Workout',
+          name: 'StartNewEmptyWorkout',
           path: '/startNewEmptyWorkout',
           builder: (context, params) => const StartNewEmptyWorkoutWidget(),
         ),
         FFRoute(
-          name: 'progress_tracker',
+          name: 'ProgressTracker',
           path: '/progressTracker',
           builder: (context, params) => const ProgressTrackerWidget(),
         ),
         FFRoute(
-          name: 'Update_weight',
+          name: 'UpdateWeight',
           path: '/updateWeight',
           builder: (context, params) => const UpdateWeightWidget(),
         ),
         FFRoute(
           name: 'ConfirmBooking',
           path: '/confirmBooking',
-          builder: (context, params) => const ConfirmBookingWidget(),
+          builder: (context, params) => ConfirmBookingWidget(
+            date: params.getParam(
+              'date',
+              ParamType.DateTime,
+            ),
+            time: params.getParam(
+              'time',
+              ParamType.String,
+            ),
+          ),
         ),
         FFRoute(
           name: 'ReviewBookingDetails',
           path: '/reviewBookingDetails',
-          builder: (context, params) => const ReviewBookingDetailsWidget(),
+          builder: (context, params) => ReviewBookingDetailsWidget(
+            ticketId: params.getParam(
+              'ticketId',
+              ParamType.String,
+            ),
+            date: params.getParam(
+              'date',
+              ParamType.DateTime,
+            ),
+            time: params.getParam(
+              'time',
+              ParamType.String,
+            ),
+          ),
         ),
         FFRoute(
           name: 'NotificationEmpty',
@@ -277,32 +304,32 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const NotificationDetailsWidget(),
         ),
         FFRoute(
-          name: 'View_Progress_photos',
+          name: 'ViewProgressPhotos',
           path: '/viewProgressPhotos',
           builder: (context, params) => const ViewProgressPhotosWidget(),
         ),
         FFRoute(
-          name: 'Program_Details',
+          name: 'ProgramDetails',
           path: '/programDetails',
           builder: (context, params) => const ProgramDetailsWidget(),
         ),
         FFRoute(
-          name: 'Start_Workout',
+          name: 'StartWorkout',
           path: '/startWorkout',
           builder: (context, params) => const StartWorkoutWidget(),
         ),
         FFRoute(
-          name: 'Compare_Progress_photos',
+          name: 'CompareProgressPhotos',
           path: '/compareProgressPhotos',
           builder: (context, params) => const CompareProgressPhotosWidget(),
         ),
         FFRoute(
-          name: 'progress_photos_list',
+          name: 'ProgressPhotosList',
           path: '/progressPhotosList',
           builder: (context, params) => const ProgressPhotosListWidget(),
         ),
         FFRoute(
-          name: 'Edit_Goals',
+          name: 'EditGoals',
           path: '/editGoals',
           builder: (context, params) => const EditGoalsWidget(),
         ),
@@ -317,27 +344,27 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const SessionIsScheduledWidget(),
         ),
         FFRoute(
-          name: 'Rest_timer',
+          name: 'RestTimer',
           path: '/restTimer',
           builder: (context, params) => const RestTimerWidget(),
         ),
         FFRoute(
-          name: 'Create_Custom_Timer',
+          name: 'CreateCustomTimer',
           path: '/createCustomTimer',
           builder: (context, params) => const CreateCustomTimerWidget(),
         ),
         FFRoute(
-          name: 'Start_Workout_With_Timer',
+          name: 'StartWorkoutWithTimer',
           path: '/startWorkoutWithTimer',
           builder: (context, params) => const StartWorkoutWithTimerWidget(),
         ),
         FFRoute(
-          name: 'Workout_Complete',
+          name: 'WorkoutComplete',
           path: '/workoutComplete',
           builder: (context, params) => const WorkoutCompleteWidget(),
         ),
         FFRoute(
-          name: 'Start_Timer',
+          name: 'StartTimer',
           path: '/startTimer',
           builder: (context, params) => const StartTimerWidget(),
         ),
@@ -350,6 +377,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'TermsOfUse',
           path: '/termsOfUse',
           builder: (context, params) => const TermsOfUseWidget(),
+        ),
+        FFRoute(
+          name: 'Onboarding01',
+          path: '/onboarding01',
+          builder: (context, params) => const Onboarding01Widget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -532,13 +564,13 @@ class FFRoute {
                 )
               : builder(context, ffParams);
           final child = appStateNotifier.loading
-              ? Center(
-                  child: SizedBox(
-                    width: 50.0,
-                    height: 50.0,
-                    child: SpinKitPulse(
-                      color: FlutterFlowTheme.of(context).secondary,
-                      size: 50.0,
+              ? Container(
+                  color: FlutterFlowTheme.of(context).primary,
+                  child: Center(
+                    child: Image.asset(
+                      'assets/images/LogoHeronFit.png',
+                      width: 100.0,
+                      fit: BoxFit.contain,
                     ),
                   ),
                 )

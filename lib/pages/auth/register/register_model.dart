@@ -10,30 +10,80 @@ class RegisterModel extends FlutterFlowModel<RegisterWidget> {
   FocusNode? firstNameFocusNode;
   TextEditingController? firstNameTextController;
   String? Function(BuildContext, String?)? firstNameTextControllerValidator;
+  String? _firstNameTextControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Field is required';
+    }
+
+    return null;
+  }
+
   // State field(s) for lastName widget.
   FocusNode? lastNameFocusNode;
   TextEditingController? lastNameTextController;
   String? Function(BuildContext, String?)? lastNameTextControllerValidator;
+  String? _lastNameTextControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Field is required';
+    }
+
+    return null;
+  }
+
   // State field(s) for emailAddress widget.
   FocusNode? emailAddressFocusNode;
   TextEditingController? emailAddressTextController;
   String? Function(BuildContext, String?)? emailAddressTextControllerValidator;
+  String? _emailAddressTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Field is required';
+    }
+
+    if (!RegExp(kTextValidatorEmailRegex).hasMatch(val)) {
+      return 'Has to be a valid email address.';
+    }
+    return null;
+  }
+
   // State field(s) for password widget.
   FocusNode? passwordFocusNode;
   TextEditingController? passwordTextController;
   late bool passwordVisibility;
   String? Function(BuildContext, String?)? passwordTextControllerValidator;
+  String? _passwordTextControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Field is required';
+    }
+
+    return null;
+  }
+
   // State field(s) for passwordConfirm widget.
   FocusNode? passwordConfirmFocusNode;
   TextEditingController? passwordConfirmTextController;
   late bool passwordConfirmVisibility;
   String? Function(BuildContext, String?)?
       passwordConfirmTextControllerValidator;
+  String? _passwordConfirmTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Field is required';
+    }
+
+    return null;
+  }
 
   @override
   void initState(BuildContext context) {
+    firstNameTextControllerValidator = _firstNameTextControllerValidator;
+    lastNameTextControllerValidator = _lastNameTextControllerValidator;
+    emailAddressTextControllerValidator = _emailAddressTextControllerValidator;
     passwordVisibility = false;
+    passwordTextControllerValidator = _passwordTextControllerValidator;
     passwordConfirmVisibility = false;
+    passwordConfirmTextControllerValidator =
+        _passwordConfirmTextControllerValidator;
   }
 
   @override

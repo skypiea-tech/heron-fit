@@ -6,3 +6,4 @@ export 'row.dart';
 export 'table.dart';
 
 export 'tables/users.dart';
+export 'tables/sessions.dart';

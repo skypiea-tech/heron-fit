@@ -157,7 +157,7 @@ class _CompareProgressPhotosWidgetState
                               size: 24.0,
                             ),
                             onPressed: () async {
-                              context.pushNamed('View_Progress_photos');
+                              context.pushNamed('ViewProgressPhotos');
                             },
                           ),
                           FlutterFlowIconButton(
@@ -169,7 +169,7 @@ class _CompareProgressPhotosWidgetState
                               size: 24.0,
                             ),
                             onPressed: () async {
-                              context.pushNamed('Compare_Progress_photos');
+                              context.pushNamed('CompareProgressPhotos');
                             },
                           ),
                         ],

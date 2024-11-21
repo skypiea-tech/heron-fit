@@ -46,12 +46,13 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
             Container(
               width: double.infinity,
               height: 48.0,
-              decoration: BoxDecoration(
-                image: DecorationImage(
+              decoration: const BoxDecoration(),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8.0),
+                child: Image.asset(
+                  'assets/images/HeronFitLogotype.png',
+                  width: double.infinity,
                   fit: BoxFit.contain,
-                  image: Image.asset(
-                    'assets/images/HeronFitLogotype.png',
-                  ).image,
                 ),
               ),
             ),
@@ -127,7 +128,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                             0.0, 16.0, 0.0, 16.0),
                         child: FFButtonWidget(
                           onPressed: () async {
-                            context.pushNamed('Register');
+                            context.pushNamed('Onboarding01');
                           },
                           text: 'Get Started',
                           options: FFButtonOptions(

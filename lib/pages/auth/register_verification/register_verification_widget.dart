@@ -157,7 +157,7 @@ class _RegisterVerificationWidgetState
                             topRight: Radius.circular(8.0),
                           ),
                           shape: PinCodeFieldShape.box,
-                          activeColor: FlutterFlowTheme.of(context).secondary,
+                          activeColor: FlutterFlowTheme.of(context).primary,
                           inactiveColor: FlutterFlowTheme.of(context).tertiary,
                           selectedColor: FlutterFlowTheme.of(context).tertiary,
                           activeFillColor:
@@ -196,7 +196,7 @@ class _RegisterVerificationWidgetState
                           const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
                       child: FFButtonWidget(
                         onPressed: () async {
-                          context.pushNamed('RegisterSuccess');
+                          context.pushNamed('Register01');
                         },
                         text: 'Confirm',
                         options: FFButtonOptions(

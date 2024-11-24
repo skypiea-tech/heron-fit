@@ -68,8 +68,8 @@ class _WorkoutProgramsWidgetState extends State<WorkoutProgramsWidget> {
                           color: FlutterFlowTheme.of(context).primary,
                           size: 30.0,
                         ),
-                        onPressed: () {
-                          print('IconButton pressed ...');
+                        onPressed: () async {
+                          context.safePop();
                         },
                       ),
                       Text(

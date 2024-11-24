@@ -43,4 +43,7 @@ class UsersRow extends SupabaseDataRow {
 
   String? get height => getField<String>('height');
   set height(String? value) => setField<String>('height', value);
+
+  int? get goal => getField<int>('goal');
+  set goal(int? value) => setField<int>('goal', value);
 }

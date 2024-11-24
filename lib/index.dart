@@ -11,7 +11,7 @@ export '/pages/auth/register_verification/register_verification_widget.dart'
     show RegisterVerificationWidget;
 export '/pages/auth/register_success/register_success_widget.dart'
     show RegisterSuccessWidget;
-export '/pages/forgot_password/forgot_password_widget.dart'
+export '/pages/auth/forgot_password/forgot_password_widget.dart'
     show ForgotPasswordWidget;
 export '/pages/auth/forgot_password_verification/forgot_password_verification_widget.dart'
     show ForgotPasswordVerificationWidget;
@@ -73,7 +73,7 @@ export '/pages/progress/compare_progress_photos/compare_progress_photos_widget.d
     show CompareProgressPhotosWidget;
 export '/pages/progress/progress_photos_list/progress_photos_list_widget.dart'
     show ProgressPhotosListWidget;
-export '/pages/progress/edit_goals/edit_goals_widget.dart' show EditGoalsWidget;
+export '/pages/edit_goals/edit_goals_widget.dart' show EditGoalsWidget;
 export '/pages/booking/booking_success_summary/booking_success_summary_widget.dart'
     show BookingSuccessSummaryWidget;
 export '/pages/booking/session_is_scheduled/session_is_scheduled_widget.dart'

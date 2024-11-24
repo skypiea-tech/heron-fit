@@ -311,6 +311,22 @@ class _ProgressDashboardWidgetState extends State<ProgressDashboardWidget> {
                                             ),
                                           ),
                                         ),
+                                        FlutterFlowIconButton(
+                                          borderRadius: 8.0,
+                                          buttonSize: 40.0,
+                                          fillColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .primary,
+                                          icon: Icon(
+                                            Icons.system_update_alt,
+                                            color: FlutterFlowTheme.of(context)
+                                                .info,
+                                            size: 24.0,
+                                          ),
+                                          onPressed: () async {
+                                            context.pushNamed('UpdateWeight');
+                                          },
+                                        ),
                                       ],
                                     ),
                                     Align(

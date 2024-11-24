@@ -97,7 +97,7 @@ class _CreateCustomTimerWidgetState extends State<CreateCustomTimerWidget> {
         body: SafeArea(
           top: true,
           child: Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(24.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1696,22 +1696,21 @@ class _CreateCustomTimerWidgetState extends State<CreateCustomTimerWidget> {
                   },
                   text: 'Start Custom Timer',
                   options: FFButtonOptions(
-                    width: 250.0,
+                    width: double.infinity,
                     height: 40.0,
                     padding:
                         const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                    iconPadding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    color: FlutterFlowTheme.of(context).primary,
+                    iconPadding: const EdgeInsets.all(8.0),
+                    color: FlutterFlowTheme.of(context).secondary,
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily:
                               FlutterFlowTheme.of(context).titleSmallFamily,
-                          color: Colors.white,
+                          color: FlutterFlowTheme.of(context).primaryBackground,
                           letterSpacing: 0.0,
                           useGoogleFonts: GoogleFonts.asMap().containsKey(
                               FlutterFlowTheme.of(context).titleSmallFamily),
                         ),
-                    elevation: 1.0,
+                    elevation: 0.0,
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                 ),

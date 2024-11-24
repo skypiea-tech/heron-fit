@@ -101,27 +101,40 @@ class _BookingDetailsCancelledWidgetState
                           child: Text(
                             'Gym Session AR20241008',
                             style: FlutterFlowTheme.of(context)
-                                .titleMedium
+                                .titleSmall
                                 .override(
                                   fontFamily: FlutterFlowTheme.of(context)
-                                      .titleMediumFamily,
+                                      .titleSmallFamily,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
-                                          .titleMediumFamily),
+                                          .titleSmallFamily),
                                 ),
                           ),
                         ),
                         Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 16.0),
-                          child: Card(
-                            clipBehavior: Clip.antiAliasWithSaveLayer,
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            elevation: 1.0,
-                            shape: RoundedRectangleBorder(
+                          child: Container(
+                            width: double.infinity,
+                            constraints: const BoxConstraints(
+                              maxWidth: double.infinity,
+                            ),
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              boxShadow: [
+                                BoxShadow(
+                                  blurRadius: 40.0,
+                                  color:
+                                      FlutterFlowTheme.of(context).dropShadow,
+                                  offset: const Offset(
+                                    0.0,
+                                    10.0,
+                                  ),
+                                )
+                              ],
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                             child: Padding(
@@ -136,7 +149,7 @@ class _BookingDetailsCancelledWidgetState
                                         padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 8.0, 0.0),
                                         child: Icon(
-                                          Icons.person_outline_rounded,
+                                          FFIcons.kprofile,
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                           size: 24.0,
@@ -168,7 +181,7 @@ class _BookingDetailsCancelledWidgetState
                                         padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 8.0, 0.0),
                                         child: Icon(
-                                          Icons.airplane_ticket_outlined,
+                                          FFIcons.kiconlyTicket1732244948013,
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                           size: 24.0,
@@ -200,7 +213,7 @@ class _BookingDetailsCancelledWidgetState
                                         padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 8.0, 0.0),
                                         child: Icon(
-                                          Icons.date_range_outlined,
+                                          FFIcons.kcalendar,
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                           size: 24.0,
@@ -232,7 +245,8 @@ class _BookingDetailsCancelledWidgetState
                                         padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 8.0, 0.0),
                                         child: Icon(
-                                          Icons.access_time,
+                                          FFIcons
+                                              .kiconlyTimeCircle1732244948016,
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                           size: 24.0,
@@ -257,7 +271,7 @@ class _BookingDetailsCancelledWidgetState
                                       ),
                                     ],
                                   ),
-                                ],
+                                ].divide(const SizedBox(height: 4.0)),
                               ),
                             ),
                           ),
@@ -296,13 +310,27 @@ class _BookingDetailsCancelledWidgetState
                 ),
                 Column(
                   mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Card(
-                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                      elevation: 2.0,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16.0),
+                    Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        boxShadow: [
+                          BoxShadow(
+                            blurRadius: 40.0,
+                            color: FlutterFlowTheme.of(context).dropShadow,
+                            offset: const Offset(
+                              0.0,
+                              10.0,
+                            ),
+                          )
+                        ],
+                        borderRadius: BorderRadius.circular(8.0),
+                        border: Border.all(
+                          color: FlutterFlowTheme.of(context).error,
+                          width: 2.0,
+                        ),
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(24.0),
@@ -312,15 +340,15 @@ class _BookingDetailsCancelledWidgetState
                             Text(
                               'Please note that canceling sessions or failing to show up may result in a penalty. Excessive cancellations or no-shows may affect your membership status or future bookings.\n\nIf you have any questions or require further assistance, please don\'t hesitate to contact our support team.\n\nThank you for your understanding.',
                               style: FlutterFlowTheme.of(context)
-                                  .bodySmall
+                                  .labelSmall
                                   .override(
                                     fontFamily: FlutterFlowTheme.of(context)
-                                        .bodySmallFamily,
+                                        .labelSmallFamily,
                                     letterSpacing: 0.0,
                                     useGoogleFonts: GoogleFonts.asMap()
                                         .containsKey(
                                             FlutterFlowTheme.of(context)
-                                                .bodySmallFamily),
+                                                .labelSmallFamily),
                                   ),
                             ),
                           ],

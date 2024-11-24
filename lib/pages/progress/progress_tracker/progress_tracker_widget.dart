@@ -131,7 +131,7 @@ class _ProgressTrackerWidgetState extends State<ProgressTrackerWidget> {
                                 ),
                               ),
                               Text(
-                                'Hello World',
+                                '3 Months',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(

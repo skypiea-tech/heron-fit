@@ -32,16 +32,7 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget>
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       // Loading
 
-      context.goNamed(
-        'Onboarding',
-        extra: <String, dynamic>{
-          kTransitionInfoKey: const TransitionInfo(
-            hasTransition: true,
-            transitionType: PageTransitionType.fade,
-            duration: Duration(milliseconds: 500),
-          ),
-        },
-      );
+      context.goNamed('Onboarding');
     });
 
     animationsMap.addAll({
@@ -51,7 +42,7 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget>
           ShimmerEffect(
             curve: Curves.easeInOut,
             delay: 0.0.ms,
-            duration: 600.0.ms,
+            duration: 700.0.ms,
             color: const Color(0x80FFFFFF),
             angle: 0.524,
           ),

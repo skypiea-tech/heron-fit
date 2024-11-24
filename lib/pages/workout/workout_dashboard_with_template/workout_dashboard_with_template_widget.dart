@@ -134,8 +134,8 @@ class _WorkoutDashboardWithTemplateWidgetState
                         child: Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: FFButtonWidget(
-                            onPressed: () {
-                              print('Button pressed ...');
+                            onPressed: () async {
+                              context.pushNamed('StartNewEmptyWorkout');
                             },
                             text: 'Start New Workout',
                             options: FFButtonOptions(
@@ -201,8 +201,8 @@ class _WorkoutDashboardWithTemplateWidgetState
                                     color: FlutterFlowTheme.of(context).primary,
                                     size: 24.0,
                                   ),
-                                  onPressed: () {
-                                    print('IconButton pressed ...');
+                                  onPressed: () async {
+                                    context.pushNamed('WorkoutPrograms');
                                   },
                                 ),
                               ),

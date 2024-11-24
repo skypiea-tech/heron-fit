@@ -144,7 +144,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                                               context)
                                                           .labelMediumFamily),
                                             ),
-                                        alignLabelWithHint: true,
+                                        alignLabelWithHint: false,
                                         enabledBorder: OutlineInputBorder(
                                           borderSide: const BorderSide(
                                             color: Color(0x00000000),
@@ -629,7 +629,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                           children: [
                             Expanded(
                               child: Align(
-                                alignment: const AlignmentDirectional(-1.0, 0.0),
+                                alignment: const AlignmentDirectional(0.0, 0.0),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
                                   focusColor: Colors.transparent,
@@ -696,45 +696,42 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                 ),
                               ),
                             ),
-                            Expanded(
-                              child: InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  context.pushNamed('TermsOfUse');
-                                },
-                                child: RichText(
-                                  textScaler: MediaQuery.of(context).textScaler,
-                                  text: TextSpan(
-                                    children: [
-                                      TextSpan(
-                                        text: 'Terms of Use',
-                                        style: const TextStyle(
-                                          fontWeight: FontWeight.w600,
-                                          decoration: TextDecoration.underline,
-                                        ),
-                                        mouseCursor: SystemMouseCursors.click,
-                                        recognizer: TapGestureRecognizer()
-                                          ..onTap = () async {
-                                            context.pushNamed('TermsOfUse');
-                                          },
-                                      )
-                                    ],
-                                    style: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .override(
-                                          fontFamily:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMediumFamily,
-                                          letterSpacing: 0.0,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMediumFamily),
-                                        ),
-                                  ),
+                            InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                context.pushNamed('TermsOfUse');
+                              },
+                              child: RichText(
+                                textScaler: MediaQuery.of(context).textScaler,
+                                text: TextSpan(
+                                  children: [
+                                    TextSpan(
+                                      text: 'Terms of Use',
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        decoration: TextDecoration.underline,
+                                      ),
+                                      mouseCursor: SystemMouseCursors.click,
+                                      recognizer: TapGestureRecognizer()
+                                        ..onTap = () async {
+                                          context.pushNamed('TermsOfUse');
+                                        },
+                                    )
+                                  ],
+                                  style: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .labelMediumFamily,
+                                        letterSpacing: 0.0,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMediumFamily),
+                                      ),
                                 ),
                               ),
                             ),
@@ -780,7 +777,8 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                 _model.emailAddressTextController.text,
                           });
 
-                          context.pushNamedAuth('Register01', context.mounted);
+                          context.pushNamedAuth(
+                              'RegisterVerification', context.mounted);
                         },
                         text: 'Register',
                         options: FFButtonOptions(

@@ -101,27 +101,40 @@ class _BookingDetailsUpcomingWidgetState
                           child: Text(
                             'Gym Session AR20241008',
                             style: FlutterFlowTheme.of(context)
-                                .titleMedium
+                                .titleSmall
                                 .override(
                                   fontFamily: FlutterFlowTheme.of(context)
-                                      .titleMediumFamily,
+                                      .titleSmallFamily,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
-                                          .titleMediumFamily),
+                                          .titleSmallFamily),
                                 ),
                           ),
                         ),
                         Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 16.0),
-                          child: Card(
-                            clipBehavior: Clip.antiAliasWithSaveLayer,
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            elevation: 1.0,
-                            shape: RoundedRectangleBorder(
+                          child: Container(
+                            width: double.infinity,
+                            constraints: const BoxConstraints(
+                              maxWidth: double.infinity,
+                            ),
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              boxShadow: [
+                                BoxShadow(
+                                  blurRadius: 40.0,
+                                  color:
+                                      FlutterFlowTheme.of(context).dropShadow,
+                                  offset: const Offset(
+                                    0.0,
+                                    10.0,
+                                  ),
+                                )
+                              ],
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                             child: Padding(
@@ -136,7 +149,7 @@ class _BookingDetailsUpcomingWidgetState
                                         padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 8.0, 0.0),
                                         child: Icon(
-                                          Icons.person_outline_rounded,
+                                          FFIcons.kprofile,
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                           size: 24.0,
@@ -168,7 +181,7 @@ class _BookingDetailsUpcomingWidgetState
                                         padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 8.0, 0.0),
                                         child: Icon(
-                                          Icons.airplane_ticket_outlined,
+                                          FFIcons.kiconlyTicket1732244948013,
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                           size: 24.0,
@@ -200,7 +213,7 @@ class _BookingDetailsUpcomingWidgetState
                                         padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 8.0, 0.0),
                                         child: Icon(
-                                          Icons.date_range_outlined,
+                                          FFIcons.kcalendar,
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                           size: 24.0,
@@ -232,7 +245,8 @@ class _BookingDetailsUpcomingWidgetState
                                         padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 8.0, 0.0),
                                         child: Icon(
-                                          Icons.access_time,
+                                          FFIcons
+                                              .kiconlyTimeCircle1732244948016,
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                           size: 24.0,
@@ -257,7 +271,7 @@ class _BookingDetailsUpcomingWidgetState
                                       ),
                                     ],
                                   ),
-                                ],
+                                ].divide(const SizedBox(height: 4.0)),
                               ),
                             ),
                           ),

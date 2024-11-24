@@ -1,6 +1,9 @@
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/upload_data.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'update_weight_model.dart';
@@ -88,6 +91,7 @@ class _UpdateWeightWidgetState extends State<UpdateWeightWidget> {
             padding: const EdgeInsets.all(16.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Card(
                   clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -474,6 +478,24 @@ class _UpdateWeightWidgetState extends State<UpdateWeightWidget> {
                                                 ),
                                           ),
                                         ),
+                                        Container(
+                                          width: 100.0,
+                                          height: 100.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                          ),
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                            child: Image.network(
+                                              _model.uploadedFileUrl,
+                                              width: 200.0,
+                                              height: 200.0,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                        ),
                                         FlutterFlowIconButton(
                                           borderRadius: 8.0,
                                           buttonSize: 40.0,
@@ -483,8 +505,70 @@ class _UpdateWeightWidgetState extends State<UpdateWeightWidget> {
                                                 .primary,
                                             size: 24.0,
                                           ),
-                                          onPressed: () {
-                                            print('IconButton pressed ...');
+                                          onPressed: () async {
+                                            final selectedMedia =
+                                                await selectMediaWithSourceBottomSheet(
+                                              context: context,
+                                              storageFolderPath: 'photolist',
+                                              allowPhoto: true,
+                                            );
+                                            if (selectedMedia != null &&
+                                                selectedMedia.every((m) =>
+                                                    validateFileFormat(
+                                                        m.storagePath,
+                                                        context))) {
+                                              safeSetState(() => _model
+                                                  .isDataUploading = true);
+                                              var selectedUploadedFiles =
+                                                  <FFUploadedFile>[];
+
+                                              var downloadUrls = <String>[];
+                                              try {
+                                                selectedUploadedFiles =
+                                                    selectedMedia
+                                                        .map((m) =>
+                                                            FFUploadedFile(
+                                                              name: m
+                                                                  .storagePath
+                                                                  .split('/')
+                                                                  .last,
+                                                              bytes: m.bytes,
+                                                              height: m
+                                                                  .dimensions
+                                                                  ?.height,
+                                                              width: m
+                                                                  .dimensions
+                                                                  ?.width,
+                                                              blurHash:
+                                                                  m.blurHash,
+                                                            ))
+                                                        .toList();
+
+                                                downloadUrls =
+                                                    await uploadSupabaseStorageFiles(
+                                                  bucketName: 'photoprogress',
+                                                  selectedFiles: selectedMedia,
+                                                );
+                                              } finally {
+                                                _model.isDataUploading = false;
+                                              }
+                                              if (selectedUploadedFiles
+                                                          .length ==
+                                                      selectedMedia.length &&
+                                                  downloadUrls.length ==
+                                                      selectedMedia.length) {
+                                                safeSetState(() {
+                                                  _model.uploadedLocalFile =
+                                                      selectedUploadedFiles
+                                                          .first;
+                                                  _model.uploadedFileUrl =
+                                                      downloadUrls.first;
+                                                });
+                                              } else {
+                                                safeSetState(() {});
+                                                return;
+                                              }
+                                            }
                                           },
                                         ),
                                       ],
@@ -504,6 +588,41 @@ class _UpdateWeightWidgetState extends State<UpdateWeightWidget> {
                         ],
                       ),
                     ],
+                  ),
+                ),
+                FFButtonWidget(
+                  onPressed: () async {
+                    await UpdateWeightTable().update(
+                      data: {
+                        'pic': _model.uploadedFileUrl,
+                        'date': _model.textController2.text,
+                        'weight': int.tryParse(_model.textController1.text),
+                      },
+                      matchingRows: (rows) => rows.eqOrNull(
+                        'id',
+                        int.tryParse(_model.textController1.text),
+                      ),
+                    );
+                  },
+                  text: 'Saves Changes',
+                  options: FFButtonOptions(
+                    width: double.infinity,
+                    height: 60.0,
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                    iconPadding:
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    color: FlutterFlowTheme.of(context).primary,
+                    textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                          fontFamily:
+                              FlutterFlowTheme.of(context).titleSmallFamily,
+                          color: Colors.white,
+                          letterSpacing: 0.0,
+                          useGoogleFonts: GoogleFonts.asMap().containsKey(
+                              FlutterFlowTheme.of(context).titleSmallFamily),
+                        ),
+                    elevation: 1.0,
+                    borderRadius: BorderRadius.circular(8.0),
                   ),
                 ),
               ],

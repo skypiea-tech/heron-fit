@@ -1,3 +1,4 @@
+import '/auth/supabase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -274,12 +275,12 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                         .secondaryBackground,
                                     boxShadow: [
                                       BoxShadow(
-                                        blurRadius: 50.0,
+                                        blurRadius: 4.0,
                                         color: FlutterFlowTheme.of(context)
                                             .dropShadow,
                                         offset: const Offset(
                                           0.0,
-                                          10.0,
+                                          2.0,
                                         ),
                                       )
                                     ],
@@ -359,12 +360,12 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                         .secondaryBackground,
                                     boxShadow: [
                                       BoxShadow(
-                                        blurRadius: 50.0,
+                                        blurRadius: 4.0,
                                         color: FlutterFlowTheme.of(context)
                                             .dropShadow,
                                         offset: const Offset(
                                           0.0,
-                                          10.0,
+                                          2.0,
                                         ),
                                       )
                                     ],
@@ -588,78 +589,92 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                       ),
                                                 ),
                                               ),
-                                              Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                4.0, 0.0),
-                                                    child: Icon(
-                                                      Icons
-                                                          .person_outline_rounded,
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primary,
-                                                      size: 24.0,
-                                                    ),
-                                                  ),
-                                                  Text(
-                                                    'Edit Profile',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMediumFamily,
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryText,
-                                                          letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMediumFamily),
-                                                        ),
-                                                  ),
-                                                  Expanded(
-                                                    child: Align(
-                                                      alignment:
-                                                          const AlignmentDirectional(
-                                                              1.0, 0.0),
-                                                      child:
-                                                          FlutterFlowIconButton(
-                                                        borderRadius: 16.0,
-                                                        buttonSize: 32.0,
-                                                        icon: Icon(
-                                                          Icons
-                                                              .arrow_forward_ios_sharp,
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryText,
-                                                          size: 16.0,
-                                                        ),
-                                                        onPressed: () async {
-                                                          // goToEditProfile
-
-                                                          context.pushNamed(
-                                                              'EditProfile');
-                                                        },
+                                              InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                onTap: () async {
+                                                  context
+                                                      .pushNamed('EditProfile');
+                                                },
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.center,
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  4.0,
+                                                                  0.0),
+                                                      child: Icon(
+                                                        FFIcons.kprofile,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primary,
+                                                        size: 24.0,
                                                       ),
                                                     ),
-                                                  ),
-                                                ],
+                                                    Text(
+                                                      'Edit Profile',
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryText,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily),
+                                                              ),
+                                                    ),
+                                                    Expanded(
+                                                      child: Align(
+                                                        alignment:
+                                                            const AlignmentDirectional(
+                                                                1.0, 0.0),
+                                                        child:
+                                                            FlutterFlowIconButton(
+                                                          borderRadius: 16.0,
+                                                          buttonSize: 32.0,
+                                                          icon: Icon(
+                                                            Icons
+                                                                .arrow_forward_ios_sharp,
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondaryText,
+                                                            size: 16.0,
+                                                          ),
+                                                          onPressed: () async {
+                                                            // goToEditProfile
+
+                                                            context.pushNamed(
+                                                                'EditProfile');
+                                                          },
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
                                               ),
                                               InkWell(
                                                 splashColor: Colors.transparent,
@@ -686,7 +701,8 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                   4.0,
                                                                   0.0),
                                                       child: Icon(
-                                                        Icons.event_note,
+                                                        FFIcons
+                                                            .kiconlyDocument1732244947974,
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -775,8 +791,8 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                   4.0,
                                                                   0.0),
                                                       child: Icon(
-                                                        Icons
-                                                            .insert_chart_outlined,
+                                                        FFIcons
+                                                            .kiconlyChart1732244947967,
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -912,8 +928,8 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                             .fromSTEB(0.0, 0.0,
                                                                 4.0, 0.0),
                                                     child: Icon(
-                                                      Icons
-                                                          .notifications_outlined,
+                                                      FFIcons
+                                                          .kiconlyNotification1732244947995,
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -957,7 +973,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                         activeColor:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .secondary,
+                                                                .alternate,
                                                         activeTrackColor:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -969,7 +985,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                         inactiveThumbColor:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .secondaryBackground,
+                                                                .alternate,
                                                       ),
                                                     ),
                                                   ),
@@ -1067,8 +1083,8 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                             .fromSTEB(0.0, 0.0,
                                                                 4.0, 0.0),
                                                     child: Icon(
-                                                      Icons
-                                                          .mail_outline_rounded,
+                                                      FFIcons
+                                                          .kiconlyMessage1732244947990,
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -1149,7 +1165,8 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                             .fromSTEB(0.0, 0.0,
                                                                 4.0, 0.0),
                                                     child: Icon(
-                                                      Icons.settings_outlined,
+                                                      FFIcons
+                                                          .kiconlySetting1732244948012,
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -1225,19 +1242,27 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                4.0, 0.0),
-                                                    child: Icon(
-                                                      Icons
-                                                          .privacy_tip_outlined,
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primary,
-                                                      size: 24.0,
+                                                  Align(
+                                                    alignment:
+                                                        const AlignmentDirectional(
+                                                            0.0, 0.0),
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  4.0,
+                                                                  0.0),
+                                                      child: Icon(
+                                                        FFIcons
+                                                            .kiconlyShieldDone1732244948013,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primary,
+                                                        size: 24.0,
+                                                      ),
                                                     ),
                                                   ),
                                                   Align(
@@ -1316,8 +1341,8 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                             .fromSTEB(0.0, 0.0,
                                                                 4.0, 0.0),
                                                     child: Icon(
-                                                      Icons
-                                                          .info_outline_rounded,
+                                                      FFIcons
+                                                          .kiconlyInfoSquare1732244947988,
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -1389,6 +1414,45 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                     ],
                                   ),
                                 ),
+                              ),
+                            ),
+                            FFButtonWidget(
+                              onPressed: () async {
+                                GoRouter.of(context).prepareAuthEvent();
+                                await authManager.signOut();
+                                GoRouter.of(context).clearRedirectLocation();
+
+                                context.pushNamedAuth('Login', context.mounted);
+                              },
+                              text: 'Logout',
+                              icon: Icon(
+                                FFIcons.kiconlyLogout1732244947591,
+                                color: FlutterFlowTheme.of(context).alternate,
+                                size: 20.0,
+                              ),
+                              options: FFButtonOptions(
+                                width: double.infinity,
+                                height: 40.0,
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 0.0, 16.0, 0.0),
+                                iconAlignment: IconAlignment.start,
+                                iconPadding: const EdgeInsets.all(0.0),
+                                color: FlutterFlowTheme.of(context).secondary,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .override(
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .titleSmallFamily,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryBackground,
+                                      letterSpacing: 0.0,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmallFamily),
+                                    ),
+                                elevation: 0.0,
+                                borderRadius: BorderRadius.circular(8.0),
                               ),
                             ),
                           ]

@@ -74,6 +74,9 @@ class RegisterModel extends FlutterFlowModel<RegisterWidget> {
     return null;
   }
 
+  // Stores action output result for [Custom Action - signUpWithEmail] action in registerButton widget.
+  String? error;
+
   @override
   void initState(BuildContext context) {
     firstNameTextControllerValidator = _firstNameTextControllerValidator;

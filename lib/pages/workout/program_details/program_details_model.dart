@@ -12,12 +12,18 @@ class ProgramDetailsModel extends FlutterFlowModel<ProgramDetailsWidget> {
   late ExerciseCardModel exerciseCardModel2;
   // Model for exerciseCard component.
   late ExerciseCardModel exerciseCardModel3;
+  // Model for exerciseCard component.
+  late ExerciseCardModel exerciseCardModel4;
+  // Model for exerciseCard component.
+  late ExerciseCardModel exerciseCardModel5;
 
   @override
   void initState(BuildContext context) {
     exerciseCardModel1 = createModel(context, () => ExerciseCardModel());
     exerciseCardModel2 = createModel(context, () => ExerciseCardModel());
     exerciseCardModel3 = createModel(context, () => ExerciseCardModel());
+    exerciseCardModel4 = createModel(context, () => ExerciseCardModel());
+    exerciseCardModel5 = createModel(context, () => ExerciseCardModel());
   }
 
   @override
@@ -25,5 +31,7 @@ class ProgramDetailsModel extends FlutterFlowModel<ProgramDetailsWidget> {
     exerciseCardModel1.dispose();
     exerciseCardModel2.dispose();
     exerciseCardModel3.dispose();
+    exerciseCardModel4.dispose();
+    exerciseCardModel5.dispose();
   }
 }

@@ -125,15 +125,15 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                             Text(
                               'We\'re happy to hear from you! Here are a few ways to reach our support team:',
                               style: FlutterFlowTheme.of(context)
-                                  .bodySmall
+                                  .labelSmall
                                   .override(
                                     fontFamily: FlutterFlowTheme.of(context)
-                                        .bodySmallFamily,
+                                        .labelSmallFamily,
                                     letterSpacing: 0.0,
                                     useGoogleFonts: GoogleFonts.asMap()
                                         .containsKey(
                                             FlutterFlowTheme.of(context)
-                                                .bodySmallFamily),
+                                                .labelSmallFamily),
                                   ),
                             ),
                           ],
@@ -149,7 +149,7 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 8.0, 0.0),
                                 child: Icon(
-                                  Icons.email_outlined,
+                                  FFIcons.kiconlyMessage1732244947990,
                                   color:
                                       FlutterFlowTheme.of(context).primaryText,
                                   size: 20.0,
@@ -159,16 +159,16 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                   child: Text(
                                 'Email: heronfit@gmail.com',
                                 style: FlutterFlowTheme.of(context)
-                                    .bodySmall
+                                    .labelSmall
                                     .override(
                                       fontFamily: FlutterFlowTheme.of(context)
-                                          .bodySmallFamily,
+                                          .labelSmallFamily,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w600,
                                       useGoogleFonts: GoogleFonts.asMap()
                                           .containsKey(
                                               FlutterFlowTheme.of(context)
-                                                  .bodySmallFamily),
+                                                  .labelSmallFamily),
                                     ),
                               )),
                             ],
@@ -180,7 +180,7 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 8.0, 0.0),
                                 child: Icon(
-                                  Icons.phone_outlined,
+                                  FFIcons.kiconlyCall1732244947960,
                                   color:
                                       FlutterFlowTheme.of(context).primaryText,
                                   size: 20.0,
@@ -190,16 +190,16 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                   child: Text(
                                 'Phone: 09123456789',
                                 style: FlutterFlowTheme.of(context)
-                                    .bodySmall
+                                    .labelSmall
                                     .override(
                                       fontFamily: FlutterFlowTheme.of(context)
-                                          .bodySmallFamily,
+                                          .labelSmallFamily,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w600,
                                       useGoogleFonts: GoogleFonts.asMap()
                                           .containsKey(
                                               FlutterFlowTheme.of(context)
-                                                  .bodySmallFamily),
+                                                  .labelSmallFamily),
                                     ),
                               )),
                             ],
@@ -248,15 +248,15 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                   'Your experience is important to us. Please let us know your thoughts on HeronFit.\n\n1. Was there something we could have done better?\n2. What did you enjoy about your experience?\n3. Do you have any suggestions for improvement?\n\nWe value your feedback and use it to make HeronFit even better.\n\nThank you for choosing HeronFit!',
                                   textAlign: TextAlign.start,
                                   style: FlutterFlowTheme.of(context)
-                                      .bodySmall
+                                      .labelSmall
                                       .override(
                                         fontFamily: FlutterFlowTheme.of(context)
-                                            .bodySmallFamily,
+                                            .labelSmallFamily,
                                         letterSpacing: 0.0,
                                         useGoogleFonts: GoogleFonts.asMap()
                                             .containsKey(
                                                 FlutterFlowTheme.of(context)
-                                                    .bodySmallFamily),
+                                                    .labelSmallFamily),
                                       ),
                                 ),
                               ),
@@ -318,38 +318,35 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                       decoration: InputDecoration(
                                         isDense: true,
                                         labelStyle: FlutterFlowTheme.of(context)
-                                            .bodyMedium
+                                            .labelSmall
                                             .override(
                                               fontFamily:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyMediumFamily,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
+                                                      .labelSmallFamily,
                                               letterSpacing: 0.0,
                                               useGoogleFonts: GoogleFonts
                                                       .asMap()
                                                   .containsKey(
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .bodyMediumFamily),
+                                                          .labelSmallFamily),
                                             ),
                                         alignLabelWithHint: true,
                                         hintText:
                                             'Describe in detail what you want to let us know here...',
                                         hintStyle: FlutterFlowTheme.of(context)
-                                            .bodySmall
+                                            .labelSmall
                                             .override(
                                               fontFamily:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodySmallFamily,
+                                                      .labelSmallFamily,
                                               letterSpacing: 0.0,
-                                              useGoogleFonts:
-                                                  GoogleFonts.asMap()
-                                                      .containsKey(
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodySmallFamily),
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelSmallFamily),
                                             ),
                                         enabledBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
@@ -393,16 +390,16 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                                 0.0, 0.0, 0.0, 16.0),
                                       ),
                                       style: FlutterFlowTheme.of(context)
-                                          .bodySmall
+                                          .labelSmall
                                           .override(
                                             fontFamily:
                                                 FlutterFlowTheme.of(context)
-                                                    .bodySmallFamily,
+                                                    .labelSmallFamily,
                                             letterSpacing: 0.0,
                                             useGoogleFonts: GoogleFonts.asMap()
                                                 .containsKey(
                                                     FlutterFlowTheme.of(context)
-                                                        .bodySmallFamily),
+                                                        .labelSmallFamily),
                                           ),
                                       maxLines: null,
                                       validator: _model

@@ -74,35 +74,35 @@ class _WorkoutHistoryCardWidgetState extends State<WorkoutHistoryCardWidget> {
                               0.0, 0.0, 4.0, 0.0),
                           child: Icon(
                             FFIcons.kexercise,
-                            color: FlutterFlowTheme.of(context).primaryText,
+                            color: FlutterFlowTheme.of(context).primary,
                             size: 24.0,
                           ),
                         ),
                         Text(
                           'Strength Training',
                           style: FlutterFlowTheme.of(context)
-                              .bodyMedium
+                              .labelMedium
                               .override(
                                 fontFamily: FlutterFlowTheme.of(context)
-                                    .bodyMediumFamily,
+                                    .labelMediumFamily,
                                 color: FlutterFlowTheme.of(context).primaryText,
                                 letterSpacing: 0.0,
                                 fontWeight: FontWeight.w600,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)
-                                        .bodyMediumFamily),
+                                        .labelMediumFamily),
                               ),
                         ),
                       ],
                     ),
                     Text(
                       '2024-10-08',
-                      style: FlutterFlowTheme.of(context).bodySmall.override(
+                      style: FlutterFlowTheme.of(context).labelSmall.override(
                             fontFamily:
-                                FlutterFlowTheme.of(context).bodySmallFamily,
+                                FlutterFlowTheme.of(context).labelSmallFamily,
                             letterSpacing: 0.0,
                             useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).bodySmallFamily),
+                                FlutterFlowTheme.of(context).labelSmallFamily),
                           ),
                     ),
                   ],
@@ -119,22 +119,24 @@ class _WorkoutHistoryCardWidgetState extends State<WorkoutHistoryCardWidget> {
                   children: [
                     Text(
                       'Duration: 45 min',
-                      style: FlutterFlowTheme.of(context).bodySmall.override(
+                      style: FlutterFlowTheme.of(context).labelSmall.override(
                             fontFamily:
-                                FlutterFlowTheme.of(context).bodySmallFamily,
+                                FlutterFlowTheme.of(context).labelSmallFamily,
                             letterSpacing: 0.0,
+                            fontWeight: FontWeight.w300,
                             useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).bodySmallFamily),
+                                FlutterFlowTheme.of(context).labelSmallFamily),
                           ),
                     ),
                     Text(
                       'Squats, Bench Press, Deadlifts',
-                      style: FlutterFlowTheme.of(context).bodySmall.override(
+                      style: FlutterFlowTheme.of(context).bodyLarge.override(
                             fontFamily:
-                                FlutterFlowTheme.of(context).bodySmallFamily,
+                                FlutterFlowTheme.of(context).bodyLargeFamily,
                             letterSpacing: 0.0,
+                            fontWeight: FontWeight.w500,
                             useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).bodySmallFamily),
+                                FlutterFlowTheme.of(context).bodyLargeFamily),
                           ),
                     ),
                   ],

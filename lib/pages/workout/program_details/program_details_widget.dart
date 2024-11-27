@@ -130,6 +130,16 @@ class _ProgramDetailsWidgetState extends State<ProgramDetailsWidget> {
                                 updateCallback: () => safeSetState(() {}),
                                 child: const ExerciseCardWidget(),
                               ),
+                              wrapWithModel(
+                                model: _model.exerciseCardModel4,
+                                updateCallback: () => safeSetState(() {}),
+                                child: const ExerciseCardWidget(),
+                              ),
+                              wrapWithModel(
+                                model: _model.exerciseCardModel5,
+                                updateCallback: () => safeSetState(() {}),
+                                child: const ExerciseCardWidget(),
+                              ),
                             ].divide(const SizedBox(height: 12.0)),
                           ),
                         ].divide(const SizedBox(height: 16.0)),

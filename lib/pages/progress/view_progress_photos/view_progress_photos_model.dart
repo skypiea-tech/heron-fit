@@ -4,6 +4,14 @@ import 'package:flutter/material.dart';
 
 class ViewProgressPhotosModel
     extends FlutterFlowModel<ViewProgressPhotosWidget> {
+  ///  Local state fields for this page.
+
+  String? image;
+
+  String? weight;
+
+  String? date;
+
   ///  State fields for stateful widgets in this page.
 
   // State field(s) for Slider widget.

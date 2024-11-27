@@ -5,6 +5,10 @@ export '../supabase.dart';
 export 'row.dart';
 export 'table.dart';
 
+export 'tables/workouts.dart';
 export 'tables/update_weight.dart';
+export 'tables/exercises.dart';
+export 'tables/sets.dart';
+export 'tables/templates.dart';
 export 'tables/users.dart';
 export 'tables/sessions.dart';

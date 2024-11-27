@@ -78,14 +78,15 @@ class _ExerciseCardWidgetState extends State<ExerciseCardWidget> {
                       Text(
                         '3 x Squat (Barbell)',
                         textAlign: TextAlign.center,
-                        style: FlutterFlowTheme.of(context).bodySmall.override(
+                        style: FlutterFlowTheme.of(context).labelSmall.override(
                               fontFamily:
-                                  FlutterFlowTheme.of(context).bodySmallFamily,
+                                  FlutterFlowTheme.of(context).labelSmallFamily,
                               color: FlutterFlowTheme.of(context).primary,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.w600,
                               useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                  FlutterFlowTheme.of(context).bodySmallFamily),
+                                  FlutterFlowTheme.of(context)
+                                      .labelSmallFamily),
                             ),
                       ),
                       Align(
@@ -94,14 +95,14 @@ class _ExerciseCardWidgetState extends State<ExerciseCardWidget> {
                           'Legs',
                           textAlign: TextAlign.justify,
                           style: FlutterFlowTheme.of(context)
-                              .bodySmall
+                              .labelSmall
                               .override(
                                 fontFamily: FlutterFlowTheme.of(context)
-                                    .bodySmallFamily,
+                                    .labelSmallFamily,
                                 letterSpacing: 0.0,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)
-                                        .bodySmallFamily),
+                                        .labelSmallFamily),
                               ),
                         ),
                       ),

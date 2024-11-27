@@ -5,13 +5,23 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'register01_model.dart';
 export 'register01_model.dart';
 
 class Register01Widget extends StatefulWidget {
-  const Register01Widget({super.key});
+  const Register01Widget({
+    super.key,
+    required this.firstName,
+    required this.lastName,
+    required this.email,
+  });
+
+  final String? firstName;
+  final String? lastName;
+  final String? email;
 
   @override
   State<Register01Widget> createState() => _Register01WidgetState();
@@ -69,11 +79,14 @@ class _Register01WidgetState extends State<Register01Widget> {
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
-                            image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: Image.asset(
-                                'assets/images/RegisterHero.png',
-                              ).image,
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(8.0),
+                            child: Image.asset(
+                              'assets/images/RegisterHero.png',
+                              width: 200.0,
+                              height: 200.0,
+                              fit: BoxFit.contain,
                             ),
                           ),
                         ),
@@ -264,7 +277,7 @@ class _Register01WidgetState extends State<Register01Widget> {
                                       ),
                                       options: FFButtonOptions(
                                         width: double.infinity,
-                                        height: 40.0,
+                                        height: 48.0,
                                         padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 0.0),
                                         iconPadding:
@@ -273,18 +286,18 @@ class _Register01WidgetState extends State<Register01Widget> {
                                         color: FlutterFlowTheme.of(context)
                                             .tertiary,
                                         textStyle: FlutterFlowTheme.of(context)
-                                            .bodyMedium
+                                            .labelMedium
                                             .override(
                                               fontFamily:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyMediumFamily,
+                                                      .labelMediumFamily,
                                               letterSpacing: 0.0,
                                               useGoogleFonts: GoogleFonts
                                                       .asMap()
                                                   .containsKey(
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .bodyMediumFamily),
+                                                          .labelMediumFamily),
                                             ),
                                         elevation: 0.0,
                                         borderRadius:
@@ -308,7 +321,7 @@ class _Register01WidgetState extends State<Register01Widget> {
                                 autofillHints: const [AutofillHints.name],
                                 obscureText: false,
                                 decoration: InputDecoration(
-                                  labelText: 'Your Height',
+                                  labelText: 'Your Height (cm)',
                                   labelStyle: FlutterFlowTheme.of(context)
                                       .labelMedium
                                       .override(
@@ -359,17 +372,15 @@ class _Register01WidgetState extends State<Register01Widget> {
                                   ),
                                 ),
                                 style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
+                                    .labelMedium
                                     .override(
                                       fontFamily: FlutterFlowTheme.of(context)
-                                          .bodyMediumFamily,
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
+                                          .labelMediumFamily,
                                       letterSpacing: 0.0,
                                       useGoogleFonts: GoogleFonts.asMap()
                                           .containsKey(
                                               FlutterFlowTheme.of(context)
-                                                  .bodyMediumFamily),
+                                                  .labelMediumFamily),
                                     ),
                                 keyboardType: TextInputType.number,
                                 validator: _model
@@ -387,7 +398,7 @@ class _Register01WidgetState extends State<Register01Widget> {
                               autofillHints: const [AutofillHints.name],
                               obscureText: false,
                               decoration: InputDecoration(
-                                labelText: 'Your Weight',
+                                labelText: 'Your Weight (kg)',
                                 labelStyle: FlutterFlowTheme.of(context)
                                     .labelMedium
                                     .override(
@@ -438,17 +449,15 @@ class _Register01WidgetState extends State<Register01Widget> {
                                 ),
                               ),
                               style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
+                                  .labelMedium
                                   .override(
                                     fontFamily: FlutterFlowTheme.of(context)
-                                        .bodyMediumFamily,
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryText,
+                                        .labelMediumFamily,
                                     letterSpacing: 0.0,
                                     useGoogleFonts: GoogleFonts.asMap()
                                         .containsKey(
                                             FlutterFlowTheme.of(context)
-                                                .bodyMediumFamily),
+                                                .labelMediumFamily),
                                   ),
                               keyboardType: TextInputType.number,
                               validator: _model
@@ -464,21 +473,31 @@ class _Register01WidgetState extends State<Register01Widget> {
                       children: [
                         FFButtonWidget(
                           onPressed: () async {
-                            await UsersTable().update(
-                              data: {
-                                'weight': _model.yourWeightTextController.text,
-                                'height': _model.yourHeightTextController.text,
-                                'birthday':
-                                    supaSerialize<DateTime>(_model.datePicked),
-                                'gender': _model.chooseGenderValue,
-                              },
-                              matchingRows: (rows) => rows.eqOrNull(
-                                'id',
-                                currentUserUid,
-                              ),
-                            );
+                            await UsersTable().insert({
+                              'weight': _model.yourWeightTextController.text,
+                              'height': _model.yourHeightTextController.text,
+                              'birthday':
+                                  supaSerialize<DateTime>(_model.datePicked),
+                              'gender': _model.chooseGenderValue,
+                              'id': currentUserUid,
+                              'created_at':
+                                  supaSerialize<DateTime>(getCurrentTimestamp),
+                              'first_name':
+                                  functions.capitalizeName(widget.firstName),
+                              'last_name':
+                                  functions.capitalizeName(widget.lastName),
+                              'email_address': widget.email,
+                            });
 
-                            context.pushNamed('Register02');
+                            context.pushNamed(
+                              'Register02',
+                              queryParameters: {
+                                'firstName': serializeParam(
+                                  widget.firstName,
+                                  ParamType.String,
+                                ),
+                              }.withoutNulls,
+                            );
                           },
                           text: 'Next',
                           options: FFButtonOptions(

@@ -107,12 +107,12 @@ class _CreateCustomTimerWidgetState extends State<CreateCustomTimerWidget> {
                   children: [
                     Text(
                       'Choose a duration below or  set your own.  Custom duration are saved for next time',
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                      style: FlutterFlowTheme.of(context).labelSmall.override(
                             fontFamily:
-                                FlutterFlowTheme.of(context).bodyMediumFamily,
+                                FlutterFlowTheme.of(context).labelSmallFamily,
                             letterSpacing: 0.0,
                             useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).bodyMediumFamily),
+                                FlutterFlowTheme.of(context).labelSmallFamily),
                           ),
                     ),
                     Container(
@@ -120,6 +120,16 @@ class _CreateCustomTimerWidgetState extends State<CreateCustomTimerWidget> {
                       height: 400.0,
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondaryBackground,
+                        boxShadow: [
+                          BoxShadow(
+                            blurRadius: 40.0,
+                            color: FlutterFlowTheme.of(context).dropShadow,
+                            offset: const Offset(
+                              0.0,
+                              10.0,
+                            ),
+                          )
+                        ],
                         shape: BoxShape.circle,
                         border: Border.all(
                           color: FlutterFlowTheme.of(context).primary,
@@ -132,6 +142,7 @@ class _CreateCustomTimerWidgetState extends State<CreateCustomTimerWidget> {
                         children: [
                           Row(
                             mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Expanded(
                                 child: SizedBox(
@@ -278,21 +289,24 @@ class _CreateCustomTimerWidgetState extends State<CreateCustomTimerWidget> {
                                   ),
                                 ),
                               ),
-                              Text(
-                                ':',
-                                style: FlutterFlowTheme.of(context)
-                                    .displayLarge
-                                    .override(
-                                      fontFamily: FlutterFlowTheme.of(context)
-                                          .displayLargeFamily,
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      letterSpacing: 0.0,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
-                                              FlutterFlowTheme.of(context)
-                                                  .displayLargeFamily),
-                                    ),
+                              Align(
+                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                child: Text(
+                                  ':',
+                                  style: FlutterFlowTheme.of(context)
+                                      .displayLarge
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .displayLargeFamily,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        letterSpacing: 0.0,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .displayLargeFamily),
+                                      ),
+                                ),
                               ),
                               Expanded(
                                 child: SizedBox(
@@ -1691,8 +1705,8 @@ class _CreateCustomTimerWidgetState extends State<CreateCustomTimerWidget> {
                   ],
                 ),
                 FFButtonWidget(
-                  onPressed: () {
-                    print('Button pressed ...');
+                  onPressed: () async {
+                    context.pushNamed('RestTimer');
                   },
                   text: 'Start Custom Timer',
                   options: FFButtonOptions(

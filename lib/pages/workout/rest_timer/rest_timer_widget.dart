@@ -286,8 +286,8 @@ class _RestTimerWidgetState extends State<RestTimerWidget> {
                   ),
                 ),
                 FFButtonWidget(
-                  onPressed: () {
-                    print('Button pressed ...');
+                  onPressed: () async {
+                    context.pushNamed('StartTimer');
                   },
                   text: 'Create Custom Timer',
                   options: FFButtonOptions(

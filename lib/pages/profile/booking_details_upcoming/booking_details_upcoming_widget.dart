@@ -158,18 +158,18 @@ class _BookingDetailsUpcomingWidgetState
                                       Text(
                                         'Name: Justin Case',
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
+                                            .labelSmall
                                             .override(
                                               fontFamily:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyMediumFamily,
+                                                      .labelSmallFamily,
                                               letterSpacing: 0.0,
                                               useGoogleFonts: GoogleFonts
                                                       .asMap()
                                                   .containsKey(
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .bodyMediumFamily),
+                                                          .labelSmallFamily),
                                             ),
                                       ),
                                     ],
@@ -190,18 +190,18 @@ class _BookingDetailsUpcomingWidgetState
                                       Text(
                                         'Ticket ID: AR20241008',
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
+                                            .labelSmall
                                             .override(
                                               fontFamily:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyMediumFamily,
+                                                      .labelSmallFamily,
                                               letterSpacing: 0.0,
                                               useGoogleFonts: GoogleFonts
                                                       .asMap()
                                                   .containsKey(
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .bodyMediumFamily),
+                                                          .labelSmallFamily),
                                             ),
                                       ),
                                     ],
@@ -222,18 +222,18 @@ class _BookingDetailsUpcomingWidgetState
                                       Text(
                                         'Date: Tuesday, 8 October 2024',
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
+                                            .labelSmall
                                             .override(
                                               fontFamily:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyMediumFamily,
+                                                      .labelSmallFamily,
                                               letterSpacing: 0.0,
                                               useGoogleFonts: GoogleFonts
                                                       .asMap()
                                                   .containsKey(
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .bodyMediumFamily),
+                                                          .labelSmallFamily),
                                             ),
                                       ),
                                     ],
@@ -255,18 +255,18 @@ class _BookingDetailsUpcomingWidgetState
                                       Text(
                                         'Time: 8:00 am - 10:00 am',
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
+                                            .labelSmall
                                             .override(
                                               fontFamily:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyMediumFamily,
+                                                      .labelSmallFamily,
                                               letterSpacing: 0.0,
                                               useGoogleFonts: GoogleFonts
                                                       .asMap()
                                                   .containsKey(
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .bodyMediumFamily),
+                                                          .labelSmallFamily),
                                             ),
                                       ),
                                     ],

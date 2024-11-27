@@ -105,22 +105,66 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'Register01',
           path: '/register01',
-          builder: (context, params) => const Register01Widget(),
+          builder: (context, params) => Register01Widget(
+            firstName: params.getParam(
+              'firstName',
+              ParamType.String,
+            ),
+            lastName: params.getParam(
+              'lastName',
+              ParamType.String,
+            ),
+            email: params.getParam(
+              'email',
+              ParamType.String,
+            ),
+          ),
         ),
         FFRoute(
           name: 'Register02',
           path: '/register02',
-          builder: (context, params) => const Register02Widget(),
+          builder: (context, params) => Register02Widget(
+            firstName: params.getParam(
+              'firstName',
+              ParamType.String,
+            ),
+          ),
         ),
         FFRoute(
           name: 'RegisterVerification',
           path: '/registerVerification',
-          builder: (context, params) => const RegisterVerificationWidget(),
+          builder: (context, params) => RegisterVerificationWidget(
+            email: params.getParam(
+              'email',
+              ParamType.String,
+            ),
+            password: params.getParam(
+              'password',
+              ParamType.String,
+            ),
+            confirmPassword: params.getParam(
+              'confirmPassword',
+              ParamType.String,
+            ),
+            firstName: params.getParam(
+              'firstName',
+              ParamType.String,
+            ),
+            lastName: params.getParam(
+              'lastName',
+              ParamType.String,
+            ),
+          ),
         ),
         FFRoute(
           name: 'RegisterSuccess',
           path: '/registerSuccess',
-          builder: (context, params) => const RegisterSuccessWidget(),
+          builder: (context, params) => RegisterSuccessWidget(
+            firstName: params.getParam(
+              'firstName',
+              ParamType.String,
+            ),
+          ),
         ),
         FFRoute(
           name: 'ForgotPassword',
@@ -237,9 +281,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const WorkoutProgramsWidget(),
         ),
         FFRoute(
-          name: 'AddExercise',
-          path: '/addExercise',
-          builder: (context, params) => const AddExerciseWidget(),
+          name: 'AddExercises',
+          path: '/addExercises',
+          builder: (context, params) => const AddExercisesWidget(),
         ),
         FFRoute(
           name: 'StartNewEmptyWorkout',
@@ -336,7 +380,20 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'BookingSuccessSummary',
           path: '/bookingSuccessSummary',
-          builder: (context, params) => const BookingSuccessSummaryWidget(),
+          builder: (context, params) => BookingSuccessSummaryWidget(
+            ticketId: params.getParam(
+              'ticketId',
+              ParamType.String,
+            ),
+            date: params.getParam(
+              'date',
+              ParamType.DateTime,
+            ),
+            time: params.getParam(
+              'time',
+              ParamType.String,
+            ),
+          ),
         ),
         FFRoute(
           name: 'SessionIsScheduled',
@@ -382,6 +439,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'Onboarding01',
           path: '/onboarding01',
           builder: (context, params) => const Onboarding01Widget(),
+        ),
+        FFRoute(
+          name: 'CustomizeWorkout',
+          path: '/customizeWorkout',
+          builder: (context, params) => const CustomizeWorkoutWidget(),
+        ),
+        FFRoute(
+          name: 'ExerciseDetails',
+          path: '/exerciseDetails',
+          builder: (context, params) => const ExerciseDetailsWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

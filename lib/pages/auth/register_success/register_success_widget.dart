@@ -1,13 +1,19 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'register_success_model.dart';
 export 'register_success_model.dart';
 
 class RegisterSuccessWidget extends StatefulWidget {
-  const RegisterSuccessWidget({super.key});
+  const RegisterSuccessWidget({
+    super.key,
+    this.firstName,
+  });
+
+  final String? firstName;
 
   @override
   State<RegisterSuccessWidget> createState() => _RegisterSuccessWidgetState();
@@ -66,21 +72,36 @@ class _RegisterSuccessWidgetState extends State<RegisterSuccessWidget> {
                       children: [
                         Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 8.0),
-                          child: Text(
-                            'Welcome, Justin!',
-                            style: FlutterFlowTheme.of(context)
-                                .headlineSmall
-                                .override(
-                                  fontFamily: FlutterFlowTheme.of(context)
-                                      .headlineSmallFamily,
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.bold,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .headlineSmallFamily),
+                              0.0, 12.0, 0.0, 0.0),
+                          child: RichText(
+                            textScaler: MediaQuery.of(context).textScaler,
+                            text: TextSpan(
+                              children: [
+                                const TextSpan(
+                                  text: 'Welcome, ',
+                                  style: TextStyle(),
                                 ),
+                                TextSpan(
+                                  text: valueOrDefault<String>(
+                                    functions.capitalizeName(widget.firstName),
+                                    '[name]',
+                                  ),
+                                  style: const TextStyle(),
+                                )
+                              ],
+                              style: FlutterFlowTheme.of(context)
+                                  .headlineSmall
+                                  .override(
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .headlineSmallFamily,
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    letterSpacing: 0.0,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .headlineSmallFamily),
+                                  ),
+                            ),
                           ),
                         ),
                         Text(
@@ -111,7 +132,7 @@ class _RegisterSuccessWidgetState extends State<RegisterSuccessWidget> {
                   children: [
                     FFButtonWidget(
                       onPressed: () async {
-                        context.pushNamed('Home');
+                        context.goNamed('Home');
                       },
                       text: 'Let\'s Go!',
                       options: FFButtonOptions(

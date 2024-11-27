@@ -1,14 +1,29 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'register_verification_model.dart';
 export 'register_verification_model.dart';
 
 class RegisterVerificationWidget extends StatefulWidget {
-  const RegisterVerificationWidget({super.key});
+  const RegisterVerificationWidget({
+    super.key,
+    required this.email,
+    String? password,
+    required this.confirmPassword,
+    required this.firstName,
+    required this.lastName,
+  }) : password = password ?? '';
+
+  final String? email;
+  final String password;
+  final String? confirmPassword;
+  final String? firstName;
+  final String? lastName;
 
   @override
   State<RegisterVerificationWidget> createState() =>
@@ -77,7 +92,7 @@ class _RegisterVerificationWidgetState
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 8.0),
                           child: Text(
-                            'Almost There!',
+                            'Verify your email',
                             textAlign: TextAlign.start,
                             style: FlutterFlowTheme.of(context)
                                 .headlineSmall
@@ -94,22 +109,72 @@ class _RegisterVerificationWidgetState
                           ),
                         ),
                       ),
-                      Expanded(
-                        child: Align(
-                          alignment: const AlignmentDirectional(-1.0, 0.0),
-                          child: Text(
-                            'Please enter the 6 digit code sent to youremail@example.com to verify your account and start your fitness journey.',
-                            style: FlutterFlowTheme.of(context)
-                                .labelMedium
-                                .override(
-                                  fontFamily: FlutterFlowTheme.of(context)
-                                      .labelMediumFamily,
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  letterSpacing: 0.0,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .labelMediumFamily),
+                      Align(
+                        alignment: const AlignmentDirectional(-1.0, 0.0),
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            // Register
+
+                            context.pushNamed('Register');
+                          },
+                          child: RichText(
+                            textScaler: MediaQuery.of(context).textScaler,
+                            text: TextSpan(
+                              children: [
+                                const TextSpan(
+                                  text:
+                                      'Please enter the 6 digit code sent to ',
+                                  style: TextStyle(),
                                 ),
+                                TextSpan(
+                                  text: valueOrDefault<String>(
+                                    widget.email,
+                                    '[email]',
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .labelMediumFamily,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.w600,
+                                        decoration: TextDecoration.underline,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMediumFamily),
+                                      ),
+                                  mouseCursor: SystemMouseCursors.click,
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () async {
+                                      context.pushNamed('Register');
+                                    },
+                                ),
+                                const TextSpan(
+                                  text:
+                                      ' to verify your account and start your fitness journey.',
+                                  style: TextStyle(),
+                                )
+                              ],
+                              style: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .override(
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .labelMediumFamily,
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    letterSpacing: 0.0,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .labelMediumFamily),
+                                  ),
+                            ),
                           ),
                         ),
                       ),
@@ -179,24 +244,84 @@ class _RegisterVerificationWidgetState
                 Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    Text(
-                      'Resend Code',
-                      style: FlutterFlowTheme.of(context).labelMedium.override(
-                            fontFamily:
-                                FlutterFlowTheme.of(context).labelMediumFamily,
-                            color: FlutterFlowTheme.of(context).primary,
-                            letterSpacing: 0.0,
-                            fontWeight: FontWeight.w600,
-                            useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).labelMediumFamily),
-                          ),
+                    InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        await actions.signUpWithEmail(
+                          widget.email!,
+                          widget.password,
+                          widget.confirmPassword!,
+                        );
+                      },
+                      child: Text(
+                        'Resend Code',
+                        style:
+                            FlutterFlowTheme.of(context).labelMedium.override(
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .labelMediumFamily,
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.w600,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .labelMediumFamily),
+                                ),
+                      ),
                     ),
                     Padding(
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
                       child: FFButtonWidget(
                         onPressed: () async {
-                          context.pushNamed('Register01');
+                          _model.isVerified =
+                              await actions.verifyEmailWithToken(
+                            widget.email!,
+                            _model.pinCodeController!.text,
+                          );
+                          if (_model.isVerified == true) {
+                            context.pushNamed(
+                              'Register01',
+                              queryParameters: {
+                                'firstName': serializeParam(
+                                  widget.firstName,
+                                  ParamType.String,
+                                ),
+                                'lastName': serializeParam(
+                                  widget.lastName,
+                                  ParamType.String,
+                                ),
+                                'email': serializeParam(
+                                  widget.email,
+                                  ParamType.String,
+                                ),
+                              }.withoutNulls,
+                            );
+                          } else {
+                            await showDialog(
+                              context: context,
+                              builder: (alertDialogContext) {
+                                return AlertDialog(
+                                  title: const Text('Wrong PIN'),
+                                  content: const Text('Please Try Again.'),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () =>
+                                          Navigator.pop(alertDialogContext),
+                                      child: const Text('Ok'),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                            safeSetState(() {
+                              _model.pinCodeController?.clear();
+                            });
+                          }
+
+                          safeSetState(() {});
                         },
                         text: 'Confirm',
                         options: FFButtonOptions(

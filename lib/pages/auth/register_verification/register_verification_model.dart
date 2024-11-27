@@ -9,6 +9,8 @@ class RegisterVerificationModel
   // State field(s) for PinCode widget.
   TextEditingController? pinCodeController;
   String? Function(BuildContext, String?)? pinCodeControllerValidator;
+  // Stores action output result for [Custom Action - verifyEmailWithToken] action in Button widget.
+  bool? isVerified;
 
   @override
   void initState(BuildContext context) {

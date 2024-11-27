@@ -33,7 +33,7 @@ export '/pages/profile/workout_history/workout_history_widget.dart'
     show WorkoutHistoryWidget;
 export '/pages/progress/progress_dashboard/progress_dashboard_widget.dart'
     show ProgressDashboardWidget;
-export '/pages/profile/workout_details/workout_details_widget.dart'
+export '/pages/workout/workout_details/workout_details_widget.dart'
     show WorkoutDetailsWidget;
 export '/pages/profile/settings/settings_widget.dart' show SettingsWidget;
 export '/pages/profile/contact_us/contact_us_widget.dart' show ContactUsWidget;
@@ -45,8 +45,8 @@ export '/pages/workout/workout_dashboard_with_template/workout_dashboard_with_te
     show WorkoutDashboardWithTemplateWidget;
 export '/pages/workout/workout_programs/workout_programs_widget.dart'
     show WorkoutProgramsWidget;
-export '/pages/workout/add_exercise/add_exercise_widget.dart'
-    show AddExerciseWidget;
+export '/pages/workout/add_exercises/add_exercises_widget.dart'
+    show AddExercisesWidget;
 export '/pages/workout/start_new_empty_workout/start_new_empty_workout_widget.dart'
     show StartNewEmptyWorkoutWidget;
 export '/pages/progress/progress_tracker/progress_tracker_widget.dart'
@@ -73,7 +73,7 @@ export '/pages/progress/compare_progress_photos/compare_progress_photos_widget.d
     show CompareProgressPhotosWidget;
 export '/pages/progress/progress_photos_list/progress_photos_list_widget.dart'
     show ProgressPhotosListWidget;
-export '/pages/edit_goals/edit_goals_widget.dart' show EditGoalsWidget;
+export '/pages/progress/edit_goals/edit_goals_widget.dart' show EditGoalsWidget;
 export '/pages/booking/booking_success_summary/booking_success_summary_widget.dart'
     show BookingSuccessSummaryWidget;
 export '/pages/booking/session_is_scheduled/session_is_scheduled_widget.dart'
@@ -93,3 +93,7 @@ export '/pages/profile/terms_of_use/terms_of_use_widget.dart'
     show TermsOfUseWidget;
 export '/pages/onboarding/onboarding01/onboarding01_widget.dart'
     show Onboarding01Widget;
+export '/pages/workout/customize_workout/customize_workout_widget.dart'
+    show CustomizeWorkoutWidget;
+export '/pages/workout/exercise_details/exercise_details_widget.dart'
+    show ExerciseDetailsWidget;

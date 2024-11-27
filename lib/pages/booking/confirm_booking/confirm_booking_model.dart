@@ -17,14 +17,15 @@ class ConfirmBookingModel extends FlutterFlowModel<ConfirmBookingWidget> {
       return 'Field is required';
     }
 
+    if (val.length < 14) {
+      return 'Invalid Ticket ID';
+    }
+    if (val.length > 14) {
+      return 'Maximum 14 characters allowed, currently ${val.length}.';
+    }
+
     return null;
   }
-
-  // State field(s) for textfield_confirmTicketID widget.
-  FocusNode? textfieldConfirmTicketIDFocusNode;
-  TextEditingController? textfieldConfirmTicketIDTextController;
-  String? Function(BuildContext, String?)?
-      textfieldConfirmTicketIDTextControllerValidator;
 
   @override
   void initState(BuildContext context) {
@@ -36,8 +37,5 @@ class ConfirmBookingModel extends FlutterFlowModel<ConfirmBookingWidget> {
   void dispose() {
     textfieldEnterTicketIDFocusNode?.dispose();
     textfieldEnterTicketIDTextController?.dispose();
-
-    textfieldConfirmTicketIDFocusNode?.dispose();
-    textfieldConfirmTicketIDTextController?.dispose();
   }
 }

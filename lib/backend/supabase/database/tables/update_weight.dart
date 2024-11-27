@@ -17,12 +17,18 @@ class UpdateWeightRow extends SupabaseDataRow {
   int get id => getField<int>('id')!;
   set id(int value) => setField<int>('id', value);
 
-  int? get weight => getField<int>('weight');
-  set weight(int? value) => setField<int>('weight', value);
+  String? get weight => getField<String>('weight');
+  set weight(String? value) => setField<String>('weight', value);
 
   String? get date => getField<String>('date');
   set date(String? value) => setField<String>('date', value);
 
   String? get pic => getField<String>('pic');
   set pic(String? value) => setField<String>('pic', value);
+
+  String? get identifierId => getField<String>('identifier_id');
+  set identifierId(String? value) => setField<String>('identifier_id', value);
+
+  String? get email => getField<String>('email');
+  set email(String? value) => setField<String>('email', value);
 }

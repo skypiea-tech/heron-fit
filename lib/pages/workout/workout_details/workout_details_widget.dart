@@ -198,46 +198,46 @@ class _WorkoutDetailsWidgetState extends State<WorkoutDetailsWidget> {
                                   Text(
                                     '10kg x 8',
                                     style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
+                                        .labelSmall
                                         .override(
                                           fontFamily:
                                               FlutterFlowTheme.of(context)
-                                                  .bodyMediumFamily,
+                                                  .labelSmallFamily,
                                           letterSpacing: 0.0,
                                           useGoogleFonts: GoogleFonts.asMap()
                                               .containsKey(
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyMediumFamily),
+                                                      .labelSmallFamily),
                                         ),
                                   ),
                                   Text(
                                     '10kg x 8',
                                     style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
+                                        .labelSmall
                                         .override(
                                           fontFamily:
                                               FlutterFlowTheme.of(context)
-                                                  .bodyMediumFamily,
+                                                  .labelSmallFamily,
                                           letterSpacing: 0.0,
                                           useGoogleFonts: GoogleFonts.asMap()
                                               .containsKey(
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyMediumFamily),
+                                                      .labelSmallFamily),
                                         ),
                                   ),
                                   Text(
                                     '10kg x 8',
                                     style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
+                                        .labelSmall
                                         .override(
                                           fontFamily:
                                               FlutterFlowTheme.of(context)
-                                                  .bodyMediumFamily,
+                                                  .labelSmallFamily,
                                           letterSpacing: 0.0,
                                           useGoogleFonts: GoogleFonts.asMap()
                                               .containsKey(
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyMediumFamily),
+                                                      .labelSmallFamily),
                                         ),
                                   ),
                                 ],

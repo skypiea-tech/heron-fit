@@ -159,10 +159,19 @@ class _WorkoutCompleteWidgetState extends State<WorkoutCompleteWidget> {
                           ),
                         ],
                       ),
-                      wrapWithModel(
-                        model: _model.workoutHistoryCardModel,
-                        updateCallback: () => safeSetState(() {}),
-                        child: const WorkoutHistoryCardWidget(),
+                      InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          context.pushNamed('WorkoutHistory');
+                        },
+                        child: wrapWithModel(
+                          model: _model.workoutHistoryCardModel,
+                          updateCallback: () => safeSetState(() {}),
+                          child: const WorkoutHistoryCardWidget(),
+                        ),
                       ),
                       FFButtonWidget(
                         onPressed: () async {

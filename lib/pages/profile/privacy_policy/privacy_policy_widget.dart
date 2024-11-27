@@ -87,12 +87,12 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                 children: [
                   Text(
                     'HeronFit is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and protect your personal information when you use our app. \n\nInformation We Collect\n\nWhen you use HeronFit, we may collect the following information:\n• Personal Information: Your name, email address, and other information you provide when you create an account or use our services.\n• Usage Data: Information about how you use our app, such as your IP address, browser type, and the pages you visit.\n• Fitness Data: Information about your workouts, including your goals, progress, and exercise history.\n\nHow We Use Your Information\n\nWe use your information to:\nProvide and improve our services\n• Personalize your experience\n• Communicate with you about our app and services\n• Analyze and understand how you use our app\n\nSharing Your Information\n\nWe may share your information with third-party service providers who help us operate our app. We will not sell or rent your personal information to third parties.\n\nData Security\n\nWe take reasonable measures to protect your personal information from unauthorized access, disclosure, alteration, or destruction. However, no method of transmission over the internet or electronic storage is completely secure.  \n\nYour Choices\n\nYou have the right to:\n• Access and correct your personal information  \n• Delete your account and your data\n• Opt out of targeted advertising\n\nContact Us\n\nIf you have any questions about our privacy practices, please contact us at heronfit@gmail.com.\n\nBy using HeronFit, you agree to this Privacy Policy.',
-                    style: FlutterFlowTheme.of(context).bodySmall.override(
+                    style: FlutterFlowTheme.of(context).labelSmall.override(
                           fontFamily:
-                              FlutterFlowTheme.of(context).bodySmallFamily,
+                              FlutterFlowTheme.of(context).labelSmallFamily,
                           letterSpacing: 0.0,
                           useGoogleFonts: GoogleFonts.asMap().containsKey(
-                              FlutterFlowTheme.of(context).bodySmallFamily),
+                              FlutterFlowTheme.of(context).labelSmallFamily),
                         ),
                   ),
                 ],

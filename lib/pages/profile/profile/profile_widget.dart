@@ -233,7 +233,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                 alignment: const AlignmentDirectional(
                                                     -1.0, 0.0),
                                                 child: Text(
-                                                  '${profileUsersRow?.firstName} ${profileUsersRow?.lastName}',
+                                                  '${profileUsersRow?.firstName}',
                                                   textAlign: TextAlign.start,
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -326,7 +326,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                         height: 40.0,
                                         padding: const EdgeInsetsDirectional.fromSTEB(
                                             24.0, 0.0, 24.0, 0.0),
-                                        iconPadding: const EdgeInsets.all(8.0),
+                                        iconPadding: const EdgeInsets.all(0.0),
                                         color: FlutterFlowTheme.of(context)
                                             .secondary,
                                         textStyle: FlutterFlowTheme.of(context)
@@ -337,7 +337,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                       .titleSmallFamily,
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .primaryBackground,
+                                                      .alternate,
                                               letterSpacing: 0.0,
                                               useGoogleFonts: GoogleFonts
                                                       .asMap()
@@ -1593,7 +1593,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                     width: double.infinity,
                                     height: 40.0,
                                     padding: const EdgeInsetsDirectional.fromSTEB(
-                                        16.0, 0.0, 16.0, 0.0),
+                                        0.0, 0.0, 0.0, 0.0),
                                     iconAlignment: IconAlignment.start,
                                     iconPadding: const EdgeInsets.all(0.0),
                                     color:
@@ -1605,7 +1605,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                               FlutterFlowTheme.of(context)
                                                   .titleSmallFamily,
                                           color: FlutterFlowTheme.of(context)
-                                              .primaryBackground,
+                                              .alternate,
                                           letterSpacing: 0.0,
                                           useGoogleFonts: GoogleFonts.asMap()
                                               .containsKey(

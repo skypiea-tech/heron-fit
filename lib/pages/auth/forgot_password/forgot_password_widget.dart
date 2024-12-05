@@ -66,14 +66,14 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                 ),
                 title: Text(
                   'Forgot Password',
-                  style: FlutterFlowTheme.of(context).headlineMedium.override(
+                  style: FlutterFlowTheme.of(context).headlineSmall.override(
                         fontFamily:
-                            FlutterFlowTheme.of(context).headlineMediumFamily,
+                            FlutterFlowTheme.of(context).headlineSmallFamily,
                         color: FlutterFlowTheme.of(context).primary,
-                        fontSize: 22.0,
+                        fontSize: 20.0,
                         letterSpacing: 0.0,
                         useGoogleFonts: GoogleFonts.asMap().containsKey(
-                            FlutterFlowTheme.of(context).headlineMediumFamily),
+                            FlutterFlowTheme.of(context).headlineSmallFamily),
                       ),
                 ),
                 actions: const [],
@@ -88,46 +88,105 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Container(
-                    width: double.infinity,
-                    height: 250.0,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        fit: BoxFit.contain,
-                        image: Image.asset(
-                          'assets/images/ForgotPasswordHero.png',
-                        ).image,
+              SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      height: 250.0,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          fit: BoxFit.contain,
+                          image: Image.asset(
+                            'assets/images/ForgotPasswordHero.png',
+                          ).image,
+                        ),
                       ),
                     ),
-                  ),
-                  Align(
-                    alignment: const AlignmentDirectional(-1.0, 0.0),
-                    child: Text(
-                      'We will send you an email with a link to reset your password, please enter the email associated with your account below.',
-                      style: FlutterFlowTheme.of(context).labelSmall.override(
-                            fontFamily:
-                                FlutterFlowTheme.of(context).labelSmallFamily,
-                            color: FlutterFlowTheme.of(context).primary,
-                            letterSpacing: 0.0,
-                            useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).labelSmallFamily),
-                          ),
+                    Align(
+                      alignment: const AlignmentDirectional(-1.0, 0.0),
+                      child: Text(
+                        'We will send you an email with a link to reset your password, please enter the email associated with your account below.',
+                        style: FlutterFlowTheme.of(context).labelSmall.override(
+                              fontFamily:
+                                  FlutterFlowTheme.of(context).labelSmallFamily,
+                              color: FlutterFlowTheme.of(context).primary,
+                              letterSpacing: 0.0,
+                              useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                  FlutterFlowTheme.of(context)
+                                      .labelSmallFamily),
+                            ),
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    width: double.infinity,
-                    child: TextFormField(
-                      controller: _model.sendEmailTextController,
-                      focusNode: _model.sendEmailFocusNode,
-                      autofocus: true,
-                      autofillHints: const [AutofillHints.email],
-                      obscureText: false,
-                      decoration: InputDecoration(
-                        labelStyle:
+                    SizedBox(
+                      width: double.infinity,
+                      child: TextFormField(
+                        controller: _model.sendEmailTextController,
+                        focusNode: _model.sendEmailFocusNode,
+                        autofocus: true,
+                        autofillHints: const [AutofillHints.email],
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          labelStyle: FlutterFlowTheme.of(context)
+                              .labelMedium
+                              .override(
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .labelMediumFamily,
+                                letterSpacing: 0.0,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .labelMediumFamily),
+                              ),
+                          alignLabelWithHint: true,
+                          hintText: 'Email',
+                          hintStyle: FlutterFlowTheme.of(context)
+                              .labelMedium
+                              .override(
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .labelMediumFamily,
+                                letterSpacing: 0.0,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .labelMediumFamily),
+                              ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(
+                              color: Color(0x00000000),
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: FlutterFlowTheme.of(context).secondary,
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: FlutterFlowTheme.of(context).error,
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: FlutterFlowTheme.of(context).error,
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          filled: true,
+                          fillColor: FlutterFlowTheme.of(context).tertiary,
+                          prefixIcon: Icon(
+                            FFIcons.kiconlyMessage1732244947990,
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                          ),
+                        ),
+                        style:
                             FlutterFlowTheme.of(context).labelMedium.override(
                                   fontFamily: FlutterFlowTheme.of(context)
                                       .labelMediumFamily,
@@ -136,64 +195,12 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                                       .containsKey(FlutterFlowTheme.of(context)
                                           .labelMediumFamily),
                                 ),
-                        alignLabelWithHint: true,
-                        hintText: 'Email',
-                        hintStyle:
-                            FlutterFlowTheme.of(context).labelMedium.override(
-                                  fontFamily: FlutterFlowTheme.of(context)
-                                      .labelMediumFamily,
-                                  letterSpacing: 0.0,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .labelMediumFamily),
-                                ),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(
-                            color: Color(0x00000000),
-                            width: 1.0,
-                          ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: FlutterFlowTheme.of(context).secondary,
-                            width: 1.0,
-                          ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        errorBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: FlutterFlowTheme.of(context).error,
-                            width: 1.0,
-                          ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        focusedErrorBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: FlutterFlowTheme.of(context).error,
-                            width: 1.0,
-                          ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        filled: true,
-                        fillColor: FlutterFlowTheme.of(context).tertiary,
-                        prefixIcon: Icon(
-                          FFIcons.kiconlyMessage1732244947990,
-                          color: FlutterFlowTheme.of(context).secondaryText,
-                        ),
+                        validator: _model.sendEmailTextControllerValidator
+                            .asValidator(context),
                       ),
-                      style: FlutterFlowTheme.of(context).labelMedium.override(
-                            fontFamily:
-                                FlutterFlowTheme.of(context).labelMediumFamily,
-                            letterSpacing: 0.0,
-                            useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).labelMediumFamily),
-                          ),
-                      validator: _model.sendEmailTextControllerValidator
-                          .asValidator(context),
                     ),
-                  ),
-                ].divide(const SizedBox(height: 24.0)),
+                  ].divide(const SizedBox(height: 24.0)),
+                ),
               ),
               Column(
                 mainAxisSize: MainAxisSize.max,
@@ -207,16 +214,15 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                       width: double.infinity,
                       height: 48.0,
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                      iconPadding: const EdgeInsets.all(8.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      iconPadding: const EdgeInsets.all(0.0),
                       color: FlutterFlowTheme.of(context).secondary,
                       textStyle: FlutterFlowTheme.of(context)
                           .titleSmall
                           .override(
                             fontFamily:
                                 FlutterFlowTheme.of(context).titleSmallFamily,
-                            color:
-                                FlutterFlowTheme.of(context).primaryBackground,
+                            color: FlutterFlowTheme.of(context).alternate,
                             letterSpacing: 0.0,
                             useGoogleFonts: GoogleFonts.asMap().containsKey(
                                 FlutterFlowTheme.of(context).titleSmallFamily),

@@ -1,4 +1,3 @@
-import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -69,31 +68,6 @@ class _ProfileUpdatedModalWidgetState extends State<ProfileUpdatedModalWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Align(
-                alignment: const AlignmentDirectional(1.0, 0.0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Align(
-                      alignment: const AlignmentDirectional(0.0, 0.0),
-                      child: FlutterFlowIconButton(
-                        borderRadius: 32.0,
-                        borderWidth: 2.0,
-                        buttonSize: 32.0,
-                        icon: Icon(
-                          Icons.close_rounded,
-                          color: FlutterFlowTheme.of(context).primary,
-                          size: 16.0,
-                        ),
-                        onPressed: () async {
-                          Navigator.pop(context);
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Align(
                 alignment: const AlignmentDirectional(0.0, -1.0),
                 child: Text(
                   'Profile Updated',
@@ -133,7 +107,7 @@ class _ProfileUpdatedModalWidgetState extends State<ProfileUpdatedModalWidget> {
                       ),
                     ),
                     Text(
-                      'Your profile has been updated. Your changes have been saved.',
+                      'Your profile information has been successfully updated. Your changes will be reflected throughout the app.',
                       textAlign: TextAlign.center,
                       style: FlutterFlowTheme.of(context).labelSmall.override(
                             fontFamily:
@@ -148,18 +122,14 @@ class _ProfileUpdatedModalWidgetState extends State<ProfileUpdatedModalWidget> {
                     ),
                     FFButtonWidget(
                       onPressed: () async {
-                        context.pushNamed('Home');
+                        context.goNamed('Profile');
                       },
-                      text: 'Home',
-                      icon: const Icon(
-                        FFIcons.khomeFill,
-                        size: 15.0,
-                      ),
+                      text: 'Okay!',
                       options: FFButtonOptions(
                         width: double.infinity,
                         height: 32.0,
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            16.0, 0.0, 16.0, 0.0),
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         iconPadding: const EdgeInsets.all(0.0),
                         color: FlutterFlowTheme.of(context).secondary,
                         textStyle: FlutterFlowTheme.of(context)

@@ -135,6 +135,9 @@ class _StartWorkoutWithTimerWidgetState
                           _model.timerValue = displayTime;
                           if (shouldUpdate) safeSetState(() {});
                         },
+                        onEnded: () async {
+                          _model.timerController.onStartTimer();
+                        },
                         textAlign: TextAlign.start,
                         style:
                             FlutterFlowTheme.of(context).headlineSmall.override(

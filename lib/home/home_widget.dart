@@ -131,7 +131,10 @@ class _HomeWidgetState extends State<HomeWidget> {
                                         alignment:
                                             const AlignmentDirectional(-1.0, 0.0),
                                         child: Text(
-                                          '${homeUsersRow?.firstName} ${homeUsersRow?.lastName}',
+                                          valueOrDefault<String>(
+                                            '${homeUsersRow?.firstName}',
+                                            '[First Name]',
+                                          ),
                                           textAlign: TextAlign.start,
                                           style: FlutterFlowTheme.of(context)
                                               .titleLarge

@@ -10,10 +10,10 @@ class StartTimerModel extends FlutterFlowModel<StartTimerWidget> {
 
   InstantTimer? instantTimer;
   // State field(s) for Timer widget.
-  final timerInitialTimeMs1 = 225000;
-  int timerMilliseconds1 = 225000;
+  final timerInitialTimeMs1 = 300000;
+  int timerMilliseconds1 = 300000;
   String timerValue1 = StopWatchTimer.getDisplayTime(
-    225000,
+    300000,
     hours: false,
     milliSecond: false,
   );
@@ -32,8 +32,7 @@ class StartTimerModel extends FlutterFlowModel<StartTimerWidget> {
   FlutterFlowTimerController timerController2 =
       FlutterFlowTimerController(StopWatchTimer(mode: StopWatchMode.countDown));
 
-  InstantTimer? instantTimer3;
-  InstantTimer? instantTimer4;
+  InstantTimer? instantTimer2;
 
   @override
   void initState(BuildContext context) {}
@@ -44,7 +43,6 @@ class StartTimerModel extends FlutterFlowModel<StartTimerWidget> {
     timerController1.dispose();
     instantTimer1?.cancel();
     timerController2.dispose();
-    instantTimer3?.cancel();
-    instantTimer4?.cancel();
+    instantTimer2?.cancel();
   }
 }

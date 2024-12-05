@@ -8,6 +8,8 @@ import 'package:timeago/timeago.dart' as timeago;
 import 'lat_lng.dart';
 import 'place.dart';
 import 'uploaded_file.dart';
+import '/backend/schema/structs/index.dart';
+import '/backend/schema/enums/enums.dart';
 import '/backend/supabase/supabase.dart';
 import '/auth/supabase_auth/auth_util.dart';
 
@@ -174,5 +176,26 @@ String? getCurrentSession() {
     return "4:00 PM - 5:00 PM";
   } else {
     return "No Sessions";
+  }
+}
+
+String? formatInstructions(List<String>? instructions) {
+  return instructions?.join('\n\n') ?? "";
+}
+
+String? convertToSentenceCase(String? text) {
+  if (text == null || text.isEmpty) {
+    return text;
+  }
+
+  List<String> words = text.split(' ');
+  if (words.length > 1) {
+    return words
+        .map((word) =>
+            word.substring(0, 1).toUpperCase() +
+            word.substring(1).toLowerCase())
+        .join(' ');
+  } else {
+    return text.substring(0, 1).toUpperCase() + text.substring(1).toLowerCase();
   }
 }

@@ -134,8 +134,8 @@ class _WorkoutDashboardWithTemplateWidgetState
                         child: Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: FFButtonWidget(
-                            onPressed: () async {
-                              context.pushNamed('StartNewEmptyWorkout');
+                            onPressed: () {
+                              print('Button pressed ...');
                             },
                             text: 'Start New Workout',
                             options: FFButtonOptions(

@@ -1,9 +1,7 @@
-import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'splash_screen_model.dart';
 export 'splash_screen_model.dart';
@@ -15,13 +13,10 @@ class SplashScreenWidget extends StatefulWidget {
   State<SplashScreenWidget> createState() => _SplashScreenWidgetState();
 }
 
-class _SplashScreenWidgetState extends State<SplashScreenWidget>
-    with TickerProviderStateMixin {
+class _SplashScreenWidgetState extends State<SplashScreenWidget> {
   late SplashScreenModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-
-  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -33,21 +28,6 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget>
       // Loading
 
       context.goNamed('Onboarding');
-    });
-
-    animationsMap.addAll({
-      'columnOnPageLoadAnimation': AnimationInfo(
-        trigger: AnimationTrigger.onPageLoad,
-        effectsBuilder: () => [
-          ShimmerEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 700.0.ms,
-            color: const Color(0x80FFFFFF),
-            angle: 0.524,
-          ),
-        ],
-      ),
     });
   }
 
@@ -125,7 +105,7 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget>
                     ),
                   ),
                 ],
-              ).animateOnPageLoad(animationsMap['columnOnPageLoadAnimation']!),
+              ),
             ),
           ),
         ),

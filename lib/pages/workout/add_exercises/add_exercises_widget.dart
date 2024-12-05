@@ -3,7 +3,7 @@ import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -12,7 +12,12 @@ import 'add_exercises_model.dart';
 export 'add_exercises_model.dart';
 
 class AddExercisesWidget extends StatefulWidget {
-  const AddExercisesWidget({super.key});
+  const AddExercisesWidget({
+    super.key,
+    this.workoutID,
+  });
+
+  final WorkoutsRow? workoutID;
 
   @override
   State<AddExercisesWidget> createState() => _AddExercisesWidgetState();
@@ -30,6 +35,7 @@ class _AddExercisesWidgetState extends State<AddExercisesWidget> {
 
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
+    _model.textFieldFocusNode!.addListener(() => safeSetState(() {}));
   }
 
   @override
@@ -69,14 +75,14 @@ class _AddExercisesWidgetState extends State<AddExercisesWidget> {
                 ),
                 title: Text(
                   'Add Exercises',
-                  style: FlutterFlowTheme.of(context).headlineMedium.override(
+                  style: FlutterFlowTheme.of(context).headlineSmall.override(
                         fontFamily:
-                            FlutterFlowTheme.of(context).headlineMediumFamily,
+                            FlutterFlowTheme.of(context).headlineSmallFamily,
                         color: FlutterFlowTheme.of(context).primary,
-                        fontSize: 22.0,
+                        fontSize: 20.0,
                         letterSpacing: 0.0,
                         useGoogleFonts: GoogleFonts.asMap().containsKey(
-                            FlutterFlowTheme.of(context).headlineMediumFamily),
+                            FlutterFlowTheme.of(context).headlineSmallFamily),
                       ),
                 ),
                 actions: const [],
@@ -103,151 +109,200 @@ class _AddExercisesWidgetState extends State<AddExercisesWidget> {
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Container(
-                                width: double.infinity,
-                                height: 48.0,
-                                decoration: const BoxDecoration(),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Expanded(
-                                      child: SizedBox(
-                                        width: double.infinity,
-                                        child: TextFormField(
-                                          controller: _model.textController,
-                                          focusNode: _model.textFieldFocusNode,
-                                          onChanged: (_) =>
-                                              EasyDebounce.debounce(
-                                            '_model.textController',
-                                            const Duration(milliseconds: 2000),
-                                            () async {
-                                              _model.searchResults =
-                                                  await SearchCall.call(
-                                                searchString:
-                                                    _model.textController.text,
-                                              );
+                              Expanded(
+                                child: Container(
+                                  width: double.infinity,
+                                  height: 48.0,
+                                  decoration: const BoxDecoration(),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Expanded(
+                                            child: SizedBox(
+                                              width: double.infinity,
+                                              child: TextFormField(
+                                                controller:
+                                                    _model.textController,
+                                                focusNode:
+                                                    _model.textFieldFocusNode,
+                                                onChanged: (_) =>
+                                                    EasyDebounce.debounce(
+                                                  '_model.textController',
+                                                  const Duration(milliseconds: 200),
+                                                  () async {
+                                                    _model.searchResults =
+                                                        await SearchCall.call(
+                                                      searchString: _model
+                                                          .textController.text,
+                                                    );
 
-                                              safeSetState(() {});
-                                            },
-                                          ),
-                                          autofocus: true,
-                                          autofillHints: const [AutofillHints.name],
-                                          obscureText: false,
-                                          decoration: InputDecoration(
-                                            labelStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMedium
-                                                    .override(
-                                                      fontFamily:
+                                                    safeSetState(() {});
+                                                  },
+                                                ),
+                                                autofocus: true,
+                                                autofillHints: const [
+                                                  AutofillHints.name
+                                                ],
+                                                obscureText: false,
+                                                decoration: InputDecoration(
+                                                  labelStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMediumFamily,
+                                                            letterSpacing: 0.0,
+                                                            useGoogleFonts: GoogleFonts
+                                                                    .asMap()
+                                                                .containsKey(
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMediumFamily),
+                                                          ),
+                                                  hintText:
+                                                      'Search Exercises...',
+                                                  enabledBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: const BorderSide(
+                                                      color: Color(0x00000000),
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  focusedBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .labelMediumFamily,
-                                                      letterSpacing: 0.0,
-                                                      useGoogleFonts: GoogleFonts
-                                                              .asMap()
-                                                          .containsKey(
+                                                              .secondary,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  errorBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .error,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  focusedErrorBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .error,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  filled: true,
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .tertiary,
+                                                  prefixIcon: Icon(
+                                                    FFIcons
+                                                        .kiconlySearch1732244948007,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryText,
+                                                    size: 20.0,
+                                                  ),
+                                                  suffixIcon: _model
+                                                          .textController!
+                                                          .text
+                                                          .isNotEmpty
+                                                      ? InkWell(
+                                                          onTap: () async {
+                                                            _model
+                                                                .textController
+                                                                ?.clear();
+                                                            _model.searchResults =
+                                                                await SearchCall
+                                                                    .call(
+                                                              searchString: _model
+                                                                  .textController
+                                                                  .text,
+                                                            );
+
+                                                            safeSetState(() {});
+                                                            safeSetState(() {});
+                                                          },
+                                                          child: const Icon(
+                                                            Icons.clear,
+                                                            color: Color(
+                                                                0xFF757575),
+                                                            size: 20.0,
+                                                          ),
+                                                        )
+                                                      : null,
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily:
                                                               FlutterFlowTheme.of(
                                                                       context)
-                                                                  .labelMediumFamily),
-                                                    ),
-                                            hintText: 'Search Exercises...',
-                                            enabledBorder: OutlineInputBorder(
-                                              borderSide: const BorderSide(
-                                                color: Color(0x00000000),
-                                                width: 1.0,
+                                                                  .labelMediumFamily,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMediumFamily),
+                                                        ),
+                                                validator: _model
+                                                    .textControllerValidator
+                                                    .asValidator(context),
                                               ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
                                             ),
-                                            focusedBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondary,
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            errorBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .error,
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            focusedErrorBorder:
-                                                OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .error,
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            filled: true,
-                                            fillColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .tertiary,
-                                            prefixIcon: Icon(
-                                              FFIcons
-                                                  .kiconlySearch1732244948007,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              size: 20.0,
-                                            ),
-                                            suffixIcon: _model.textController!
-                                                    .text.isNotEmpty
-                                                ? InkWell(
-                                                    onTap: () async {
-                                                      _model.textController
-                                                          ?.clear();
-                                                      _model.searchResults =
-                                                          await SearchCall.call(
-                                                        searchString: _model
-                                                            .textController
-                                                            .text,
-                                                      );
-
-                                                      safeSetState(() {});
-                                                      safeSetState(() {});
-                                                    },
-                                                    child: const Icon(
-                                                      Icons.clear,
-                                                      color: Color(0xFF757575),
-                                                      size: 20.0,
-                                                    ),
-                                                  )
-                                                : null,
                                           ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .labelMedium
-                                              .override(
-                                                fontFamily:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMediumFamily,
-                                                letterSpacing: 0.0,
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .labelMediumFamily),
-                                              ),
-                                          validator: _model
-                                              .textControllerValidator
-                                              .asValidator(context),
-                                        ),
+                                        ],
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
+                              ),
+                              Text(
+                                'Use the search bar above to quickly find the exercise you need. Tap to add a new exercise to your workout. Long press on an exercise to view its details.',
+                                textAlign: TextAlign.center,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyLarge
+                                    .override(
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyLargeFamily,
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.w600,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyLargeFamily),
+                                    ),
                               ),
                               if (getJsonField(
                                     (_model.searchResults?.jsonBody ?? ''),
@@ -305,162 +360,200 @@ class _AddExercisesWidgetState extends State<AddExercisesWidget> {
                                           final listViewExercisesRow =
                                               listViewExercisesRowList[
                                                   listViewIndex];
-                                          return Container(
-                                            width: double.infinity,
-                                            decoration: BoxDecoration(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                              boxShadow: [
-                                                BoxShadow(
-                                                  blurRadius: 40.0,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .dropShadow,
-                                                  offset: const Offset(
-                                                    0.0,
-                                                    10.0,
+                                          return InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              await WorkoutExercisesTable()
+                                                  .insert({
+                                                'workout_id': widget
+                                                    .workoutID?.workoutId,
+                                                'exercise_id':
+                                                    listViewExercisesRow
+                                                        .exerciseId,
+                                                'created_at':
+                                                    supaSerialize<DateTime>(
+                                                        getCurrentTimestamp),
+                                              });
+
+                                              context.pushNamed(
+                                                'StartNewWorkout',
+                                                queryParameters: {
+                                                  'workoutID': serializeParam(
+                                                    widget.workoutID,
+                                                    ParamType.SupabaseRow,
                                                   ),
-                                                )
-                                              ],
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            child: Padding(
-                                              padding: const EdgeInsets.all(16.0),
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.min,
-                                                children: [
-                                                  Align(
-                                                    alignment:
-                                                        const AlignmentDirectional(
-                                                            0.0, 0.0),
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        Container(
-                                                          width: 64.0,
-                                                          height: 64.0,
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryBackground,
-                                                            shape:
-                                                                BoxShape.circle,
-                                                            border: Border.all(
+                                                }.withoutNulls,
+                                              );
+                                            },
+                                            onLongPress: () async {
+                                              context.pushNamed(
+                                                'ExerciseDetails',
+                                                queryParameters: {
+                                                  'exerciseID': serializeParam(
+                                                    listViewExercisesRow,
+                                                    ParamType.SupabaseRow,
+                                                  ),
+                                                }.withoutNulls,
+                                              );
+                                            },
+                                            child: Container(
+                                              width: double.infinity,
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                    blurRadius: 40.0,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .dropShadow,
+                                                    offset: const Offset(
+                                                      0.0,
+                                                      10.0,
+                                                    ),
+                                                  )
+                                                ],
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                              ),
+                                              child: Padding(
+                                                padding: const EdgeInsets.all(16.0),
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.min,
+                                                  children: [
+                                                    Align(
+                                                      alignment:
+                                                          const AlignmentDirectional(
+                                                              0.0, 0.0),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          Container(
+                                                            width: 64.0,
+                                                            height: 64.0,
+                                                            decoration:
+                                                                BoxDecoration(
                                                               color: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .secondary,
-                                                              width: 2.0,
-                                                            ),
-                                                          ),
-                                                          child: Padding(
-                                                            padding:
-                                                                const EdgeInsets.all(
-                                                                    2.0),
-                                                            child: Container(
-                                                              width: double
-                                                                  .infinity,
-                                                              height: double
-                                                                  .infinity,
-                                                              clipBehavior: Clip
-                                                                  .antiAlias,
-                                                              decoration:
-                                                                  const BoxDecoration(
-                                                                shape: BoxShape
-                                                                    .circle,
-                                                              ),
-                                                              child:
-                                                                  Image.network(
-                                                                'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/${listViewExercisesRow.images.first}',
-                                                                fit: BoxFit
-                                                                    .cover,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .start,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Text(
-                                                              valueOrDefault<
-                                                                  String>(
-                                                                listViewExercisesRow
-                                                                    .name,
-                                                                '[Exercise Name]',
-                                                              ),
-                                                              textAlign:
-                                                                  TextAlign
-                                                                      .center,
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .labelSmall
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .labelSmallFamily,
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primary,
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w600,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).labelSmallFamily),
-                                                                  ),
-                                                            ),
-                                                            Align(
-                                                              alignment:
-                                                                  const AlignmentDirectional(
-                                                                      -1.0,
-                                                                      0.0),
-                                                              child: Text(
-                                                                valueOrDefault<
-                                                                    String>(
-                                                                  listViewExercisesRow
-                                                                      .primaryMuscles
-                                                                      .first,
-                                                                  '[Primary Muscles]',
-                                                                ),
-                                                                textAlign:
-                                                                    TextAlign
-                                                                        .justify,
-                                                                style: FlutterFlowTheme.of(
+                                                                  .secondaryBackground,
+                                                              shape: BoxShape
+                                                                  .circle,
+                                                              border:
+                                                                  Border.all(
+                                                                color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodyLarge
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyLargeFamily,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).bodyLargeFamily),
-                                                                    ),
+                                                                    .secondary,
+                                                                width: 2.0,
                                                               ),
                                                             ),
-                                                          ],
-                                                        ),
-                                                      ].divide(const SizedBox(
-                                                          width: 12.0)),
+                                                            child: Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .all(2.0),
+                                                              child: Container(
+                                                                width: double
+                                                                    .infinity,
+                                                                height: double
+                                                                    .infinity,
+                                                                clipBehavior: Clip
+                                                                    .antiAlias,
+                                                                decoration:
+                                                                    const BoxDecoration(
+                                                                  shape: BoxShape
+                                                                      .circle,
+                                                                ),
+                                                                child: Image
+                                                                    .network(
+                                                                  'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/${listViewExercisesRow.images.first}',
+                                                                  fit: BoxFit
+                                                                      .cover,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          Expanded(
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .start,
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                Text(
+                                                                  valueOrDefault<
+                                                                      String>(
+                                                                    functions.convertToSentenceCase(
+                                                                        listViewExercisesRow
+                                                                            .name),
+                                                                    '[Exercise Name]',
+                                                                  ),
+                                                                  textAlign:
+                                                                      TextAlign
+                                                                          .start,
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelSmall
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            FlutterFlowTheme.of(context).labelSmallFamily,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .primary,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        fontWeight:
+                                                                            FontWeight.w600,
+                                                                        useGoogleFonts:
+                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                      ),
+                                                                ),
+                                                                Align(
+                                                                  alignment:
+                                                                      const AlignmentDirectional(
+                                                                          -1.0,
+                                                                          0.0),
+                                                                  child: Text(
+                                                                    valueOrDefault<
+                                                                        String>(
+                                                                      functions.convertToSentenceCase(listViewExercisesRow
+                                                                          .primaryMuscles
+                                                                          .first),
+                                                                      '[Primary Muscles]',
+                                                                    ),
+                                                                    textAlign:
+                                                                        TextAlign
+                                                                            .start,
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyLarge
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              FlutterFlowTheme.of(context).bodyLargeFamily,
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          useGoogleFonts:
+                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyLargeFamily),
+                                                                        ),
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ].divide(const SizedBox(
+                                                            width: 12.0)),
+                                                      ),
                                                     ),
-                                                  ),
-                                                ],
+                                                  ],
+                                                ),
                                               ),
                                             ),
                                           );
@@ -470,33 +563,6 @@ class _AddExercisesWidgetState extends State<AddExercisesWidget> {
                                   ),
                                 ),
                             ].divide(const SizedBox(height: 16.0)),
-                          ),
-                        ),
-                        FFButtonWidget(
-                          onPressed: () async {
-                            context.pushNamed('StartWorkout');
-                          },
-                          text: 'START WORKOUT',
-                          options: FFButtonOptions(
-                            width: double.infinity,
-                            height: 40.0,
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                16.0, 0.0, 16.0, 0.0),
-                            iconPadding: const EdgeInsets.all(8.0),
-                            color: FlutterFlowTheme.of(context).secondary,
-                            textStyle: FlutterFlowTheme.of(context)
-                                .labelMedium
-                                .override(
-                                  fontFamily: FlutterFlowTheme.of(context)
-                                      .labelMediumFamily,
-                                  color: FlutterFlowTheme.of(context).alternate,
-                                  letterSpacing: 0.0,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .labelMediumFamily),
-                                ),
-                            elevation: 0.0,
-                            borderRadius: BorderRadius.circular(8.0),
                           ),
                         ),
                       ].divide(const SizedBox(height: 8.0)),

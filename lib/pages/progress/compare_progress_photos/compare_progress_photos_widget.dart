@@ -1,3 +1,4 @@
+import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -27,8 +28,6 @@ class _CompareProgressPhotosWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => CompareProgressPhotosModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -42,7 +41,12 @@ class _CompareProgressPhotosWidgetState
   Widget build(BuildContext context) {
     return FutureBuilder<List<UpdateWeightRow>>(
       future: UpdateWeightTable().queryRows(
-        queryFn: (q) => q.order('id'),
+        queryFn: (q) => q
+            .eqOrNull(
+              'email',
+              currentUserEmail,
+            )
+            .order('id'),
       ),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
@@ -128,96 +132,74 @@ class _CompareProgressPhotosWidgetState
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            FutureBuilder<List<UpdateWeightRow>>(
-                              future: UpdateWeightTable().queryRows(
-                                queryFn: (q) => q.order('id'),
+                            Container(
+                              width: 170.0,
+                              height: 350.0,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
                               ),
-                              builder: (context, snapshot) {
-                                // Customize what your widget looks like when it's loading.
-                                if (!snapshot.hasData) {
-                                  return Center(
-                                    child: SizedBox(
-                                      width: 50.0,
-                                      height: 50.0,
-                                      child: SpinKitPulse(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondary,
-                                        size: 50.0,
+                              child: FutureBuilder<List<UpdateWeightRow>>(
+                                future: UpdateWeightTable().queryRows(
+                                  queryFn: (q) => q
+                                      .eqOrNull(
+                                        'email',
+                                        currentUserEmail,
+                                      )
+                                      .order('id'),
+                                  limit: 1,
+                                ),
+                                builder: (context, snapshot) {
+                                  // Customize what your widget looks like when it's loading.
+                                  if (!snapshot.hasData) {
+                                    return Center(
+                                      child: SizedBox(
+                                        width: 50.0,
+                                        height: 50.0,
+                                        child: SpinKitPulse(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondary,
+                                          size: 50.0,
+                                        ),
                                       ),
-                                    ),
-                                  );
-                                }
-                                List<UpdateWeightRow>
-                                    containerUpdateWeightRowList =
-                                    snapshot.data!;
+                                    );
+                                  }
+                                  List<UpdateWeightRow>
+                                      listViewUpdateWeightRowList =
+                                      snapshot.data!;
 
-                                return Container(
-                                  width: 170.0,
-                                  height: 350.0,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                  ),
-                                  child: FutureBuilder<List<UpdateWeightRow>>(
-                                    future: UpdateWeightTable().queryRows(
-                                      queryFn: (q) => q.order('id'),
-                                      limit: 1,
-                                    ),
-                                    builder: (context, snapshot) {
-                                      // Customize what your widget looks like when it's loading.
-                                      if (!snapshot.hasData) {
-                                        return Center(
-                                          child: SizedBox(
-                                            width: 50.0,
-                                            height: 50.0,
-                                            child: SpinKitPulse(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondary,
-                                              size: 50.0,
-                                            ),
+                                  return ListView.builder(
+                                    padding: EdgeInsets.zero,
+                                    shrinkWrap: true,
+                                    scrollDirection: Axis.vertical,
+                                    itemCount:
+                                        listViewUpdateWeightRowList.length,
+                                    itemBuilder: (context, listViewIndex) {
+                                      final listViewUpdateWeightRow =
+                                          listViewUpdateWeightRowList[
+                                              listViewIndex];
+                                      return Container(
+                                        width: 100.0,
+                                        height: 350.0,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                        ),
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                          child: Image.network(
+                                            listViewUpdateWeightRow.pic!,
+                                            width: 200.0,
+                                            height: 200.0,
+                                            fit: BoxFit.cover,
                                           ),
-                                        );
-                                      }
-                                      List<UpdateWeightRow>
-                                          listViewUpdateWeightRowList =
-                                          snapshot.data!;
-
-                                      return ListView.builder(
-                                        padding: EdgeInsets.zero,
-                                        shrinkWrap: true,
-                                        scrollDirection: Axis.vertical,
-                                        itemCount:
-                                            listViewUpdateWeightRowList.length,
-                                        itemBuilder: (context, listViewIndex) {
-                                          final listViewUpdateWeightRow =
-                                              listViewUpdateWeightRowList[
-                                                  listViewIndex];
-                                          return Container(
-                                            width: 100.0,
-                                            height: 350.0,
-                                            decoration: BoxDecoration(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                            ),
-                                            child: ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                              child: Image.network(
-                                                listViewUpdateWeightRow.pic!,
-                                                width: 200.0,
-                                                height: 200.0,
-                                                fit: BoxFit.cover,
-                                              ),
-                                            ),
-                                          );
-                                        },
+                                        ),
                                       );
                                     },
-                                  ),
-                                );
-                              },
+                                  );
+                                },
+                              ),
                             ),
                             Container(
                               width: 170.0,
@@ -286,7 +268,12 @@ class _CompareProgressPhotosWidgetState
                                       child:
                                           FutureBuilder<List<UpdateWeightRow>>(
                                         future: UpdateWeightTable().queryRows(
-                                          queryFn: (q) => q.order('id'),
+                                          queryFn: (q) => q
+                                              .eqOrNull(
+                                                'email',
+                                                currentUserEmail,
+                                              )
+                                              .order('id'),
                                           limit: 1,
                                         ),
                                         builder: (context, snapshot) {
@@ -404,7 +391,12 @@ class _CompareProgressPhotosWidgetState
                                   children: [
                                     FutureBuilder<List<UpdateWeightRow>>(
                                       future: UpdateWeightTable().queryRows(
-                                        queryFn: (q) => q.order('id'),
+                                        queryFn: (q) => q
+                                            .eqOrNull(
+                                              'email',
+                                              currentUserEmail,
+                                            )
+                                            .order('id'),
                                         limit: 1,
                                       ),
                                       builder: (context, snapshot) {
@@ -508,24 +500,15 @@ class _CompareProgressPhotosWidgetState
                           ],
                         ),
                       ),
-                      Align(
-                        alignment: const AlignmentDirectional(0.0, 0.0),
-                        child: Slider(
-                          activeColor: FlutterFlowTheme.of(context).primary,
-                          inactiveColor: FlutterFlowTheme.of(context).alternate,
-                          min: 0.0,
-                          max: 10.0,
-                          value: _model.sliderValue ??= 5.0,
-                          onChanged: (newValue) {
-                            newValue =
-                                double.parse(newValue.toStringAsFixed(2));
-                            safeSetState(() => _model.sliderValue = newValue);
-                          },
-                        ),
-                      ),
                       FutureBuilder<List<UpdateWeightRow>>(
                         future: UpdateWeightTable().queryRows(
-                          queryFn: (q) => q.order('id'),
+                          queryFn: (q) => q
+                              .eqOrNull(
+                                'email',
+                                currentUserEmail,
+                              )
+                              .order('id'),
+                          limit: 10,
                         ),
                         builder: (context, snapshot) {
                           // Customize what your widget looks like when it's loading.
@@ -589,7 +572,7 @@ class _CompareProgressPhotosWidgetState
                                 disableCenter: true,
                                 enlargeCenterPage: true,
                                 enlargeFactor: 0.25,
-                                enableInfiniteScroll: true,
+                                enableInfiniteScroll: false,
                                 scrollDirection: Axis.horizontal,
                                 autoPlay: false,
                                 onPageChanged: (index, _) =>

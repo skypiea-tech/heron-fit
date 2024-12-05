@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '/backend/schema/structs/index.dart';
+import '/backend/supabase/supabase.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
@@ -283,12 +285,26 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'AddExercises',
           path: '/addExercises',
-          builder: (context, params) => const AddExercisesWidget(),
+          builder: (context, params) => AddExercisesWidget(
+            workoutID: params.getParam<WorkoutsRow>(
+              'workoutID',
+              ParamType.SupabaseRow,
+            ),
+          ),
         ),
         FFRoute(
-          name: 'StartNewEmptyWorkout',
-          path: '/startNewEmptyWorkout',
-          builder: (context, params) => const StartNewEmptyWorkoutWidget(),
+          name: 'StartNewWorkout',
+          path: '/startNewWorkout',
+          builder: (context, params) => StartNewWorkoutWidget(
+            workoutID: params.getParam<WorkoutsRow>(
+              'workoutID',
+              ParamType.SupabaseRow,
+            ),
+            exerciseID: params.getParam<ExercisesRow>(
+              'exerciseID',
+              ParamType.SupabaseRow,
+            ),
+          ),
         ),
         FFRoute(
           name: 'ProgressTracker',
@@ -360,7 +376,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'StartWorkout',
           path: '/startWorkout',
-          builder: (context, params) => const StartWorkoutWidget(),
+          builder: (context, params) => StartWorkoutWidget(
+            exerciseID: params.getParam<ExercisesRow>(
+              'exerciseID',
+              ParamType.SupabaseRow,
+            ),
+          ),
         ),
         FFRoute(
           name: 'CompareProgressPhotos',
@@ -443,12 +464,22 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'CustomizeWorkout',
           path: '/customizeWorkout',
-          builder: (context, params) => const CustomizeWorkoutWidget(),
+          builder: (context, params) => CustomizeWorkoutWidget(
+            exercises: params.getParam(
+              'exercises',
+              ParamType.String,
+            ),
+          ),
         ),
         FFRoute(
           name: 'ExerciseDetails',
           path: '/exerciseDetails',
-          builder: (context, params) => const ExerciseDetailsWidget(),
+          builder: (context, params) => ExerciseDetailsWidget(
+            exerciseID: params.getParam<ExercisesRow>(
+              'exerciseID',
+              ParamType.SupabaseRow,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -567,6 +598,7 @@ class FFParameters {
     String paramName,
     ParamType type, {
     bool isList = false,
+    StructBuilder<T>? structBuilder,
   }) {
     if (futureParamValues.containsKey(paramName)) {
       return futureParamValues[paramName];
@@ -584,6 +616,7 @@ class FFParameters {
       param,
       type,
       isList,
+      structBuilder: structBuilder,
     );
   }
 }
@@ -635,8 +668,8 @@ class FFRoute {
                   color: FlutterFlowTheme.of(context).primary,
                   child: Center(
                     child: Image.asset(
-                      'assets/images/LogoHeronFit.png',
-                      width: 100.0,
+                      'assets/images/logoHeronFit.png',
+                      height: 100.0,
                       fit: BoxFit.contain,
                     ),
                   ),

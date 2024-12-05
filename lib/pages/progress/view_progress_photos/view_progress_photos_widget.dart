@@ -1,3 +1,4 @@
+import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -38,8 +39,6 @@ class _ViewProgressPhotosWidgetState extends State<ViewProgressPhotosWidget> {
         matchingRows: (rows) => rows,
       );
     });
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -53,7 +52,13 @@ class _ViewProgressPhotosWidgetState extends State<ViewProgressPhotosWidget> {
   Widget build(BuildContext context) {
     return FutureBuilder<List<UpdateWeightRow>>(
       future: UpdateWeightTable().queryRows(
-        queryFn: (q) => q,
+        queryFn: (q) => q
+            .eqOrNull(
+              'email',
+              currentUserEmail,
+            )
+            .order('id'),
+        limit: 10,
       ),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
@@ -133,72 +138,41 @@ class _ViewProgressPhotosWidgetState extends State<ViewProgressPhotosWidget> {
                         padding: const EdgeInsets.all(12.0),
                         child: Stack(
                           children: [
-                            FutureBuilder<List<UpdateWeightRow>>(
-                              future: UpdateWeightTable().queryRows(
-                                queryFn: (q) => q.order('id'),
-                                limit: 1,
-                              ),
-                              builder: (context, snapshot) {
-                                // Customize what your widget looks like when it's loading.
-                                if (!snapshot.hasData) {
-                                  return Center(
-                                    child: SizedBox(
-                                      width: 50.0,
-                                      height: 50.0,
-                                      child: SpinKitPulse(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondary,
-                                        size: 50.0,
+                            ListView(
+                              padding: EdgeInsets.zero,
+                              primary: false,
+                              shrinkWrap: true,
+                              scrollDirection: Axis.vertical,
+                              children: [
+                                Container(
+                                  width: double.infinity,
+                                  height: 400.0,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                  ),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                    child: Image.network(
+                                      valueOrDefault<String>(
+                                        '${_model.image}',
+                                        'https://bjlnqudcixaonzstazqp.supabase.co/storage/v1/object/public/photoprogress/photolist/1732616726196984.jpg',
                                       ),
-                                    ),
-                                  );
-                                }
-                                List<UpdateWeightRow>
-                                    listViewUpdateWeightRowList =
-                                    snapshot.data!;
-
-                                return ListView.builder(
-                                  padding: EdgeInsets.zero,
-                                  primary: false,
-                                  shrinkWrap: true,
-                                  scrollDirection: Axis.vertical,
-                                  itemCount: listViewUpdateWeightRowList.length,
-                                  itemBuilder: (context, listViewIndex) {
-                                    final listViewUpdateWeightRow =
-                                        listViewUpdateWeightRowList[
-                                            listViewIndex];
-                                    return Container(
                                       width: double.infinity,
                                       height: 400.0,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
+                                      fit: BoxFit.cover,
+                                      errorBuilder:
+                                          (context, error, stackTrace) =>
+                                              Image.asset(
+                                        'assets/images/error_image.png',
+                                        width: double.infinity,
+                                        height: 400.0,
+                                        fit: BoxFit.cover,
                                       ),
-                                      child: ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                        child: Image.network(
-                                          valueOrDefault<String>(
-                                            '${_model.image}',
-                                            'https://bjlnqudcixaonzstazqp.supabase.co/storage/v1/object/public/photoprogress/photolist/1732616726196984.jpg',
-                                          ),
-                                          width: 200.0,
-                                          height: 200.0,
-                                          fit: BoxFit.cover,
-                                          errorBuilder:
-                                              (context, error, stackTrace) =>
-                                                  Image.asset(
-                                            'assets/images/error_image.png',
-                                            width: 200.0,
-                                            height: 200.0,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                );
-                              },
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ],
                         ),
@@ -242,7 +216,12 @@ class _ViewProgressPhotosWidgetState extends State<ViewProgressPhotosWidget> {
                               alignment: const AlignmentDirectional(0.0, 0.0),
                               child: FutureBuilder<List<UpdateWeightRow>>(
                                 future: UpdateWeightTable().queryRows(
-                                  queryFn: (q) => q.order('id'),
+                                  queryFn: (q) => q
+                                      .eqOrNull(
+                                        'email',
+                                        currentUserEmail,
+                                      )
+                                      .order('id'),
                                   limit: 1,
                                 ),
                                 builder: (context, snapshot) {
@@ -351,24 +330,6 @@ class _ViewProgressPhotosWidgetState extends State<ViewProgressPhotosWidget> {
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            Align(
-                              alignment: const AlignmentDirectional(0.0, 0.0),
-                              child: Slider(
-                                activeColor:
-                                    FlutterFlowTheme.of(context).primary,
-                                inactiveColor:
-                                    FlutterFlowTheme.of(context).alternate,
-                                min: 0.0,
-                                max: 10.0,
-                                value: _model.sliderValue ??= 5.0,
-                                onChanged: (newValue) {
-                                  newValue =
-                                      double.parse(newValue.toStringAsFixed(2));
-                                  safeSetState(
-                                      () => _model.sliderValue = newValue);
-                                },
-                              ),
-                            ),
                             Container(
                               width: double.infinity,
                               height: 100.0,
@@ -378,7 +339,13 @@ class _ViewProgressPhotosWidgetState extends State<ViewProgressPhotosWidget> {
                               ),
                               child: FutureBuilder<List<UpdateWeightRow>>(
                                 future: UpdateWeightTable().queryRows(
-                                  queryFn: (q) => q.order('id'),
+                                  queryFn: (q) => q
+                                      .eqOrNull(
+                                        'email',
+                                        currentUserEmail,
+                                      )
+                                      .order('id'),
+                                  limit: 10,
                                 ),
                                 builder: (context, snapshot) {
                                   // Customize what your widget looks like when it's loading.

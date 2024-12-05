@@ -188,9 +188,9 @@ class _OutsideGymHoursModalWidgetState
                       options: FFButtonOptions(
                         width: double.infinity,
                         height: 32.0,
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            16.0, 0.0, 16.0, 0.0),
-                        iconPadding: const EdgeInsets.all(8.0),
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        iconPadding: const EdgeInsets.all(0.0),
                         color: FlutterFlowTheme.of(context).secondary,
                         textStyle: FlutterFlowTheme.of(context)
                             .labelSmall

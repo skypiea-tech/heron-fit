@@ -1,9 +1,10 @@
+import '/auth/supabase_auth/auth_util.dart';
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_charts.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -83,13 +84,13 @@ class _ProgressDashboardWidgetState extends State<ProgressDashboardWidget> {
             : null,
         body: SafeArea(
           top: true,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(24.0),
-                  child: SingleChildScrollView(
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(24.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -194,8 +195,8 @@ class _ProgressDashboardWidgetState extends State<ProgressDashboardWidget> {
                                     width: double.infinity,
                                     height: 32.0,
                                     padding: const EdgeInsetsDirectional.fromSTEB(
-                                        16.0, 0.0, 16.0, 0.0),
-                                    iconPadding: const EdgeInsets.all(8.0),
+                                        0.0, 0.0, 0.0, 0.0),
+                                    iconPadding: const EdgeInsets.all(0.0),
                                     color:
                                         FlutterFlowTheme.of(context).secondary,
                                     textStyle: FlutterFlowTheme.of(context)
@@ -319,97 +320,141 @@ class _ProgressDashboardWidgetState extends State<ProgressDashboardWidget> {
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
-                                      InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          context.pushNamed('ProgressTracker');
-                                        },
-                                        child: SizedBox(
-                                          width: double.infinity,
-                                          height: 200.0,
-                                          child: FlutterFlowLineChart(
-                                            data: [
-                                              FFLineChartData(
-                                                xData: List.generate(
-                                                    random_data.randomInteger(
-                                                        5, 5),
-                                                    (index) => random_data
-                                                        .randomInteger(
-                                                            0, 1000)),
-                                                yData: List.generate(
-                                                    random_data.randomInteger(
-                                                        5, 5),
-                                                    (index) => random_data
-                                                        .randomInteger(0, 10)),
-                                                settings: LineChartBarData(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primary,
-                                                  barWidth: 2.0,
-                                                  isCurved: true,
-                                                  preventCurveOverShooting:
-                                                      true,
-                                                ),
+                                      FutureBuilder<List<UpdateWeightRow>>(
+                                        future: UpdateWeightTable().queryRows(
+                                          queryFn: (q) => q
+                                              .eqOrNull(
+                                                'email',
+                                                currentUserEmail,
                                               )
-                                            ],
-                                            chartStylingInfo: ChartStylingInfo(
-                                              backgroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                              showGrid: true,
-                                              showBorder: false,
-                                            ),
-                                            axisBounds: const AxisBounds(
-                                              maxX: 6.0,
-                                              maxY: 70.0,
-                                            ),
-                                            xAxisLabelInfo: AxisLabelInfo(
-                                              showLabels: true,
-                                              labelTextStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelSmall
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelSmallFamily,
-                                                        letterSpacing: 0.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelSmallFamily),
-                                                      ),
-                                              labelInterval: 10.0,
-                                              reservedSize: 32.0,
-                                            ),
-                                            yAxisLabelInfo: AxisLabelInfo(
-                                              showLabels: true,
-                                              labelTextStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelSmall
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelSmallFamily,
-                                                        letterSpacing: 0.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelSmallFamily),
-                                                      ),
-                                              labelInterval: 10.0,
-                                              reservedSize: 40.0,
-                                            ),
-                                          ),
+                                              .eqOrNull(
+                                                'weight',
+                                                '',
+                                              )
+                                              .order('date', ascending: true),
                                         ),
+                                        builder: (context, snapshot) {
+                                          // Customize what your widget looks like when it's loading.
+                                          if (!snapshot.hasData) {
+                                            return Center(
+                                              child: SizedBox(
+                                                width: 40.0,
+                                                height: 40.0,
+                                                child:
+                                                    CircularProgressIndicator(
+                                                  valueColor:
+                                                      AlwaysStoppedAnimation<
+                                                          Color>(
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                  ),
+                                                ),
+                                              ),
+                                            );
+                                          }
+                                          List<UpdateWeightRow>
+                                              chartUpdateWeightRowList =
+                                              snapshot.data!;
+
+                                          return InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              context
+                                                  .pushNamed('ProgressTracker');
+                                            },
+                                            child: SizedBox(
+                                              width: double.infinity,
+                                              height: 200.0,
+                                              child: FlutterFlowLineChart(
+                                                data: [
+                                                  FFLineChartData(
+                                                    xData:
+                                                        chartUpdateWeightRowList
+                                                            .map((e) => e.date)
+                                                            .withoutNulls
+                                                            .toList(),
+                                                    yData:
+                                                        chartUpdateWeightRowList
+                                                            .map(
+                                                                (e) => e.weight)
+                                                            .withoutNulls
+                                                            .toList(),
+                                                    settings: LineChartBarData(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
+                                                      barWidth: 2.0,
+                                                      isCurved: true,
+                                                      preventCurveOverShooting:
+                                                          true,
+                                                    ),
+                                                  )
+                                                ],
+                                                chartStylingInfo:
+                                                    ChartStylingInfo(
+                                                  backgroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondaryBackground,
+                                                  showGrid: true,
+                                                  showBorder: false,
+                                                ),
+                                                axisBounds: const AxisBounds(
+                                                  maxX: 6.0,
+                                                  maxY: 70.0,
+                                                ),
+                                                xAxisLabelInfo: AxisLabelInfo(
+                                                  showLabels: true,
+                                                  labelTextStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelSmall
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelSmallFamily,
+                                                            letterSpacing: 0.0,
+                                                            useGoogleFonts: GoogleFonts
+                                                                    .asMap()
+                                                                .containsKey(
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelSmallFamily),
+                                                          ),
+                                                  labelInterval: 10.0,
+                                                  reservedSize: 32.0,
+                                                ),
+                                                yAxisLabelInfo: AxisLabelInfo(
+                                                  showLabels: true,
+                                                  labelTextStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelSmall
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelSmallFamily,
+                                                            letterSpacing: 0.0,
+                                                            useGoogleFonts: GoogleFonts
+                                                                    .asMap()
+                                                                .containsKey(
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelSmallFamily),
+                                                          ),
+                                                  labelInterval: 10.0,
+                                                  reservedSize: 40.0,
+                                                ),
+                                              ),
+                                            ),
+                                          );
+                                        },
                                       ),
                                     ],
                                   ),
@@ -921,8 +966,8 @@ class _ProgressDashboardWidgetState extends State<ProgressDashboardWidget> {
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

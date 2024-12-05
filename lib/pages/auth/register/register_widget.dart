@@ -109,7 +109,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                           width: double.infinity,
                           child: Form(
                             key: _model.formKey,
-                            autovalidateMode: AutovalidateMode.disabled,
+                            autovalidateMode: AutovalidateMode.always,
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -797,16 +797,15 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                           width: double.infinity,
                           height: 44.0,
                           padding: const EdgeInsetsDirectional.fromSTEB(
-                              16.0, 0.0, 16.0, 0.0),
-                          iconPadding: const EdgeInsets.all(8.0),
+                              0.0, 0.0, 0.0, 0.0),
+                          iconPadding: const EdgeInsets.all(0.0),
                           color: FlutterFlowTheme.of(context).secondary,
                           textStyle: FlutterFlowTheme.of(context)
                               .titleSmall
                               .override(
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .titleSmallFamily,
-                                color: FlutterFlowTheme.of(context)
-                                    .primaryBackground,
+                                color: FlutterFlowTheme.of(context).alternate,
                                 letterSpacing: 0.0,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)

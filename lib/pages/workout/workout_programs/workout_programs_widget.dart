@@ -65,7 +65,7 @@ class _WorkoutProgramsWidgetState extends State<WorkoutProgramsWidget> {
                         fontFamily:
                             FlutterFlowTheme.of(context).headlineSmallFamily,
                         color: FlutterFlowTheme.of(context).primary,
-                        fontSize: 22.0,
+                        fontSize: 20.0,
                         letterSpacing: 0.0,
                         fontWeight: FontWeight.bold,
                         useGoogleFonts: GoogleFonts.asMap().containsKey(

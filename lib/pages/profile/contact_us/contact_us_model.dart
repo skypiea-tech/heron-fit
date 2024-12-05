@@ -1,3 +1,4 @@
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'contact_us_widget.dart' show ContactUsWidget;
 import 'package:flutter/material.dart';
@@ -9,6 +10,8 @@ class ContactUsModel extends FlutterFlowModel<ContactUsWidget> {
   FocusNode? userFeedbackFocusNode;
   TextEditingController? userFeedbackTextController;
   String? Function(BuildContext, String?)? userFeedbackTextControllerValidator;
+  // Stores action output result for [Backend Call - Insert Row] action in Button widget.
+  FeedbackRow? userFeedback;
 
   @override
   void initState(BuildContext context) {}

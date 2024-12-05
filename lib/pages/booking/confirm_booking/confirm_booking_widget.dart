@@ -567,16 +567,16 @@ class _ConfirmBookingWidgetState extends State<ConfirmBookingWidget> {
                               width: double.infinity,
                               height: 48.0,
                               padding: const EdgeInsetsDirectional.fromSTEB(
-                                  16.0, 0.0, 16.0, 0.0),
-                              iconPadding: const EdgeInsets.all(8.0),
+                                  0.0, 0.0, 0.0, 0.0),
+                              iconPadding: const EdgeInsets.all(0.0),
                               color: FlutterFlowTheme.of(context).secondary,
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
                                     fontFamily: FlutterFlowTheme.of(context)
                                         .titleSmallFamily,
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryBackground,
+                                    color:
+                                        FlutterFlowTheme.of(context).alternate,
                                     letterSpacing: 0.0,
                                     useGoogleFonts: GoogleFonts.asMap()
                                         .containsKey(

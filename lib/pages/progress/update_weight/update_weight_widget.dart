@@ -590,7 +590,7 @@ class _UpdateWeightWidgetState extends State<UpdateWeightWidget> {
                                             _model.uploadedFileUrl,
                                             width: 200.0,
                                             height: 200.0,
-                                            fit: BoxFit.fill,
+                                            fit: BoxFit.cover,
                                           ),
                                         ),
                                       ),
@@ -668,6 +668,8 @@ class _UpdateWeightWidgetState extends State<UpdateWeightWidget> {
                                 },
                               );
 
+                              context.pushNamed('ProgressDashboard');
+
                               safeSetState(() {});
                             },
                             text: 'Save Changes',
@@ -675,16 +677,16 @@ class _UpdateWeightWidgetState extends State<UpdateWeightWidget> {
                               width: double.infinity,
                               height: 40.0,
                               padding: const EdgeInsetsDirectional.fromSTEB(
-                                  16.0, 0.0, 16.0, 0.0),
-                              iconPadding: const EdgeInsets.all(8.0),
+                                  0.0, 0.0, 0.0, 0.0),
+                              iconPadding: const EdgeInsets.all(0.0),
                               color: FlutterFlowTheme.of(context).secondary,
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
                                     fontFamily: FlutterFlowTheme.of(context)
                                         .titleSmallFamily,
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryBackground,
+                                    color:
+                                        FlutterFlowTheme.of(context).alternate,
                                     letterSpacing: 0.0,
                                     useGoogleFonts: GoogleFonts.asMap()
                                         .containsKey(

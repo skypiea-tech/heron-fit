@@ -55,7 +55,7 @@ class _MyAppState extends State<MyApp> {
       });
     jwtTokenStream.listen((_) {});
     Future.delayed(
-      const Duration(milliseconds: 1000),
+      const Duration(milliseconds: 2000),
       () => _appStateNotifier.stopShowingSplashImage(),
     );
   }
@@ -87,6 +87,8 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         brightness: Brightness.light,
         scrollbarTheme: ScrollbarThemeData(
+          thumbVisibility: WidgetStateProperty.all(false),
+          interactive: true,
           thumbColor: WidgetStateProperty.resolveWith((states) {
             if (states.contains(WidgetState.dragged)) {
               return const Color(0xff443dff);
@@ -145,7 +147,7 @@ class _NavBarPageState extends State<NavBarPage> {
           _currentPage = null;
           _currentPageName = tabs.keys.toList()[i];
         }),
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
         selectedItemColor: FlutterFlowTheme.of(context).primary,
         unselectedItemColor: FlutterFlowTheme.of(context).primaryText,
         showSelectedLabels: false,
@@ -185,7 +187,7 @@ class _NavBarPageState extends State<NavBarPage> {
               FFIcons.kexerciseFill,
               size: 24.0,
             ),
-            label: 'Home',
+            label: 'Workout',
             tooltip: '',
           ),
           BottomNavigationBarItem(

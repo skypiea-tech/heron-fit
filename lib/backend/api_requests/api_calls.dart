@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 
 import '/flutter_flow/flutter_flow_util.dart';
@@ -10,12 +11,12 @@ const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 
 class SearchCall {
   static Future<ApiCallResponse> call({
-    String? searchString = 'a',
+    String? searchString = '',
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'search',
       apiUrl:
-          'https://bjlnqudcixaonzstazqp.supabase.co/rest/v1/exercises?or=(name.ilike.%$searchString%)',
+          'https://bjlnqudcixaonzstazqp.supabase.co/rest/v1/exercises?or=(name.ilike.%25$searchString%25)',
       callType: ApiCallType.GET,
       headers: {
         'Authorization':
@@ -36,6 +37,74 @@ class SearchCall {
   static List<String>? id(dynamic response) => (getJsonField(
         response,
         r'''$[:].id''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  static List<String>? name(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].name''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  static List<String>? force(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].force''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  static List<String>? level(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].level''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  static List<String>? mechanic(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].mechanic''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  static List<String>? equipment(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].equipment''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  static List? primaryMuscles(dynamic response) => getJsonField(
+        response,
+        r'''$[:].primaryMuscles''',
+        true,
+      ) as List?;
+  static List<String>? exerciseID(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].exercise_id''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  static List<String>? category(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].category''',
         true,
       ) as List?)
           ?.withoutNulls

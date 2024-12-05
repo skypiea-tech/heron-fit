@@ -1,5 +1,7 @@
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_timer.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'dart:async';
 import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'start_workout_widget.dart' show StartWorkoutWidget;
 import 'package:flutter/material.dart';
@@ -22,26 +24,17 @@ class StartWorkoutModel extends FlutterFlowModel<StartWorkoutWidget> {
   FocusNode? workoutNotesFocusNode;
   TextEditingController? workoutNotesTextController;
   String? Function(BuildContext, String?)? workoutNotesTextControllerValidator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode1;
-  TextEditingController? textController2;
-  String? Function(BuildContext, String?)? textController2Validator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode2;
-  TextEditingController? textController3;
-  String? Function(BuildContext, String?)? textController3Validator;
+  // State field(s) for weight widget.
+  FocusNode? weightFocusNode;
+  TextEditingController? weightTextController;
+  String? Function(BuildContext, String?)? weightTextControllerValidator;
+  // State field(s) for reps widget.
+  FocusNode? repsFocusNode;
+  TextEditingController? repsTextController;
+  String? Function(BuildContext, String?)? repsTextControllerValidator;
   // State field(s) for Checkbox widget.
-  bool? checkboxValue1;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode3;
-  TextEditingController? textController4;
-  String? Function(BuildContext, String?)? textController4Validator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode4;
-  TextEditingController? textController5;
-  String? Function(BuildContext, String?)? textController5Validator;
-  // State field(s) for Checkbox widget.
-  bool? checkboxValue2;
+  bool? checkboxValue;
+  Completer<List<ExercisesRow>>? requestCompleter;
 
   @override
   void initState(BuildContext context) {}
@@ -52,16 +45,26 @@ class StartWorkoutModel extends FlutterFlowModel<StartWorkoutWidget> {
     workoutNotesFocusNode?.dispose();
     workoutNotesTextController?.dispose();
 
-    textFieldFocusNode1?.dispose();
-    textController2?.dispose();
+    weightFocusNode?.dispose();
+    weightTextController?.dispose();
 
-    textFieldFocusNode2?.dispose();
-    textController3?.dispose();
+    repsFocusNode?.dispose();
+    repsTextController?.dispose();
+  }
 
-    textFieldFocusNode3?.dispose();
-    textController4?.dispose();
-
-    textFieldFocusNode4?.dispose();
-    textController5?.dispose();
+  /// Additional helper methods.
+  Future waitForRequestCompleted({
+    double minWait = 0,
+    double maxWait = double.infinity,
+  }) async {
+    final stopwatch = Stopwatch()..start();
+    while (true) {
+      await Future.delayed(const Duration(milliseconds: 50));
+      final timeElapsed = stopwatch.elapsedMilliseconds;
+      final requestComplete = requestCompleter?.isCompleted ?? false;
+      if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
+        break;
+      }
+    }
   }
 }

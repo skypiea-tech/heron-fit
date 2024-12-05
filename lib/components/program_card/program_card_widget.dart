@@ -93,8 +93,8 @@ class _ProgramCardWidgetState extends State<ProgramCardWidget> {
                           color: FlutterFlowTheme.of(context).primary,
                           size: 32.0,
                         ),
-                        onPressed: () {
-                          print('IconButton pressed ...');
+                        onPressed: () async {
+                          context.pushNamed('ProgramDetails');
                         },
                       ),
                     ),

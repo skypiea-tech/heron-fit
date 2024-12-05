@@ -86,8 +86,8 @@ class _WorkoutHistoryEmptyWidgetState extends State<WorkoutHistoryEmptyWidget> {
               ],
             ),
             FFButtonWidget(
-              onPressed: () async {
-                context.pushNamed('StartNewEmptyWorkout');
+              onPressed: () {
+                print('Button pressed ...');
               },
               text: 'START  NEW WORKOUT',
               icon: Icon(
@@ -98,7 +98,7 @@ class _WorkoutHistoryEmptyWidgetState extends State<WorkoutHistoryEmptyWidget> {
               options: FFButtonOptions(
                 width: double.infinity,
                 height: 32.0,
-                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                 iconPadding: const EdgeInsets.all(0.0),
                 color: FlutterFlowTheme.of(context).secondary,
                 textStyle: FlutterFlowTheme.of(context).labelMedium.override(

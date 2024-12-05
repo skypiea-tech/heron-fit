@@ -47,8 +47,8 @@ export '/pages/workout/workout_programs/workout_programs_widget.dart'
     show WorkoutProgramsWidget;
 export '/pages/workout/add_exercises/add_exercises_widget.dart'
     show AddExercisesWidget;
-export '/pages/workout/start_new_empty_workout/start_new_empty_workout_widget.dart'
-    show StartNewEmptyWorkoutWidget;
+export '/pages/workout/start_new_workout/start_new_workout_widget.dart'
+    show StartNewWorkoutWidget;
 export '/pages/progress/progress_tracker/progress_tracker_widget.dart'
     show ProgressTrackerWidget;
 export '/pages/progress/update_weight/update_weight_widget.dart'
@@ -85,8 +85,7 @@ export '/pages/workout/start_workout_with_timer/start_workout_with_timer_widget.
     show StartWorkoutWithTimerWidget;
 export '/pages/workout/workout_complete/workout_complete_widget.dart'
     show WorkoutCompleteWidget;
-export '/pages/workout/start_timer/start_timer_widget.dart'
-    show StartTimerWidget;
+export '/pages/start_timer/start_timer_widget.dart' show StartTimerWidget;
 export '/pages/profile/edit_profile/edit_profile_widget.dart'
     show EditProfileWidget;
 export '/pages/profile/terms_of_use/terms_of_use_widget.dart'

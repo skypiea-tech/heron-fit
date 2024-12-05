@@ -2,7 +2,6 @@ import '/components/exercise_card/exercise_card_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'program_details_model.dart';
@@ -143,34 +142,6 @@ class _ProgramDetailsWidgetState extends State<ProgramDetailsWidget> {
                             ].divide(const SizedBox(height: 12.0)),
                           ),
                         ].divide(const SizedBox(height: 16.0)),
-                      ),
-                      FFButtonWidget(
-                        onPressed: () async {
-                          context.pushNamed('StartWorkout');
-                        },
-                        text: 'Start Workout',
-                        options: FFButtonOptions(
-                          width: double.infinity,
-                          height: 40.0,
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              16.0, 0.0, 16.0, 0.0),
-                          iconPadding: const EdgeInsets.all(8.0),
-                          color: FlutterFlowTheme.of(context).secondary,
-                          textStyle: FlutterFlowTheme.of(context)
-                              .titleSmall
-                              .override(
-                                fontFamily: FlutterFlowTheme.of(context)
-                                    .titleSmallFamily,
-                                color: FlutterFlowTheme.of(context)
-                                    .primaryBackground,
-                                letterSpacing: 0.0,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .titleSmallFamily),
-                              ),
-                          elevation: 0.0,
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
                       ),
                     ].divide(const SizedBox(height: 8.0)),
                   ),

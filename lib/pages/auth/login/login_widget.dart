@@ -376,7 +376,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                       fontFamily: FlutterFlowTheme.of(context)
                                           .titleSmallFamily,
                                       color: FlutterFlowTheme.of(context)
-                                          .primaryBackground,
+                                          .alternate,
                                       letterSpacing: 0.0,
                                       useGoogleFonts: GoogleFonts.asMap()
                                           .containsKey(

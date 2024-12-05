@@ -173,24 +173,22 @@ class _LoginWidgetState extends State<LoginWidget> {
                                       fillColor:
                                           FlutterFlowTheme.of(context).tertiary,
                                       prefixIcon: Icon(
-                                        Icons.email_outlined,
+                                        FFIcons.kiconlyMessage1732244947990,
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryText,
                                       ),
                                     ),
                                     style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
+                                        .labelMedium
                                         .override(
                                           fontFamily:
                                               FlutterFlowTheme.of(context)
-                                                  .bodyMediumFamily,
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
+                                                  .labelMediumFamily,
                                           letterSpacing: 0.0,
                                           useGoogleFonts: GoogleFonts.asMap()
                                               .containsKey(
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyMediumFamily),
+                                                      .labelMediumFamily),
                                         ),
                                     validator: _model
                                         .emailAddressTextControllerValidator
@@ -262,7 +260,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                       fillColor:
                                           FlutterFlowTheme.of(context).tertiary,
                                       prefixIcon: Icon(
-                                        Icons.lock_outline_rounded,
+                                        FFIcons.kiconlyLock1732244947989,
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryText,
                                       ),
@@ -284,18 +282,16 @@ class _LoginWidgetState extends State<LoginWidget> {
                                       ),
                                     ),
                                     style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
+                                        .labelMedium
                                         .override(
                                           fontFamily:
                                               FlutterFlowTheme.of(context)
-                                                  .bodyMediumFamily,
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
+                                                  .labelMediumFamily,
                                           letterSpacing: 0.0,
                                           useGoogleFonts: GoogleFonts.asMap()
                                               .containsKey(
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyMediumFamily),
+                                                      .labelMediumFamily),
                                         ),
                                     validator: _model
                                         .passwordTextControllerValidator
@@ -341,53 +337,58 @@ class _LoginWidgetState extends State<LoginWidget> {
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 8.0),
-                          child: FFButtonWidget(
-                            onPressed: () async {
-                              // Log In
-                              GoRouter.of(context).prepareAuthEvent();
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 8.0),
+                            child: FFButtonWidget(
+                              onPressed: () async {
+                                // Log In
+                                GoRouter.of(context).prepareAuthEvent();
 
-                              final user = await authManager.signInWithEmail(
-                                context,
-                                _model.emailAddressTextController.text,
-                                _model.passwordTextController.text,
-                              );
-                              if (user == null) {
-                                return;
-                              }
+                                final user = await authManager.signInWithEmail(
+                                  context,
+                                  _model.emailAddressTextController.text,
+                                  _model.passwordTextController.text,
+                                );
+                                if (user == null) {
+                                  return;
+                                }
 
-                              context.pushNamedAuth('Home', context.mounted);
-                            },
-                            text: 'Login',
-                            options: FFButtonOptions(
-                              width: double.infinity,
-                              height: 48.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  16.0, 0.0, 16.0, 0.0),
-                              iconPadding: const EdgeInsets.all(8.0),
-                              color: FlutterFlowTheme.of(context).secondary,
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .titleSmall
-                                  .override(
-                                    fontFamily: FlutterFlowTheme.of(context)
-                                        .titleSmallFamily,
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryBackground,
-                                    letterSpacing: 0.0,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .titleSmallFamily),
-                                  ),
-                              elevation: 0.0,
-                              borderRadius: BorderRadius.circular(8.0),
+                                context.goNamedAuth('Home', context.mounted);
+                              },
+                              text: 'Login',
+                              icon: Icon(
+                                FFIcons.kiconlyLogin1732244947590,
+                                color: FlutterFlowTheme.of(context).alternate,
+                                size: 24.0,
+                              ),
+                              options: FFButtonOptions(
+                                width: double.infinity,
+                                height: 48.0,
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                iconPadding: const EdgeInsets.all(0.0),
+                                color: FlutterFlowTheme.of(context).secondary,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .override(
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .titleSmallFamily,
+                                      color: FlutterFlowTheme.of(context)
+                                          .alternate,
+                                      letterSpacing: 0.0,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmallFamily),
+                                    ),
+                                elevation: 0.0,
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
                             ),
                           ),
                         ),
-
-                        // You will have to add an action on this rich text to go to your login page.
                         Align(
                           alignment: const AlignmentDirectional(0.0, 0.0),
                           child: InkWell(
@@ -411,11 +412,11 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   TextSpan(
                                     text: 'Register',
                                     style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
+                                        .labelMedium
                                         .override(
                                           fontFamily:
                                               FlutterFlowTheme.of(context)
-                                                  .bodyMediumFamily,
+                                                  .labelMediumFamily,
                                           color: FlutterFlowTheme.of(context)
                                               .primary,
                                           letterSpacing: 0.0,
@@ -424,7 +425,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                           useGoogleFonts: GoogleFonts.asMap()
                                               .containsKey(
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyMediumFamily),
+                                                      .labelMediumFamily),
                                         ),
                                     mouseCursor: SystemMouseCursors.click,
                                     recognizer: TapGestureRecognizer()

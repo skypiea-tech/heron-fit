@@ -43,4 +43,13 @@ class UsersRow extends SupabaseDataRow {
 
   String? get height => getField<String>('height');
   set height(String? value) => setField<String>('height', value);
+
+  int? get goal => getField<int>('goal');
+  set goal(int? value) => setField<int>('goal', value);
+
+  int? get contact => getField<int>('contact');
+  set contact(int? value) => setField<int>('contact', value);
+
+  bool? get hasSession => getField<bool>('has_session');
+  set hasSession(bool? value) => setField<bool>('has_session', value);
 }

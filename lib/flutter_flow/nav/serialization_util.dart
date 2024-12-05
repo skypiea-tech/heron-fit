@@ -1,8 +1,9 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:from_css_color/from_css_color.dart';
 
+import '/backend/schema/structs/index.dart';
+import '/backend/schema/enums/enums.dart';
 import '/backend/supabase/supabase.dart';
 
 import '../../flutter_flow/place.dart';
@@ -70,6 +71,12 @@ String? serializeParam(
         data = uploadedFileToString(param as FFUploadedFile);
       case ParamType.JSON:
         data = json.encode(param);
+
+      case ParamType.DataStruct:
+        data = param is BaseStruct ? param.serialize() : null;
+
+      case ParamType.Enum:
+        data = (param is Enum) ? param.serialize() : null;
 
       case ParamType.SupabaseRow:
         return json.encode((param as SupabaseDataRow).data);
@@ -150,14 +157,17 @@ enum ParamType {
   FFUploadedFile,
   JSON,
 
+  DataStruct,
+  Enum,
   SupabaseRow,
 }
 
 dynamic deserializeParam<T>(
   String? param,
   ParamType paramType,
-  bool isList,
-) {
+  bool isList, {
+  StructBuilder<T>? structBuilder,
+}) {
   try {
     if (param == null) {
       return null;
@@ -170,7 +180,12 @@ dynamic deserializeParam<T>(
       return paramValues
           .whereType<String>()
           .map((p) => p)
-          .map((p) => deserializeParam<T>(p, paramType, false))
+          .map((p) => deserializeParam<T>(
+                p,
+                paramType,
+                false,
+                structBuilder: structBuilder,
+              ))
           .where((p) => p != null)
           .map((p) => p! as T)
           .toList();
@@ -205,13 +220,36 @@ dynamic deserializeParam<T>(
       case ParamType.SupabaseRow:
         final data = json.decode(param) as Map<String, dynamic>;
         switch (T) {
+          case WorkoutsRow:
+            return WorkoutsRow(data);
+          case UpdateWeightRow:
+            return UpdateWeightRow(data);
+          case ExercisesRow:
+            return ExercisesRow(data);
+          case SetsRow:
+            return SetsRow(data);
+          case BookingsRow:
+            return BookingsRow(data);
+          case TemplatesRow:
+            return TemplatesRow(data);
+          case FeedbackRow:
+            return FeedbackRow(data);
           case UsersRow:
             return UsersRow(data);
           case SessionsRow:
             return SessionsRow(data);
+          case WorkoutExercisesRow:
+            return WorkoutExercisesRow(data);
           default:
             return null;
         }
+
+      case ParamType.DataStruct:
+        final data = json.decode(param) as Map<String, dynamic>? ?? {};
+        return structBuilder != null ? structBuilder(data) : null;
+
+      case ParamType.Enum:
+        return deserializeEnum<T>(param);
 
       default:
         return null;

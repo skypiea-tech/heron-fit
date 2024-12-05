@@ -1,8 +1,7 @@
-import '/auth/supabase_auth/auth_util.dart';
-import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -110,7 +109,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                           width: double.infinity,
                           child: Form(
                             key: _model.formKey,
-                            autovalidateMode: AutovalidateMode.disabled,
+                            autovalidateMode: AutovalidateMode.always,
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -126,6 +125,8 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                       focusNode: _model.firstNameFocusNode,
                                       autofocus: true,
                                       autofillHints: const [AutofillHints.name],
+                                      textCapitalization:
+                                          TextCapitalization.words,
                                       textInputAction: TextInputAction.next,
                                       obscureText: false,
                                       decoration: InputDecoration(
@@ -144,7 +145,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                                               context)
                                                           .labelMediumFamily),
                                             ),
-                                        alignLabelWithHint: true,
+                                        alignLabelWithHint: false,
                                         enabledBorder: OutlineInputBorder(
                                           borderSide: const BorderSide(
                                             color: Color(0x00000000),
@@ -184,24 +185,23 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                         fillColor: FlutterFlowTheme.of(context)
                                             .tertiary,
                                         prefixIcon: Icon(
-                                          Icons.person_outline_rounded,
+                                          FFIcons.kprofile,
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryText,
+                                          size: 24.0,
                                         ),
                                       ),
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
+                                          .labelMedium
                                           .override(
                                             fontFamily:
                                                 FlutterFlowTheme.of(context)
-                                                    .bodyMediumFamily,
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
+                                                    .labelMediumFamily,
                                             letterSpacing: 0.0,
                                             useGoogleFonts: GoogleFonts.asMap()
                                                 .containsKey(
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyMediumFamily),
+                                                        .labelMediumFamily),
                                           ),
                                       validator: _model
                                           .firstNameTextControllerValidator
@@ -219,6 +219,8 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                       focusNode: _model.lastNameFocusNode,
                                       autofocus: true,
                                       autofillHints: const [AutofillHints.name],
+                                      textCapitalization:
+                                          TextCapitalization.words,
                                       textInputAction: TextInputAction.next,
                                       obscureText: false,
                                       decoration: InputDecoration(
@@ -276,24 +278,23 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                         fillColor: FlutterFlowTheme.of(context)
                                             .tertiary,
                                         prefixIcon: Icon(
-                                          Icons.person_outline_rounded,
+                                          FFIcons.kprofile,
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryText,
+                                          size: 24.0,
                                         ),
                                       ),
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
+                                          .labelMedium
                                           .override(
                                             fontFamily:
                                                 FlutterFlowTheme.of(context)
-                                                    .bodyMediumFamily,
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
+                                                    .labelMediumFamily,
                                             letterSpacing: 0.0,
                                             useGoogleFonts: GoogleFonts.asMap()
                                                 .containsKey(
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyMediumFamily),
+                                                        .labelMediumFamily),
                                           ),
                                       validator: _model
                                           .lastNameTextControllerValidator
@@ -369,24 +370,22 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                         fillColor: FlutterFlowTheme.of(context)
                                             .tertiary,
                                         prefixIcon: Icon(
-                                          Icons.email_outlined,
+                                          FFIcons.kiconlyMessage1732244947990,
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryText,
                                         ),
                                       ),
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
+                                          .labelMedium
                                           .override(
                                             fontFamily:
                                                 FlutterFlowTheme.of(context)
-                                                    .bodyMediumFamily,
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
+                                                    .labelMediumFamily,
                                             letterSpacing: 0.0,
                                             useGoogleFonts: GoogleFonts.asMap()
                                                 .containsKey(
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyMediumFamily),
+                                                        .labelMediumFamily),
                                           ),
                                       keyboardType: TextInputType.emailAddress,
                                       validator: _model
@@ -462,7 +461,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                         fillColor: FlutterFlowTheme.of(context)
                                             .tertiary,
                                         prefixIcon: Icon(
-                                          Icons.lock_outlined,
+                                          FFIcons.kiconlyLock1732244947989,
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryText,
                                         ),
@@ -484,18 +483,16 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                         ),
                                       ),
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
+                                          .labelMedium
                                           .override(
                                             fontFamily:
                                                 FlutterFlowTheme.of(context)
-                                                    .bodyMediumFamily,
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
+                                                    .labelMediumFamily,
                                             letterSpacing: 0.0,
                                             useGoogleFonts: GoogleFonts.asMap()
                                                 .containsKey(
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyMediumFamily),
+                                                        .labelMediumFamily),
                                           ),
                                       validator: _model
                                           .passwordTextControllerValidator
@@ -573,7 +570,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                         fillColor: FlutterFlowTheme.of(context)
                                             .tertiary,
                                         prefixIcon: Icon(
-                                          Icons.lock_outlined,
+                                          FFIcons.kiconlyLock1732244947989,
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryText,
                                         ),
@@ -597,18 +594,16 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                         ),
                                       ),
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
+                                          .labelMedium
                                           .override(
                                             fontFamily:
                                                 FlutterFlowTheme.of(context)
-                                                    .bodyMediumFamily,
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
+                                                    .labelMediumFamily,
                                             letterSpacing: 0.0,
                                             useGoogleFonts: GoogleFonts.asMap()
                                                 .containsKey(
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyMediumFamily),
+                                                        .labelMediumFamily),
                                           ),
                                       minLines: 1,
                                       validator: _model
@@ -629,7 +624,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                           children: [
                             Expanded(
                               child: Align(
-                                alignment: const AlignmentDirectional(-1.0, 0.0),
+                                alignment: const AlignmentDirectional(0.0, 0.0),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
                                   focusColor: Colors.transparent,
@@ -646,18 +641,18 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                         TextSpan(
                                           text: 'By continuing you accept our ',
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
+                                              .labelMedium
                                               .override(
                                                 fontFamily:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyMediumFamily,
+                                                        .labelMediumFamily,
                                                 letterSpacing: 0.0,
                                                 useGoogleFonts: GoogleFonts
                                                         .asMap()
                                                     .containsKey(
                                                         FlutterFlowTheme.of(
                                                                 context)
-                                                            .bodyMediumFamily),
+                                                            .labelMediumFamily),
                                               ),
                                         ),
                                         TextSpan(
@@ -696,45 +691,42 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                 ),
                               ),
                             ),
-                            Expanded(
-                              child: InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  context.pushNamed('TermsOfUse');
-                                },
-                                child: RichText(
-                                  textScaler: MediaQuery.of(context).textScaler,
-                                  text: TextSpan(
-                                    children: [
-                                      TextSpan(
-                                        text: 'Terms of Use',
-                                        style: const TextStyle(
-                                          fontWeight: FontWeight.w600,
-                                          decoration: TextDecoration.underline,
-                                        ),
-                                        mouseCursor: SystemMouseCursors.click,
-                                        recognizer: TapGestureRecognizer()
-                                          ..onTap = () async {
-                                            context.pushNamed('TermsOfUse');
-                                          },
-                                      )
-                                    ],
-                                    style: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .override(
-                                          fontFamily:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMediumFamily,
-                                          letterSpacing: 0.0,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMediumFamily),
-                                        ),
-                                  ),
+                            InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                context.pushNamed('TermsOfUse');
+                              },
+                              child: RichText(
+                                textScaler: MediaQuery.of(context).textScaler,
+                                text: TextSpan(
+                                  children: [
+                                    TextSpan(
+                                      text: 'Terms of Use',
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        decoration: TextDecoration.underline,
+                                      ),
+                                      mouseCursor: SystemMouseCursors.click,
+                                      recognizer: TapGestureRecognizer()
+                                        ..onTap = () async {
+                                          context.pushNamed('TermsOfUse');
+                                        },
+                                    )
+                                  ],
+                                  style: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .labelMediumFamily,
+                                        letterSpacing: 0.0,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMediumFamily),
+                                      ),
                                 ),
                               ),
                             ),
@@ -748,55 +740,72 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                     children: [
                       FFButtonWidget(
                         onPressed: () async {
-                          GoRouter.of(context).prepareAuthEvent();
-                          if (_model.passwordTextController.text !=
-                              _model.passwordConfirmTextController.text) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text(
-                                  'Passwords don\'t match!',
-                                ),
-                              ),
-                            );
-                            return;
-                          }
-
-                          final user = await authManager.createAccountWithEmail(
-                            context,
+                          _model.error = await actions.signUpWithEmail(
                             _model.emailAddressTextController.text,
                             _model.passwordTextController.text,
+                            _model.passwordConfirmTextController.text,
                           );
-                          if (user == null) {
-                            return;
+                          if (_model.error == null || _model.error == '') {
+                            context.pushNamed(
+                              'RegisterVerification',
+                              queryParameters: {
+                                'email': serializeParam(
+                                  _model.emailAddressTextController.text,
+                                  ParamType.String,
+                                ),
+                                'password': serializeParam(
+                                  _model.passwordTextController.text,
+                                  ParamType.String,
+                                ),
+                                'confirmPassword': serializeParam(
+                                  _model.passwordConfirmTextController.text,
+                                  ParamType.String,
+                                ),
+                                'firstName': serializeParam(
+                                  _model.firstNameTextController.text,
+                                  ParamType.String,
+                                ),
+                                'lastName': serializeParam(
+                                  _model.lastNameTextController.text,
+                                  ParamType.String,
+                                ),
+                              }.withoutNulls,
+                            );
+                          } else {
+                            await showDialog(
+                              context: context,
+                              builder: (alertDialogContext) {
+                                return AlertDialog(
+                                  title: const Text('Sign up error'),
+                                  content: Text(_model.error!),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () =>
+                                          Navigator.pop(alertDialogContext),
+                                      child: const Text('Ok'),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
                           }
 
-                          await UsersTable().insert({
-                            'id': currentUserUid,
-                            'created_at':
-                                supaSerialize<DateTime>(getCurrentTimestamp),
-                            'first_name': _model.firstNameTextController.text,
-                            'last_name': _model.lastNameTextController.text,
-                            'email_address':
-                                _model.emailAddressTextController.text,
-                          });
-
-                          context.pushNamedAuth('Register01', context.mounted);
+                          safeSetState(() {});
                         },
                         text: 'Register',
                         options: FFButtonOptions(
                           width: double.infinity,
                           height: 44.0,
                           padding: const EdgeInsetsDirectional.fromSTEB(
-                              16.0, 0.0, 16.0, 0.0),
-                          iconPadding: const EdgeInsets.all(8.0),
+                              0.0, 0.0, 0.0, 0.0),
+                          iconPadding: const EdgeInsets.all(0.0),
                           color: FlutterFlowTheme.of(context).secondary,
                           textStyle: FlutterFlowTheme.of(context)
                               .titleSmall
                               .override(
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .titleSmallFamily,
-                                color: FlutterFlowTheme.of(context)
-                                    .primaryBackground,
+                                color: FlutterFlowTheme.of(context).alternate,
                                 letterSpacing: 0.0,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)

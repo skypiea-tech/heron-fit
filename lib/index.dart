@@ -11,7 +11,7 @@ export '/pages/auth/register_verification/register_verification_widget.dart'
     show RegisterVerificationWidget;
 export '/pages/auth/register_success/register_success_widget.dart'
     show RegisterSuccessWidget;
-export '/pages/forgot_password/forgot_password_widget.dart'
+export '/pages/auth/forgot_password/forgot_password_widget.dart'
     show ForgotPasswordWidget;
 export '/pages/auth/forgot_password_verification/forgot_password_verification_widget.dart'
     show ForgotPasswordVerificationWidget;
@@ -33,7 +33,7 @@ export '/pages/profile/workout_history/workout_history_widget.dart'
     show WorkoutHistoryWidget;
 export '/pages/progress/progress_dashboard/progress_dashboard_widget.dart'
     show ProgressDashboardWidget;
-export '/pages/profile/workout_details/workout_details_widget.dart'
+export '/pages/workout/workout_details/workout_details_widget.dart'
     show WorkoutDetailsWidget;
 export '/pages/profile/settings/settings_widget.dart' show SettingsWidget;
 export '/pages/profile/contact_us/contact_us_widget.dart' show ContactUsWidget;
@@ -45,10 +45,10 @@ export '/pages/workout/workout_dashboard_with_template/workout_dashboard_with_te
     show WorkoutDashboardWithTemplateWidget;
 export '/pages/workout/workout_programs/workout_programs_widget.dart'
     show WorkoutProgramsWidget;
-export '/pages/workout/add_exercise/add_exercise_widget.dart'
-    show AddExerciseWidget;
-export '/pages/workout/start_new_empty_workout/start_new_empty_workout_widget.dart'
-    show StartNewEmptyWorkoutWidget;
+export '/pages/workout/add_exercises/add_exercises_widget.dart'
+    show AddExercisesWidget;
+export '/pages/workout/start_new_workout/start_new_workout_widget.dart'
+    show StartNewWorkoutWidget;
 export '/pages/progress/progress_tracker/progress_tracker_widget.dart'
     show ProgressTrackerWidget;
 export '/pages/progress/update_weight/update_weight_widget.dart'
@@ -85,11 +85,14 @@ export '/pages/workout/start_workout_with_timer/start_workout_with_timer_widget.
     show StartWorkoutWithTimerWidget;
 export '/pages/workout/workout_complete/workout_complete_widget.dart'
     show WorkoutCompleteWidget;
-export '/pages/workout/start_timer/start_timer_widget.dart'
-    show StartTimerWidget;
+export '/pages/start_timer/start_timer_widget.dart' show StartTimerWidget;
 export '/pages/profile/edit_profile/edit_profile_widget.dart'
     show EditProfileWidget;
 export '/pages/profile/terms_of_use/terms_of_use_widget.dart'
     show TermsOfUseWidget;
 export '/pages/onboarding/onboarding01/onboarding01_widget.dart'
     show Onboarding01Widget;
+export '/pages/workout/customize_workout/customize_workout_widget.dart'
+    show CustomizeWorkoutWidget;
+export '/pages/workout/exercise_details/exercise_details_widget.dart'
+    show ExerciseDetailsWidget;

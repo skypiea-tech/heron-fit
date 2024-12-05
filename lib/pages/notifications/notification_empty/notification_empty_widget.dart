@@ -124,14 +124,14 @@ class _NotificationEmptyWidgetState extends State<NotificationEmptyWidget> {
                             'You’re all caught up! Check back later for new updates.',
                             textAlign: TextAlign.center,
                             style: FlutterFlowTheme.of(context)
-                                .bodyMedium
+                                .labelSmall
                                 .override(
                                   fontFamily: FlutterFlowTheme.of(context)
-                                      .bodyMediumFamily,
+                                      .labelSmallFamily,
                                   letterSpacing: 0.0,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
-                                          .bodyMediumFamily),
+                                          .labelSmallFamily),
                                 ),
                           ),
                         ],

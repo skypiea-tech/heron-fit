@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '/backend/schema/structs/index.dart';
+import '/backend/supabase/supabase.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
@@ -105,22 +107,66 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'Register01',
           path: '/register01',
-          builder: (context, params) => const Register01Widget(),
+          builder: (context, params) => Register01Widget(
+            firstName: params.getParam(
+              'firstName',
+              ParamType.String,
+            ),
+            lastName: params.getParam(
+              'lastName',
+              ParamType.String,
+            ),
+            email: params.getParam(
+              'email',
+              ParamType.String,
+            ),
+          ),
         ),
         FFRoute(
           name: 'Register02',
           path: '/register02',
-          builder: (context, params) => const Register02Widget(),
+          builder: (context, params) => Register02Widget(
+            firstName: params.getParam(
+              'firstName',
+              ParamType.String,
+            ),
+          ),
         ),
         FFRoute(
           name: 'RegisterVerification',
           path: '/registerVerification',
-          builder: (context, params) => const RegisterVerificationWidget(),
+          builder: (context, params) => RegisterVerificationWidget(
+            email: params.getParam(
+              'email',
+              ParamType.String,
+            ),
+            password: params.getParam(
+              'password',
+              ParamType.String,
+            ),
+            confirmPassword: params.getParam(
+              'confirmPassword',
+              ParamType.String,
+            ),
+            firstName: params.getParam(
+              'firstName',
+              ParamType.String,
+            ),
+            lastName: params.getParam(
+              'lastName',
+              ParamType.String,
+            ),
+          ),
         ),
         FFRoute(
           name: 'RegisterSuccess',
           path: '/registerSuccess',
-          builder: (context, params) => const RegisterSuccessWidget(),
+          builder: (context, params) => RegisterSuccessWidget(
+            firstName: params.getParam(
+              'firstName',
+              ParamType.String,
+            ),
+          ),
         ),
         FFRoute(
           name: 'ForgotPassword',
@@ -237,14 +283,28 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const WorkoutProgramsWidget(),
         ),
         FFRoute(
-          name: 'AddExercise',
-          path: '/addExercise',
-          builder: (context, params) => const AddExerciseWidget(),
+          name: 'AddExercises',
+          path: '/addExercises',
+          builder: (context, params) => AddExercisesWidget(
+            workoutID: params.getParam<WorkoutsRow>(
+              'workoutID',
+              ParamType.SupabaseRow,
+            ),
+          ),
         ),
         FFRoute(
-          name: 'StartNewEmptyWorkout',
-          path: '/startNewEmptyWorkout',
-          builder: (context, params) => const StartNewEmptyWorkoutWidget(),
+          name: 'StartNewWorkout',
+          path: '/startNewWorkout',
+          builder: (context, params) => StartNewWorkoutWidget(
+            workoutID: params.getParam<WorkoutsRow>(
+              'workoutID',
+              ParamType.SupabaseRow,
+            ),
+            exerciseID: params.getParam<ExercisesRow>(
+              'exerciseID',
+              ParamType.SupabaseRow,
+            ),
+          ),
         ),
         FFRoute(
           name: 'ProgressTracker',
@@ -316,7 +376,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'StartWorkout',
           path: '/startWorkout',
-          builder: (context, params) => const StartWorkoutWidget(),
+          builder: (context, params) => StartWorkoutWidget(
+            exerciseID: params.getParam<ExercisesRow>(
+              'exerciseID',
+              ParamType.SupabaseRow,
+            ),
+          ),
         ),
         FFRoute(
           name: 'CompareProgressPhotos',
@@ -336,7 +401,20 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'BookingSuccessSummary',
           path: '/bookingSuccessSummary',
-          builder: (context, params) => const BookingSuccessSummaryWidget(),
+          builder: (context, params) => BookingSuccessSummaryWidget(
+            ticketId: params.getParam(
+              'ticketId',
+              ParamType.String,
+            ),
+            date: params.getParam(
+              'date',
+              ParamType.DateTime,
+            ),
+            time: params.getParam(
+              'time',
+              ParamType.String,
+            ),
+          ),
         ),
         FFRoute(
           name: 'SessionIsScheduled',
@@ -382,6 +460,26 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'Onboarding01',
           path: '/onboarding01',
           builder: (context, params) => const Onboarding01Widget(),
+        ),
+        FFRoute(
+          name: 'CustomizeWorkout',
+          path: '/customizeWorkout',
+          builder: (context, params) => CustomizeWorkoutWidget(
+            exercises: params.getParam(
+              'exercises',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'ExerciseDetails',
+          path: '/exerciseDetails',
+          builder: (context, params) => ExerciseDetailsWidget(
+            exerciseID: params.getParam<ExercisesRow>(
+              'exerciseID',
+              ParamType.SupabaseRow,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -500,6 +598,7 @@ class FFParameters {
     String paramName,
     ParamType type, {
     bool isList = false,
+    StructBuilder<T>? structBuilder,
   }) {
     if (futureParamValues.containsKey(paramName)) {
       return futureParamValues[paramName];
@@ -517,6 +616,7 @@ class FFParameters {
       param,
       type,
       isList,
+      structBuilder: structBuilder,
     );
   }
 }
@@ -568,8 +668,8 @@ class FFRoute {
                   color: FlutterFlowTheme.of(context).primary,
                   child: Center(
                     child: Image.asset(
-                      'assets/images/LogoHeronFit.png',
-                      width: 100.0,
+                      'assets/images/logoHeronFit.png',
+                      height: 100.0,
                       fit: BoxFit.contain,
                     ),
                   ),

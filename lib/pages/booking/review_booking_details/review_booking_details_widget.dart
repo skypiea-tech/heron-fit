@@ -96,52 +96,60 @@ class _ReviewBookingDetailsWidgetState
             padding: const EdgeInsets.all(24.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Text(
-                  'Please review your booking details before confirming. Make sure all the information is correct.',
-                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily:
-                            FlutterFlowTheme.of(context).bodyMediumFamily,
-                        letterSpacing: 0.0,
-                        useGoogleFonts: GoogleFonts.asMap().containsKey(
-                            FlutterFlowTheme.of(context).bodyMediumFamily),
-                      ),
-                ),
-                Container(
-                  width: 100.0,
-                  height: 159.0,
-                  decoration: const BoxDecoration(),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Text(
-                        'Booking Summary',
-                        style: FlutterFlowTheme.of(context).titleSmall.override(
-                              fontFamily:
-                                  FlutterFlowTheme.of(context).titleSmallFamily,
-                              letterSpacing: 0.0,
-                              useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                  FlutterFlowTheme.of(context)
-                                      .titleSmallFamily),
-                            ),
-                      ),
-                      Container(
-                        width: 100.0,
-                        height: 187.0,
-                        decoration: const BoxDecoration(),
-                        child: Card(
-                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          elevation: 2.0,
-                          shape: RoundedRectangleBorder(
+                Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Please review your booking details before confirming. Make sure all the information is correct.',
+                      style: FlutterFlowTheme.of(context).labelMedium.override(
+                            fontFamily:
+                                FlutterFlowTheme.of(context).labelMediumFamily,
+                            letterSpacing: 0.0,
+                            useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                FlutterFlowTheme.of(context).labelMediumFamily),
+                          ),
+                    ),
+                    Column(
+                      mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Text(
+                          'Booking Summary',
+                          style: FlutterFlowTheme.of(context)
+                              .titleMedium
+                              .override(
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .titleMediumFamily,
+                                letterSpacing: 0.0,
+                                fontWeight: FontWeight.w600,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .titleMediumFamily),
+                              ),
+                        ),
+                        Container(
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            boxShadow: [
+                              BoxShadow(
+                                blurRadius: 40.0,
+                                color: FlutterFlowTheme.of(context).dropShadow,
+                                offset: const Offset(
+                                  0.0,
+                                  10.0,
+                                ),
+                              )
+                            ],
                             borderRadius: BorderRadius.circular(8.0),
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.all(18.0),
+                            padding: const EdgeInsets.all(24.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -149,9 +157,79 @@ class _ReviewBookingDetailsWidgetState
                               children: [
                                 Row(
                                   mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Icon(
-                                      FFIcons.kticket,
+                                      FFIcons.kiconlyMessage1732244947990,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      size: 24.0,
+                                    ),
+                                    RichText(
+                                      textScaler:
+                                          MediaQuery.of(context).textScaler,
+                                      text: TextSpan(
+                                        children: [
+                                          TextSpan(
+                                            text: 'Email: ',
+                                            style: FlutterFlowTheme.of(context)
+                                                .labelMedium
+                                                .override(
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelMediumFamily,
+                                                  letterSpacing: 0.0,
+                                                  useGoogleFonts: GoogleFonts
+                                                          .asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelMediumFamily),
+                                                ),
+                                          ),
+                                          TextSpan(
+                                            text: currentUserEmail,
+                                            style: FlutterFlowTheme.of(context)
+                                                .labelMedium
+                                                .override(
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelMediumFamily,
+                                                  letterSpacing: 0.0,
+                                                  useGoogleFonts: GoogleFonts
+                                                          .asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelMediumFamily),
+                                                ),
+                                          )
+                                        ],
+                                        style: FlutterFlowTheme.of(context)
+                                            .labelMedium
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMediumFamily,
+                                              letterSpacing: 0.0,
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelMediumFamily),
+                                            ),
+                                      ),
+                                    ),
+                                  ].divide(const SizedBox(width: 5.0)),
+                                ),
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Icon(
+                                      FFIcons.kiconlyTicket1732244948013,
                                       color: FlutterFlowTheme.of(context)
                                           .primaryText,
                                       size: 24.0,
@@ -164,19 +242,19 @@ class _ReviewBookingDetailsWidgetState
                                           TextSpan(
                                             text: 'Ticket ID: ',
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
+                                                .labelMedium
                                                 .override(
                                                   fontFamily:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .bodyMediumFamily,
+                                                          .labelMediumFamily,
                                                   letterSpacing: 0.0,
                                                   useGoogleFonts: GoogleFonts
                                                           .asMap()
                                                       .containsKey(
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyMediumFamily),
+                                                              .labelMediumFamily),
                                                 ),
                                           ),
                                           TextSpan(
@@ -185,47 +263,46 @@ class _ReviewBookingDetailsWidgetState
                                               'None',
                                             ),
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
+                                                .labelMedium
                                                 .override(
                                                   fontFamily:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .bodyMediumFamily,
+                                                          .labelMediumFamily,
                                                   letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.normal,
                                                   useGoogleFonts: GoogleFonts
                                                           .asMap()
                                                       .containsKey(
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyMediumFamily),
+                                                              .labelMediumFamily),
                                                 ),
                                           )
                                         ],
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
+                                            .labelSmall
                                             .override(
                                               fontFamily:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyMediumFamily,
+                                                      .labelSmallFamily,
                                               letterSpacing: 0.0,
                                               useGoogleFonts: GoogleFonts
                                                       .asMap()
                                                   .containsKey(
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .bodyMediumFamily),
+                                                          .labelSmallFamily),
                                             ),
                                       ),
                                     ),
-                                  ].divide(const SizedBox(width: 5.0)),
+                                  ].divide(const SizedBox(width: 4.0)),
                                 ),
                                 Row(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Icon(
-                                      Icons.calendar_month,
+                                      FFIcons.kcalendar,
                                       color: FlutterFlowTheme.of(context)
                                           .primaryText,
                                       size: 24.0,
@@ -238,19 +315,19 @@ class _ReviewBookingDetailsWidgetState
                                           TextSpan(
                                             text: 'Date: ',
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
+                                                .labelMedium
                                                 .override(
                                                   fontFamily:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .bodyMediumFamily,
+                                                          .labelMediumFamily,
                                                   letterSpacing: 0.0,
                                                   useGoogleFonts: GoogleFonts
                                                           .asMap()
                                                       .containsKey(
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyMediumFamily),
+                                                              .labelMediumFamily),
                                                 ),
                                           ),
                                           TextSpan(
@@ -262,47 +339,46 @@ class _ReviewBookingDetailsWidgetState
                                                       .languageCode,
                                             ),
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
+                                                .labelMedium
                                                 .override(
                                                   fontFamily:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .bodyMediumFamily,
+                                                          .labelMediumFamily,
                                                   letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.normal,
                                                   useGoogleFonts: GoogleFonts
                                                           .asMap()
                                                       .containsKey(
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyMediumFamily),
+                                                              .labelMediumFamily),
                                                 ),
                                           )
                                         ],
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
+                                            .labelSmall
                                             .override(
                                               fontFamily:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyMediumFamily,
+                                                      .labelSmallFamily,
                                               letterSpacing: 0.0,
                                               useGoogleFonts: GoogleFonts
                                                       .asMap()
                                                   .containsKey(
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .bodyMediumFamily),
+                                                          .labelSmallFamily),
                                             ),
                                       ),
                                     ),
-                                  ].divide(const SizedBox(width: 5.0)),
+                                  ].divide(const SizedBox(width: 4.0)),
                                 ),
                                 Row(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Icon(
-                                      Icons.access_time,
+                                      FFIcons.kiconlyTimeCircle1732244948016,
                                       color: FlutterFlowTheme.of(context)
                                           .primaryText,
                                       size: 24.0,
@@ -313,21 +389,21 @@ class _ReviewBookingDetailsWidgetState
                                       text: TextSpan(
                                         children: [
                                           TextSpan(
-                                            text: 'Time:',
+                                            text: 'Time: ',
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
+                                                .labelMedium
                                                 .override(
                                                   fontFamily:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .bodyMediumFamily,
+                                                          .labelMediumFamily,
                                                   letterSpacing: 0.0,
                                                   useGoogleFonts: GoogleFonts
                                                           .asMap()
                                                       .containsKey(
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyMediumFamily),
+                                                              .labelMediumFamily),
                                                 ),
                                           ),
                                           TextSpan(
@@ -336,79 +412,51 @@ class _ReviewBookingDetailsWidgetState
                                               '[time]',
                                             ),
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
+                                                .labelMedium
                                                 .override(
                                                   fontFamily:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .bodyMediumFamily,
+                                                          .labelMediumFamily,
                                                   letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.normal,
                                                   useGoogleFonts: GoogleFonts
                                                           .asMap()
                                                       .containsKey(
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyMediumFamily),
+                                                              .labelMediumFamily),
                                                 ),
                                           )
                                         ],
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
+                                            .labelSmall
                                             .override(
                                               fontFamily:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyMediumFamily,
+                                                      .labelSmallFamily,
                                               letterSpacing: 0.0,
                                               useGoogleFonts: GoogleFonts
                                                       .asMap()
                                                   .containsKey(
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .bodyMediumFamily),
+                                                          .labelSmallFamily),
                                             ),
                                       ),
                                     ),
-                                  ].divide(const SizedBox(width: 5.0)),
+                                  ].divide(const SizedBox(width: 4.0)),
                                 ),
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Icon(
-                                      Icons.people_outlined,
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      size: 24.0,
-                                    ),
-                                    Text(
-                                      'Capacity : 12/15 spots',
-                                      style: FlutterFlowTheme.of(context)
-                                          .labelMedium
-                                          .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMediumFamily,
-                                            letterSpacing: 0.0,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMediumFamily),
-                                          ),
-                                    ),
-                                  ].divide(const SizedBox(width: 5.0)),
-                                ),
-                              ],
+                              ].divide(const SizedBox(height: 8.0)),
                             ),
                           ),
                         ),
-                      ),
-                    ].divide(const SizedBox(height: 5.0)),
-                  ),
+                      ].divide(const SizedBox(height: 16.0)),
+                    ),
+                  ].divide(const SizedBox(height: 64.0)),
                 ),
                 Flexible(
                   child: Column(
-                    mainAxisSize: MainAxisSize.max,
+                    mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       FFButtonWidget(
@@ -420,24 +468,47 @@ class _ReviewBookingDetailsWidgetState
                             'ticket_id': widget.ticketId,
                             'email': currentUserEmail,
                           });
+                          await BookingsTable().insert({
+                            'bookinguser_id': currentUserUid,
+                            'bookingstatus_txt': 'Pending',
+                            'ticketIDstatus_isVerified': false,
+                            'bookingslot': widget.time,
+                            'ticket_id': widget.ticketId,
+                            'bookinguser_email': currentUserEmail,
+                          });
 
-                          context.pushNamed('BookingSuccessSummary');
+                          context.pushNamed(
+                            'BookingSuccessSummary',
+                            queryParameters: {
+                              'ticketId': serializeParam(
+                                widget.ticketId,
+                                ParamType.String,
+                              ),
+                              'date': serializeParam(
+                                widget.date,
+                                ParamType.DateTime,
+                              ),
+                              'time': serializeParam(
+                                widget.time,
+                                ParamType.String,
+                              ),
+                            }.withoutNulls,
+                          );
                         },
-                        text: 'Next',
+                        text: 'Book It!',
                         options: FFButtonOptions(
                           width: double.infinity,
                           height: 48.0,
                           padding: const EdgeInsetsDirectional.fromSTEB(
-                              16.0, 0.0, 16.0, 0.0),
-                          iconPadding: const EdgeInsets.all(8.0),
+                              0.0, 0.0, 0.0, 0.0),
+                          iconPadding: const EdgeInsets.all(0.0),
                           color: FlutterFlowTheme.of(context).secondary,
                           textStyle: FlutterFlowTheme.of(context)
                               .titleSmall
                               .override(
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .titleSmallFamily,
-                                color: FlutterFlowTheme.of(context)
-                                    .primaryBackground,
+                                color: FlutterFlowTheme.of(context).alternate,
                                 letterSpacing: 0.0,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)
@@ -448,24 +519,23 @@ class _ReviewBookingDetailsWidgetState
                         ),
                       ),
                       FFButtonWidget(
-                        onPressed: () {
-                          print('Button pressed ...');
+                        onPressed: () async {
+                          context.safePop();
                         },
                         text: 'Cancel',
                         options: FFButtonOptions(
                           width: double.infinity,
                           height: 48.0,
                           padding: const EdgeInsetsDirectional.fromSTEB(
-                              16.0, 0.0, 16.0, 0.0),
-                          iconPadding: const EdgeInsets.all(8.0),
+                              0.0, 0.0, 0.0, 0.0),
+                          iconPadding: const EdgeInsets.all(0.0),
                           color: FlutterFlowTheme.of(context).error,
                           textStyle: FlutterFlowTheme.of(context)
                               .titleSmall
                               .override(
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .titleSmallFamily,
-                                color: FlutterFlowTheme.of(context)
-                                    .primaryBackground,
+                                color: FlutterFlowTheme.of(context).alternate,
                                 letterSpacing: 0.0,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)

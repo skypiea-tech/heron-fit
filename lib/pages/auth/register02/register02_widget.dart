@@ -1,3 +1,5 @@
+import '/auth/supabase_auth/auth_util.dart';
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -8,7 +10,12 @@ import 'register02_model.dart';
 export 'register02_model.dart';
 
 class Register02Widget extends StatefulWidget {
-  const Register02Widget({super.key});
+  const Register02Widget({
+    super.key,
+    required this.firstName,
+  });
+
+  final String? firstName;
 
   @override
   State<Register02Widget> createState() => _Register02WidgetState();
@@ -52,14 +59,14 @@ class _Register02WidgetState extends State<Register02Widget> {
                   children: [
                     Text(
                       'Let’s Conquer Your Fitness Goals',
-                      style: FlutterFlowTheme.of(context).titleLarge.override(
+                      style: FlutterFlowTheme.of(context).titleMedium.override(
                             fontFamily:
-                                FlutterFlowTheme.of(context).titleLargeFamily,
+                                FlutterFlowTheme.of(context).titleMediumFamily,
                             color: FlutterFlowTheme.of(context).primary,
                             letterSpacing: 0.0,
                             fontWeight: FontWeight.bold,
                             useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).titleLargeFamily),
+                                FlutterFlowTheme.of(context).titleMediumFamily),
                           ),
                     ),
                     Text(
@@ -133,23 +140,22 @@ class _Register02WidgetState extends State<Register02Widget> {
                                             'Lose Weight and Feel Confident',
                                             textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
+                                                .titleSmall
                                                 .override(
                                                   fontFamily:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .bodyMediumFamily,
+                                                          .titleSmallFamily,
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .alternate,
                                                   letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.w600,
                                                   useGoogleFonts: GoogleFonts
                                                           .asMap()
                                                       .containsKey(
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyMediumFamily),
+                                                              .titleSmallFamily),
                                                 ),
                                           ),
                                           Divider(
@@ -161,12 +167,12 @@ class _Register02WidgetState extends State<Register02Widget> {
                                             'Achieve your dream body and feel more comfortable in your skin.',
                                             textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
-                                                .bodySmall
+                                                .labelSmall
                                                 .override(
                                                   fontFamily:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .bodySmallFamily,
+                                                          .labelSmallFamily,
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .alternate,
@@ -176,7 +182,7 @@ class _Register02WidgetState extends State<Register02Widget> {
                                                       .containsKey(
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodySmallFamily),
+                                                              .labelSmallFamily),
                                                 ),
                                           ),
                                         ],
@@ -234,23 +240,22 @@ class _Register02WidgetState extends State<Register02Widget> {
                                             'Gain Muscle And Get Stronger',
                                             textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
+                                                .titleSmall
                                                 .override(
                                                   fontFamily:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .bodyMediumFamily,
+                                                          .titleSmallFamily,
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .alternate,
                                                   letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.w600,
                                                   useGoogleFonts: GoogleFonts
                                                           .asMap()
                                                       .containsKey(
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyMediumFamily),
+                                                              .titleSmallFamily),
                                                 ),
                                           ),
                                           Divider(
@@ -262,12 +267,12 @@ class _Register02WidgetState extends State<Register02Widget> {
                                             'Build a toned physic and improve your athletic performance.',
                                             textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
-                                                .bodySmall
+                                                .labelSmall
                                                 .override(
                                                   fontFamily:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .bodySmallFamily,
+                                                          .labelSmallFamily,
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .alternate,
@@ -277,7 +282,7 @@ class _Register02WidgetState extends State<Register02Widget> {
                                                       .containsKey(
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodySmallFamily),
+                                                              .labelSmallFamily),
                                                 ),
                                           ),
                                         ],
@@ -335,23 +340,22 @@ class _Register02WidgetState extends State<Register02Widget> {
                                             'Simply Feel Better and Healthier',
                                             textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
+                                                .titleSmall
                                                 .override(
                                                   fontFamily:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .bodyMediumFamily,
+                                                          .titleSmallFamily,
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .alternate,
                                                   letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.w600,
                                                   useGoogleFonts: GoogleFonts
                                                           .asMap()
                                                       .containsKey(
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyMediumFamily),
+                                                              .titleSmallFamily),
                                                 ),
                                           ),
                                           Divider(
@@ -363,12 +367,12 @@ class _Register02WidgetState extends State<Register02Widget> {
                                             'Improve your energy levels, reduce stress, and enhance your overall well-being.',
                                             textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
-                                                .bodySmall
+                                                .labelSmall
                                                 .override(
                                                   fontFamily:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .bodySmallFamily,
+                                                          .labelSmallFamily,
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .alternate,
@@ -378,7 +382,7 @@ class _Register02WidgetState extends State<Register02Widget> {
                                                       .containsKey(
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodySmallFamily),
+                                                              .labelSmallFamily),
                                                 ),
                                           ),
                                         ],
@@ -416,23 +420,40 @@ class _Register02WidgetState extends State<Register02Widget> {
                   children: [
                     FFButtonWidget(
                       onPressed: () async {
-                        context.pushNamed('RegisterVerification');
+                        await UsersTable().update(
+                          data: {
+                            'goal': _model.carouselCurrentIndex,
+                          },
+                          matchingRows: (rows) => rows.eqOrNull(
+                            'id',
+                            currentUserUid,
+                          ),
+                        );
+
+                        context.pushNamed(
+                          'RegisterSuccess',
+                          queryParameters: {
+                            'firstName': serializeParam(
+                              widget.firstName,
+                              ParamType.String,
+                            ),
+                          }.withoutNulls,
+                        );
                       },
                       text: 'Confirm',
                       options: FFButtonOptions(
                         width: double.infinity,
                         height: 40.0,
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            16.0, 0.0, 16.0, 0.0),
-                        iconPadding: const EdgeInsets.all(8.0),
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        iconPadding: const EdgeInsets.all(0.0),
                         color: FlutterFlowTheme.of(context).secondary,
                         textStyle: FlutterFlowTheme.of(context)
                             .titleSmall
                             .override(
                               fontFamily:
                                   FlutterFlowTheme.of(context).titleSmallFamily,
-                              color: FlutterFlowTheme.of(context)
-                                  .primaryBackground,
+                              color: FlutterFlowTheme.of(context).alternate,
                               letterSpacing: 0.0,
                               useGoogleFonts: GoogleFonts.asMap().containsKey(
                                   FlutterFlowTheme.of(context)

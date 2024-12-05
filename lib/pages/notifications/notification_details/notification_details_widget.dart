@@ -106,12 +106,12 @@ class _NotificationDetailsWidgetState extends State<NotificationDetailsWidget> {
                     ),
                     Text(
                       'Date & Time: 📅 Date: October 14, 2024 🕒 Time: 4:00 PM\n\nHey [User\'s Name]! Just a quick reminder that you\'ve booked a gym session today at 4:00 PM. Please bring your validated ticket ID to check in. Make sure to arrive 10 minutes early to secure your spot.\n\nNeed to Cancel? If you can\'t make it, please cancel your booking at least an hour before the session to \n Remember to stay hydrated and have a great workout! 💪',
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                      style: FlutterFlowTheme.of(context).labelSmall.override(
                             fontFamily:
-                                FlutterFlowTheme.of(context).bodyMediumFamily,
+                                FlutterFlowTheme.of(context).labelSmallFamily,
                             letterSpacing: 0.0,
                             useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).bodyMediumFamily),
+                                FlutterFlowTheme.of(context).labelSmallFamily),
                           ),
                     ),
                   ],

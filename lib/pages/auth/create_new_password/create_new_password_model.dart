@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 class CreateNewPasswordModel extends FlutterFlowModel<CreateNewPasswordWidget> {
   ///  State fields for stateful widgets in this page.
 
+  final formKey = GlobalKey<FormState>();
   // State field(s) for newPassword widget.
   FocusNode? newPasswordFocusNode;
   TextEditingController? newPasswordTextController;
